@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Bunbougun</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,7 +10,13 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
+    <%# if request.fullpath.include? "/admin" %>
+      <%#= render "layouts/admin_header" %>
+    <%# else %>
+      <%= render "layouts/public_header" %>
+    <%#end %>
     <%= yield %>
+    <%= render "layouts/footer" %>
   </body>
 </html>
