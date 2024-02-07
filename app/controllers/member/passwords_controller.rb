@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Member::PasswordsController < Devise::PasswordsController
+  before_action :authenticate_member!
   # GET /resource/password/new
   # def new
   #   super
