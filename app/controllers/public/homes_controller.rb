@@ -1,4 +1,4 @@
-module Member
+module Public
   class HomesController < ApplicationController
 
   end

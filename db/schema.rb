@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2024_02_07_014701) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "name"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 2024_02_07_014701) do
   create_table "members", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "name"
     t.string "nickname"
     t.string "comment"
     t.boolean "is_active", default: true

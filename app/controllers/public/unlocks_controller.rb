@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Member::UnlocksController < Devise::UnlocksController
+class Public::UnlocksController < Devise::UnlocksController
   before_action :authenticate_member!
   # GET /resource/unlock/new
   # def new

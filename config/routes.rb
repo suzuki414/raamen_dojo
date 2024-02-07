@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     patch 'members/information' => 'members#update', as: 'update_information'
     get 'members/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
     patch 'members/withdraw' => 'members#withdraw', as: 'withdraw'
+    get 'members/complete' => 'members#complete', as: 'complete'
     resources :members, only: [:index, :show, :edit, :update]
     resources :ramen_noodles, only: [:new, :index, :show, :edit, :create, :update, :destroy]
   end
