@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 class Admin::SessionsController < Devise::SessionsController
-  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  # 最後消す
+  # before_action :configure_permitted_parameters, if: :devise_controller?
+
   before_action :authenticate_admin!
   # before_action :configure_sign_in_params, only: [:create]
 
