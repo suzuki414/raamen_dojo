@@ -1,1 +1,19 @@
-<h1>完了</h1>
+<div class="card text-center mb-3" style="width: 80%; height: auto;">
+  <div class="card-body">
+    <h5 class="card-title">
+      「らぁめん道場」への会員登録ありがとうございます。<br>
+      会員登録により、下記の機能が使えるようになりました！
+    </h5>
+    <p class="card-text">
+      ・投稿機能<br>
+      ・コメント機能<br>
+      ・フォロー機能<br>
+      ・いいね機能<br>
+    </p>
+    <a href="#" class="btn btn-outline-warning">マイページ</a>
+  </div>
+</div>
+
+<%= link_to destroy_member_session_path, method: :delete,class: "btn btn-outline-warning" do %>
+  ログアウト
+<% end %>

@@ -3,10 +3,11 @@ class Member < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
   has_one_attached :profile_image
-  
-  # プロフィール画像を指定した幅と高さにリサイズして返すためのメソッド
+
+  # プロフィール画像を指定した幅と高さにリサイズして返すためのメソッドです。
+  # プロフィール画像が添付されていない場合は、デフォルトの画像を使用して同様のリサイズ処理を行います。
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/sample-author1.jpg')

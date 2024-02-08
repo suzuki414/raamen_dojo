@@ -7,7 +7,7 @@ class Public::SessionsController < Devise::SessionsController
   
   before_action :authenticate_member!
   # before_action :configure_sign_in_params, only: [:create]
-  before_action :customer_state, only: [:create]
+  before_action :member_state, only: [:create]
 
 
   # GET /resource/sign_in
@@ -41,12 +41,12 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   private
-  def customer_state
-    customer = Customer.find_by(email: params[:customer][:email])
-    return if customer.nil?
-    return unless customer.valid_password?(params[:customer][:password])
-    if customer.is_active
-      sign_in(customer)
+  def member_state
+    member = Member.find_by(email: params[:member][:email])
+    return if member.nil?
+    return unless member.valid_password?(params[:member][:password])
+    if member.is_active
+      sign_in(member)
       redirect_to root_path
     else
       flash[:notice] = "退会済みのアカウントです。ご利用の際は再度、新規会員登録が必要になります。"

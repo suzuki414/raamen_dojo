@@ -4,7 +4,7 @@
 
 <%= form_with model: @member, url: member_registration_path do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
-  
+
   <div class="field">
     <%= f.label "プロフィール画像" %>
     <%= f.file_field :profile_image, accept: "image/*" %>
@@ -12,9 +12,9 @@
 
   <div class="field">
     <%= f.label "名前" %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, autofocus: true %>
   </div>
-  
+
   <div class="field">
     <%= f.label "ニックネーム" %>
     <%= f.text_field :nickname %>
@@ -27,7 +27,7 @@
 
   <div class="field">
     <%= f.label :"メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
   <div class="field">

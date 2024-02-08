@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'home/about' => 'homes#about', as: 'about'
-    get 'members/my_page' => 'members#show', as: 'my_page'
+    get 'members/my_page' => 'members#my_page', as: 'my_page'
     get 'members/information/edit' => 'members#edit', as: 'edit_information'
     patch 'members/information' => 'members#update', as: 'update_information'
     get 'members/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
