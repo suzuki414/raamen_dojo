@@ -2,6 +2,10 @@ module Public
   class MembersController < ApplicationController
     before_action :authenticate_member!
     
+    def index
+      @members = Member.all
+    end  
+    
     def my_page
       @member = current_member
     end

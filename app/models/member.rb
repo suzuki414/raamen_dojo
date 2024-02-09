@@ -4,6 +4,11 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :ramen_noodles, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :ramen_noodle_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+
   has_one_attached :profile_image
 
   # プロフィール画像を指定した幅と高さにリサイズして返すためのメソッドです。

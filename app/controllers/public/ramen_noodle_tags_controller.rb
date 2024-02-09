@@ -1,5 +1,5 @@
 module Public
-  class RamennoodletagsController < ApplicationController
+  class RamenNoodleTagsController < ApplicationController
     before_action :authenticate_member!
 
   end
