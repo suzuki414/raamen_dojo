@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <!--<div class="col-xl-12">-->
+      <div class="card text-center w-100 mb-3">
+        <div class="card-body">
+          <P>注意マーク</P>
+          <h3 class="card-title">
+            <strong>本当に退会しますか？</strong>
+          </h3>
+          <p class="card-text">
+            退会すると、会員情報や投稿、いいねやコメント<br>
+            フォロー情報が削除されます。
+          </p>
+          <p class="card-text">
+            <strong>この操作は、取り消せません</strong>
+          </p>
+            <%= link_to "退会しない", my_page_path, class: "btn btn-outline-warning" %>
+            <%= link_to "退会する", withdraw_path, method: :patch, class: "btn btn-outline-warning btn-lg", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" } %>
+        </div>
+      </div>
+    <!--</div>-->
+  </div>
+</div>
