@@ -31,15 +31,46 @@
               </div>
               <div class="col-xl-5">
                 <div class="row">
-                  <div class="col-xl-2"></div>
-                  <div class="col-xl-8">
+                  <div class="col-xl-12">
                     <h5><strong>評価</strong></h5>
                   </div>
-                  <div class="col-xl-2"></div>
                 </div>
                 <div class="row">
-                  
-
+                  <div class="col-xl-12">
+                    <strong><%= f.label :taste_rating, "味" %></strong>
+                  </div>
+                  <div class="col-xl-12">
+                    <%= f.hidden_field :taste_rating, id: :average_taste_rating %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xl-12">
+                    <strong><%= f.label :cook_time_rating, "調理時間" %></strong>
+                  </div>
+                  <div class="col-xl-12">
+                    <%= f.hidden_field :cook_time_rating, id: :average_cook_time_rating %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xl-12">
+                    <strong><%= f.label :process_rating, "工程数" %></strong>
+                  </div>
+                  <div class="col-xl-12">
+                    <%= f.hidden_field :process_rating, id: :average_process_rating %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xl-12">
+                    <strong><%= f.label :difficulty_rating, "難易度" %></strong>
+                  </div>
+                  <div class="col-xl-12">
+                    <%= f.hidden_field :difficulty_rating, id: :average_difficulty_rating %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xl-12">
+                    ※投稿後、評価の変更は出来ません
+                  </div>
                 </div>
               </div>
             </div>

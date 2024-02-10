@@ -5,6 +5,10 @@ module Public
     def new
       @ramen_noodle = RamenNoodle.new
     end
+    
+    def index
+      @ramen_noodle = RamenNoodle.all
+    end
 
     def create
       @ramen_noodle = RamenNoodle.new(ramen_noodle_params)

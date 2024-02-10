@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <!--<div class="col-xl-12">-->
+      <div class="card text-center w-100 mb-3">
+        <div class="card-body">
+          <%= form_with model: @ramen_noodle, url: ramen_noodles_path, method: :post do |f| %>
+            <div class="row">
+              <div class="col-xl-7">
+                <div class="row">
+                  <div class="col-xl-3"><%= f.label "投稿画像" %></div>
+                  <div class="col-xl-9"><%= f.file_field :post_image, accept: "image/*" %></div>
+                </div>
+                <div class="row">
+                  <div class="col-xl-3"><%= f.label "タイトル" %></div>
+                  <div class="col-xl-9"><%= f.text_field :title, autofocus: true, placeholder: "タイトル" %></div>
+                </div>
+                <div class="row">
+                  <div class="col-xl-3"><%= f.label "タグ" %></div>
+                  <div class="col-xl-9"><%= f.text_field :ramen_noodle_tags, placeholder: "タグ" %></div>
+                </div>
+                <div class="row">
+                  <div class="col-xl-3"><%= f.label "説明" %></div>
+                  <div class="col-xl-9"><%= f.text_area :description, rows: '5', placeholder: "ここに説明文を入力してください" %></div>
+                </div>
+                <div class="row">
+                  <div class="col-xl-3"><%= f.label "レシピ" %></div>
+                  <div class="col-xl-9"><%= f.text_area :recipe, rows: '5', placeholder: "ここにレシピを入力してください" %></div>
+                </div>
+              </div>
+              <div class="col-xl-5">
+                <p>評価</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-3"></div>
+              <div class="col-xl-6">
+                <button type="button" class="btn btn-outline-warning">投稿</button>
+              </div>
+              <div class="col-xl-3"></div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <!--</div>-->
+  </div>
+</div>

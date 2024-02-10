@@ -1,11 +1,25 @@
 <div class="starrate">
 <!--平均点を算出し、round関数で切り上げ-->
-<%=@average_rating %>：<%= @ramen_noodle.average(:average_rating).to_f.round(1) %>
+<%= @average_rating %>：<%= @ramen_noodles.average(:average_rating).to_f.round(1) %>
 <!--評価数を星に置き換える-->
-<div class="average-review-rating" data-score=<%= @ramen_noodle.average(:average_rating) %>></div>
+<div class="average_rating" data-score=<%= @ramen_noodles.average(:average_rating) %>></div>
 <!--jquery発火イベントを記載-->
 <script>
-  $('.average-review-rating').raty({
+  $('.average_rating').raty({
+    readOnly: true, #読み取り専用
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>
+<br>
+<%= @taste_rating %>：<%= @ramen_noodles.average(:taste_rating).to_f.round(1) %>
+<div class="average_taste_rating" data-score=<%= @ramen_noodles.average(:taste_rating) %>></div>
+<script>
+  $('.average_taste_rating').raty({
     readOnly: true,
     starOn: "<%= asset_path('star-on.png') %>",
     starOff: "<%= asset_path('star-off.png') %>",
@@ -16,5 +30,47 @@
   });
 </script>
 <br>
-<%# 同様に、rating1なども記載する%>
+<%= @cook_time_rating %>：<%= @ramen_noodles.average(:cook_time_rating).to_f.round(1) %>
+<div class="average_cook_time_rating" data-score=<%= @ramen_noodles.average(:cook_time_rating) %>></div>
+<script>
+  $('.average_cook_time_rating').raty({
+    readOnly: true,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>
+<br>
+<%= @process_rating %>：<%= @ramen_noodles.average(:process_rating).to_f.round(1) %>
+<div class="average_process_rating" data-score=<%= @ramen_noodles.average(:process_rating) %>></div>
+<script>
+  $('.average_process_rating').raty({
+    readOnly: true,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>
+<br>
+<%= @difficulty_rating %>：<%= @ramen_noodles.average(:difficulty_rating).to_f.round(1) %>
+<div class="average_difficulty_rating" data-score=<%= @ramen_noodles.average(:difficulty_rating) %>></div>
+<script>
+  $('.average_difficulty_rating').raty({
+    readOnly: true,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>
 </div>
+
+<%= render partial: "ramen_noodles/show_rate", locals: { ramen_noodle: @ramen_noodle } %>
