@@ -2,11 +2,11 @@
 <!--平均点を算出し、round関数で切り上げ-->
 <%= @average_rating %>：<%= @ramen_noodles.average(:average_rating).to_f.round(1) %>
 <!--評価数を星に置き換える-->
-<div class="average_rating" data-score=<%= @ramen_noodles.average(:average_rating) %>></div>
+<div class="average_rating" data-score=<%= @ramen_noodle.average_rating %>></div>
 <!--jquery発火イベントを記載-->
 <script>
   $('.average_rating').raty({
-    readOnly: true, #読み取り専用
+    readOnly: true, // 読み取り専用
     starOn: "<%= asset_path('star-on.png') %>",
     starOff: "<%= asset_path('star-off.png') %>",
     starHalf: "<%= asset_path('star-half.png') %>",

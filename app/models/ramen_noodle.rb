@@ -6,24 +6,11 @@ class RamenNoodle < ApplicationRecord
 
   has_one_attached :post_image
 
-  validates :average_rating, numericality: {
-  less_than_or_equal_to: 5,
-  greater_than_or_equal_to: 1}, presence: true
-  
-  validates :taste_rating, numericality: {
-  less_than_or_equal_to: 5,
-  greater_than_or_equal_to: 1}, presence: true
-  
-  validates :cook_time_rating, numericality: {
-  less_than_or_equal_to: 5,
-  greater_than_or_equal_to: 1}, presence: true
-  
-  validates :process_rating, numericality: {
-  less_than_or_equal_to: 5,
-  greater_than_or_equal_to: 1}, presence: true
-  
-  validates :difficulty_rating, numericality: {
-  less_than_or_equal_to: 5,
-  greater_than_or_equal_to: 1}, presence: true
-
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :recipe, presence: true
+  validates :taste_rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
+  validates :cook_time_rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
+  validates :process_rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
+  validates :difficulty_rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
 end

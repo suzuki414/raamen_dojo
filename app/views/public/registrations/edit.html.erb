@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <!--<div class="col-xl-12">-->
-      <div class="card text-center w-100 mb-3">
+      <div class="card text-center w-100 mb-3 shadow p-3 mb-5 bg-body rounded">
         <div class="card-body">
           <%= form_with model: @member, url: member_registration_path do |f| %>
             <%= render "public/shared/error_messages", resource: resource %>

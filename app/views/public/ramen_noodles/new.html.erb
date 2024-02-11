@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <!--<div class="col-xl-12">-->
-      <div class="card text-center w-100 mb-3">
+    <div class="col-xl-12">
+      <div class="card text-center w-100 mb-3 shadow p-3 mb-5 bg-body rounded">
         <div class="card-body">
           <%= form_with model: @ramen_noodle, url: ramen_noodles_path, method: :post do |f| %>
             <div class="row">
@@ -31,41 +31,107 @@
               </div>
               <div class="col-xl-5">
                 <div class="row">
-                  <div class="col-xl-12">
+                  <div class="col-xl-12 border-bottom border-dark">
                     <h5><strong>評価</strong></h5>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-xl-12">
-                    <strong><%= f.label :taste_rating, "味" %></strong>
+
+                    <strong><%= f.label "味" %></strong>
+                    <div>
+                      1<span id="taste_rating" class="mx-3"></span>5
+                    </div>
+
                   </div>
-                  <div class="col-xl-12">
-                    <%= f.hidden_field :taste_rating, id: :average_taste_rating %>
-                  </div>
+
+                  <script>
+                    $(document).on('turbolinks:load', function() {
+                      var elem = document.querySelector('#taste_rating');
+                      if (elem == null) return;
+                      elem.innerHTML = ""
+                      var opt = {
+                        starOn: "<%= asset_path('star-on.png') %>",
+                        starOff: "<%= asset_path('star-off.png') %>",
+                        starHalf: "<%= asset_path('star-half.png') %>",
+                        scoreName: 'ramen_noodle[taste_rating]',
+                      };
+                      raty(elem, opt);
+                    });
+                  </script>
+
                 </div>
                 <div class="row">
                   <div class="col-xl-12">
-                    <strong><%= f.label :cook_time_rating, "調理時間" %></strong>
+                    <strong><%= f.label "調理時間" %></strong>
+                    <div id="cook_time_rating">
+                      <div class="col-xl-12">
+                        <%= f.hidden_field :cook_time_rating %>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-xl-12">
-                    <%= f.hidden_field :cook_time_rating, id: :average_cook_time_rating %>
-                  </div>
+                  <script>
+                    $(document).on('turbolinks:load', function() {
+                      var elem = document.querySelector('#cook_time_rating');
+                      if (elem == null) return;
+                      elem.innerHTML = ""
+                      var opt = {
+                        starOn: "<%= asset_path('star-on.png') %>",
+                        starOff: "<%= asset_path('star-off.png') %>",
+                        starHalf: "<%= asset_path('star-half.png') %>",
+                        scoreName: 'ramen_noodle[cook_time_rating]',
+                      };
+                      raty(elem, opt);
+                    });
+                  </script>
                 </div>
                 <div class="row">
                   <div class="col-xl-12">
-                    <strong><%= f.label :process_rating, "工程数" %></strong>
+                    <strong><%= f.label "工程数" %></strong>
+                    <div id="process_rating">
+                      <div class="col-xl-12">
+                        <%= f.hidden_field :process_rating %>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-xl-12">
-                    <%= f.hidden_field :process_rating, id: :average_process_rating %>
-                  </div>
+                  <script>
+                    $(document).on('turbolinks:load', function() {
+                      var elem = document.querySelector('#process_rating');
+                      if (elem == null) return;
+                      elem.innerHTML = ""
+                      var opt = {
+                        starOn: "<%= asset_path('star-on.png') %>",
+                        starOff: "<%= asset_path('star-off.png') %>",
+                        starHalf: "<%= asset_path('star-half.png') %>",
+                        scoreName: 'ramen_noodle[process_rating]',
+                      };
+                      raty(elem, opt);
+                    });
+                  </script>
                 </div>
                 <div class="row">
                   <div class="col-xl-12">
-                    <strong><%= f.label :difficulty_rating, "難易度" %></strong>
+                    <strong><%= f.label "難易度" %></strong>
+                    <div id="difficulty_rating">
+                      <div class="col-xl-12">
+                        <%= f.hidden_field :difficulty_rating %>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-xl-12">
-                    <%= f.hidden_field :difficulty_rating, id: :average_difficulty_rating %>
-                  </div>
+                  <script>
+                    $(document).on('turbolinks:load', function() {
+                      var elem = document.querySelector('#difficulty_rating');
+                      if (elem == null) return;
+                      elem.innerHTML = ""
+                      var opt = {
+                        starOn: "<%= asset_path('star-on.png') %>",
+                        starOff: "<%= asset_path('star-off.png') %>",
+                        starHalf: "<%= asset_path('star-half.png') %>",
+                        scoreName: 'ramen_noodle[difficulty_rating]',
+                      };
+                      raty(elem, opt);
+                    });
+                  </script>
                 </div>
                 <div class="row">
                   <div class="col-xl-12">
@@ -81,9 +147,9 @@
               </div>
               <div class="col-xl-3"></div>
             </div>
-          <% end %>  
+          <% end %>
         </div>
       </div>
-    <!--</div>-->
+    </div>
   </div>
 </div>
