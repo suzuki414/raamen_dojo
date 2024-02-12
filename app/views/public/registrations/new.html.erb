@@ -1,36 +1,30 @@
 <div class="container">
   <div class="row">
-    <!--<div class="col-xl-12">-->
-      <div class="card text-center w-100 mb-3 shadow p-3 mb-5 bg-body rounded">
+    <div class="col-xl-12">
+      <div class="card text-center w-100 my-5 shadow bg-body rounded">
         <div class="card-body">
           <%= form_with model: @member, url: member_registration_path do |f| %>
             <%= render "public/shared/error_messages", resource: resource %>
-
             <div class="field">
               <%= f.label "プロフィール画像" %>
               <%= f.file_field :profile_image, accept: "image/*" %>
             </div>
-
             <div class="field">
               <%= f.label "名前" %>
               <%= f.text_field :name, autofocus: true %>
             </div>
-
             <div class="field">
               <%= f.label "ニックネーム" %>
               <%= f.text_field :nickname %>
             </div>
-
             <div class="field">
               <%= f.label "ひとこと" %>
               <%= f.text_field :comment %>
             </div>
-
             <div class="field">
               <%= f.label "メールアドレス" %>
               <%= f.email_field :email, autocomplete: "email" %>
             </div>
-
             <div class="field">
               <%= f.label "パスワード" %>
               <% if @minimum_password_length %>
@@ -38,20 +32,17 @@
               <% end %>
               <%= f.password_field :password, autocomplete: "new-password" %>
             </div>
-
             <div class="field">
               <%= f.label "パスワード(確認用)" %>
               <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
             </div>
-
             <div class="actions">
               <%= f.submit "会員登録" %>
             </div>
           <% end %>
-
           <%= render "public/shared/links" %>
         </div>
       </div>
-    <!--</div>-->
+    </div>
   </div>
 </div>

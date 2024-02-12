@@ -1,4 +1,4 @@
-<header class="shadow-sm border-bottom ">
+<header class="shadow-sm border-bottom sticky-top bg-white">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <a class="navbar-brand p-3 float-left" href="/"><%= image_tag("raamen_dojo_logo.png", size: "100x100", class: "img-fluid") %></a>
@@ -31,22 +31,22 @@
           <% else %>
             <li class="nav-item mx-2 my-2">
               <p>ゲストログイン</p>
-              <%#= link_to "ゲストログイン", destroy_member_session_path, method: :delete, class: 'btn btn-secondary shadow bg-body rounded rounded-pill' %>
+              <%#= link_to "ゲストログイン", destroy_member_session_path, method: :delete, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
             </li>
             <li class="nav-item mx-2 my-2">
-              <%= link_to 'ログイン', new_member_session_path, class: 'btn btn-secondary shadow bg-body rounded rounded-pill' %>
+              <%= link_to 'ログイン', new_member_session_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
             </li>
             <li class="nav-item mx-2 my-2">
-              <%= link_to '新規会員登録', new_member_registration_path, class: 'btn btn-secondary shadow bg-body rounded rounded-pill' %>
+              <%= link_to '新規会員登録', new_member_registration_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
             </li>
             <li class="nav-item mx-2 my-2">
-              <%= link_to "会員一覧", members_path, class: 'btn btn-secondary shadow bg-body rounded rounded-pill' %>
+              <%= link_to "会員一覧", members_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
             </li>
             <li class="nav-item mx-2 my-2">
-              <%= link_to "投稿一覧", ramen_noodles_path, class: 'btn btn-secondary shadow bg-body rounded rounded-pill' %>
+              <%= link_to "投稿一覧", ramen_noodles_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
             </li>
             <li class="nav-item mx-2 my-2">
-              <%= link_to "サイト紹介ページ", about_path, class: 'btn btn-secondary shadow bg-body rounded rounded-pill' %>
+              <%= link_to "サイト紹介ページ", about_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
             </li>
           <% end %>
         </ul>

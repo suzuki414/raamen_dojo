@@ -1,34 +1,36 @@
 <div class="container">
   <div class="row">
     <div class="col-xl-12">
-      <div class="card text-center w-100 mb-3 shadow p-3 mb-5 bg-body rounded">
+      <div class="card text-center w-100 my-5 shadow bg-body rounded">
         <div class="card-body">
           <div class="row">
-            <div class="col-xl-4">プロフィール写真</div>
+            <div class="col-xl-4">
+              <%= image_tag(@member.get_profile_image(300, 300), class: "rounded-circle border border-warning my-5") %>
+            </div>
             <div class="col-xl-8">
-              <div class="row">
-                <div class="col-xl-5">名前</div>
+              <div class="row my-3">
+                <div class="col-xl-5 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded">名前</div>
                 <div class="col-xl-7"><%= @member.name %></div>
               </div>
-              <div class="row">
-                <div class="col-xl-5">サイト表示名</div>
+              <div class="row my-3">
+                <div class="col-xl-5 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded">サイト表示名</div>
                 <div class="col-xl-7"><%= @member.nickname %></div>
               </div>
-              <div class="row">
-                <div class="col-xl-5">ひとこと</div>
+              <div class="row my-3">
+                <div class="col-xl-5 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded">ひとこと</div>
                 <div class="col-xl-7"><%= @member.comment %></div>
               </div>
-              <div class="row">
-                <div class="col-xl-5">メールアドレス</div>
+              <div class="row my-3">
+                <div class="col-xl-5 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded">メールアドレス</div>
                 <div class="col-xl-7"><%= @member.email %></div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-xl-3 btn btn-outline-warning">会員情報編集</div>
-            <div class="col-xl-3 btn btn-outline-warning">投稿一覧</div>
-            <div class="col-xl-3 btn btn-outline-warning">いいねした投稿</div>
-            <div class="col-xl-3 btn btn-outline-warning">フォロー/フォロワー</div>
+            <div class="col-xl-3 btn btn-outline-warning mx-1">会員情報編集</div>
+            <div class="col-xl-3 btn btn-outline-warning mx-1">投稿一覧</div>
+            <div class="col-xl-3 btn btn-outline-warning mx-1">いいねした投稿</div>
+            <div class="col-xl-3 btn btn-outline-warning mx-1">フォロー/フォロワー</div>
           </div>
         </div>
       </div>
