@@ -1,1 +1,43 @@
 @use '~bootstrap/scss/bootstrap';
+
+.navbar {
+  border-bottom: 6px solid red;
+}
+
+.nav-item {
+  width: 122px;
+}
+
+#taste_rating {
+  img {
+    width: 33px;
+  }
+}
+
+#cook_time_rating {
+  img {
+    width: 33px;
+  }
+}
+
+#process_rating {
+  img {
+    width: 33px;
+  }
+}
+
+#difficulty_rating {
+  img {
+    width: 33px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+}

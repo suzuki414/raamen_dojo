@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2024_02_08_080023) do
     t.integer "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["ramen_noodle_id", "tag_id"], name: "index_ramen_noodle_tags_on_ramen_noodle_id_and_tag_id", unique: true
     t.index ["ramen_noodle_id"], name: "index_ramen_noodle_tags_on_ramen_noodle_id"
     t.index ["tag_id"], name: "index_ramen_noodle_tags_on_tag_id"
   end
@@ -126,6 +127,7 @@ ActiveRecord::Schema.define(version: 2024_02_08_080023) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

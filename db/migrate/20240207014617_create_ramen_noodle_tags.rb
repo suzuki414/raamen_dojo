@@ -6,5 +6,7 @@ class CreateRamenNoodleTags < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    # 同じタグは2回保存できない
+    add_index :ramen_noodle_tags, [:ramen_noodle_id,:tag_id],unique: true
   end
 end

@@ -1,62 +1,54 @@
 <header class="shadow-sm border-bottom sticky-top bg-white">
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container">
-      <a class="navbar-brand p-3 float-left" href="/"><%= image_tag("raamen_dojo_logo.png", size: "100x100", class: "img-fluid") %></a>
-      <button class="navbar-toggler btn-danger" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-          <form class="d-flex mx-2 my-2" role="search">
-            <input class="form-control me-2 shadow bg-body rounded" type="search" placeholder="検索ワードを入力してください" aria-label="Search" style="width: 300px;">
-            <button class="btn btn-outline-warning shadow bg-body rounded" type="submit">検索</button>
-          </form>
-          <% if member_signed_in? %>
-            <li class="nav-item mx-2 my-2">
-              <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
-            </li>
-            <li class="nav-item mx-2 my-2">
-              <%= link_to '会員一覧', members_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
-            </li>
-            <li class="nav-item mx-2 my-2">
-              <%= link_to '投稿一覧', ramen_noodles_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
-            </li>
-            <li class="nav-item mx-2 my-2">
-              <%= link_to "新規投稿", new_ramen_noodle_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
-            </li>
-            <li class="nav-item mx-2 my-2">
-              <%= link_to "マイページ", my_page_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
-            </li>
-          <% else %>
-            <li class="nav-item mx-2 my-2">
-              <p>ゲストログイン</p>
-              <%#= link_to "ゲストログイン", destroy_member_session_path, method: :delete, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
-            </li>
-            <li class="nav-item mx-2 my-2">
-              <%= link_to 'ログイン', new_member_session_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
-            </li>
-            <li class="nav-item mx-2 my-2">
-              <%= link_to '新規会員登録', new_member_registration_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
-            </li>
-            <li class="nav-item mx-2 my-2">
-              <%= link_to "会員一覧", members_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
-            </li>
-            <li class="nav-item mx-2 my-2">
-              <%= link_to "投稿一覧", ramen_noodles_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
-            </li>
-            <li class="nav-item mx-2 my-2">
-              <%= link_to "サイト紹介ページ", about_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+  <nav class="navbar navbar-expand-xl navbar-light">
+    <a class="navbar-brand float-left" href="/"><%= image_tag("raamen_dojo_logo.png", size: "100x100", class: "img-fluid ml-3") %></a>
+    <button class="navbar-toggler btn-danger" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                  aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        <form class="d-flex mx-2 my-2" role="search">
+          <input class="form-control me-2 shadow bg-body rounded" type="search" placeholder="検索ワードを入力してください" aria-label="Search" style="width: 280px; height: 40px;">
+          <button class="btn btn-outline-warning shadow bg-body rounded ml-1" type="submit">検索</button>
+        </form>
+        <% if member_signed_in? %>
+          <li class="nav-item mx-2 my-2">
+            <%= link_to '会員一覧', members_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+          </li>
+          <li class="nav-item mx-2 my-2">
+            <%= link_to '投稿一覧', ramen_noodles_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+          </li>
+          <li class="nav-item mx-2 my-2">
+            <%= link_to "新規投稿", new_ramen_noodle_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+          </li>
+          <li class="nav-item mx-2 my-2">
+            <%= link_to "マイページ", my_page_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+          </li>
+          <li class="nav-item mx-2 my-2">
+            <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+          </li>
+        <% else %>
+          <li class="nav-item mx-2 my-2">
+            <%= link_to "サイト紹介", about_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+          </li>
+          <li class="nav-item mx-2 my-2">
+            <p>ゲストログイン</p>
+            <%#= link_to "ゲストログイン", destroy_member_session_path, method: :delete, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+          </li>
+          <li class="nav-item mx-2 my-2">
+            <%= link_to '新規会員登録', new_member_registration_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+          </li>
+          <li class="nav-item mx-2 my-2">
+            <%= link_to 'ログイン', new_member_session_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+          </li>
+          <li class="nav-item mx-2 my-2">
+            <%= link_to "会員一覧", members_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+          </li>
+          <li class="nav-item mx-2 my-2">
+            <%= link_to "投稿一覧", ramen_noodles_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </nav>
 </header>
-
-<style>
-  .navbar {
-    border-bottom: 6px solid red;
-  }
-</style>

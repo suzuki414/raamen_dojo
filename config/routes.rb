@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get 'members/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
     patch 'members/withdraw' => 'members#withdraw', as: 'withdraw'
     get 'members/complete' => 'members#complete', as: 'complete'
+    get "search_tag" => "ramen_noodles#search_tag"
     resources :members, only: [:index, :show, :edit, :update]
     resources :ramen_noodles, only: [:new, :index, :show, :edit, :create, :update, :destroy]
   end

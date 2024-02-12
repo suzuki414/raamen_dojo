@@ -1,0 +1,8 @@
+
+
+
+<!-- タグリスト -->
+      <% @post_workout_tags.each do |tag| %>
+      <i class="fa-sharp fa-solid fa-tag"></i>
+        <%= link_to tag.name,search_tag_path(workout_tag_id: tag.id) %>
+      <% end %>
