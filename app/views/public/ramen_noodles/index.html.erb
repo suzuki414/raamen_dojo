@@ -3,9 +3,46 @@
     <div class="col-xl-12">
       <div class="card text-center w-100 my-5 shadow bg-body rounded">
         <div class="card-body  d-flex flex-wrap">
-          <%= link_to member_path(member) do %>
-          
-          <% end %>
+          <% @ramen_noodles.each do |ramen_noodle| %>
+            <%= link_to ramen_noodle_path(ramen_noodle) do %>
+              <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <%= image_tag(ramen_noodle.post_image, size: "100x100") %>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">
+                        <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle border border-warning my-5") %><%= ramen_noodle.member.nickname %>
+                      </h5>
+                      <h5 class="card-title">・<%= ramen_noodle.title %></h5>
+                      <p class="card-text">星</p>
+                      <p class="card-text">いいね数</p>
+                      <p class="card-text">コメント数</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">
+                        <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle border border-warning my-5") %><%= ramen_noodle.member.nickname %>
+                      </h5>
+                      <h5 class="card-title">・<%= ramen_noodle.title %></h5>
+                      <p class="card-text">星</p>
+                      <p class="card-text">いいね数</p>
+                      <p class="card-text">コメント数</p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <%= image_tag(ramen_noodle.post_image, size: "100x100") %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>  
         </div>
       </div>
     </div>
@@ -13,8 +50,8 @@
 </div>
 
 <!--タグリスト-->
-  <% @tag_list.each do |list|%>
-    <i class="fa-sharp fa-solid fa-tag"></i>
-    <%=link_to list.name,search_tag_path(workout_tag_id: list.id) %>
-    <%="(#{list.post_workouts.count})" %>
-  <% end %>
+<!--  <%# @tag_list.each do |list|%>-->
+<!--    <i class="fa-sharp fa-solid fa-tag"></i>-->
+<!--    <%#=link_to list.name,search_tag_path(workout_tag_id: list.id) %>-->
+<!--    <%#="(#{list.post_workouts.count})" %>-->
+<!--  <%# end %>-->
