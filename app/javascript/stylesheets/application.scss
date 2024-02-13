@@ -37,18 +37,20 @@
 
 // ページネーションのデザイン
 .pagination>li>a {
-  border: none;
-  color: #696969;
+  border: none !important;
+  color: #000 !important;
+}
 
 // 表示しているページ番号のデザイン
 .pagination>.active>a {
-  background: #dc3545;
-  border-radius: 100px;   //角を丸くする
+  color: #fff !important;
+  background: #dc3545 !important;
+  border-radius: 100px !important;   //角を丸くする
 }
 
 // ホバー時のデザイン
 .pagination>li>a:hover {
-  border-radius: 15px;
+  border-radius: 15px !important;
 }
 
 // フッターの位置
