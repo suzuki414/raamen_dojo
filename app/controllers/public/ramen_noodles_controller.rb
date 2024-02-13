@@ -13,7 +13,7 @@ module Public
     end
 
     def index
-      @ramen_noodles = RamenNoodle.all
+      @ramen_noodles = RamenNoodle.page(params[:page]).per(10)
       @tag_list = Tag.all
     end
 
@@ -62,7 +62,7 @@ module Public
     private
 
     def ramen_noodle_params
-      params.require(:ramen_noodle).permit(:post_image, :title, :name, :description, :recipe, :average_rating, :taste_rating, :cook_time_rating, :process_rating, :difficulty_rating, :status)
+      params.require(:ramen_noodle).permit(:post_image, :title, :description, :recipe, :average_rating, :taste_rating, :cook_time_rating, :process_rating, :difficulty_rating, :status)
     end
   end
 end

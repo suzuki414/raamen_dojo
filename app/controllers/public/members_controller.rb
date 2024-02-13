@@ -3,7 +3,7 @@ module Public
     before_action :authenticate_member!
     
     def index
-      @members = Member.all
+      @members = Member.page(params[:page]).per(12)
     end
     
     def show
