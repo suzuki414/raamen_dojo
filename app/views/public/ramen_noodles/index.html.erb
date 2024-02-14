@@ -38,7 +38,10 @@
                           <%= ramen_noodle.average_rating %>
                         </div>
                         <div class="action">
-                          ♡ / 📄
+                          <p>
+                            <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>：<%= ramen_noodle.favorites.count %>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <i class="fa-regular fa-comment fa-xl" style="color: #ff0000;"></i>：<%= ramen_noodle.ramen_noodle_comments.count %>
+                          </p>
                         </div>
                       </div>
                     </div>

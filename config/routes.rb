@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :members, only: [:index, :show, :edit, :update]
     resources :ramen_noodles, only: [:new, :index, :show, :edit, :create, :update, :destroy] do
       resource :favorite, only: [:create, :destroy]
+      resources :ramen_noodle_comments, only: [:create]
     end
   end
   

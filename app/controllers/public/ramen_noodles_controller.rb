@@ -10,6 +10,7 @@ module Public
       @ramen_noodle = RamenNoodle.find(params[:id])
       @tag_list = @ramen_noodle.tags.pluck(:name).join(',')
       @ramen_noodle_tags = @ramen_noodle.tags
+      @ramen_noodle_comment = RamenNoodleComment.new
     end
 
     def index

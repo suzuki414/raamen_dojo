@@ -39,21 +39,21 @@
                   <% if @ramen_noodle.favorited_by?(current_member) %>
                     <p>
                       <%= link_to ramen_noodle_favorite_path(@ramen_noodle), method: :delete do %>
-                        <i class="fa-solid fa-thumbs-up"></i>
-                        <%= @ramen_noodle.favorites.count %>
+                        <i class="fa-solid fa-thumbs-up fa-2xl" style="color: #ff0000;"></i>
                       <% end %>
+                      ：<%= @ramen_noodle.favorites.count %>
                     </p>
                     <% else %>
                     <p>
                       <%= link_to ramen_noodle_favorite_path(@ramen_noodle), method: :post do %>
-                        <i class="fa-regular fa-thumbs-up"></i>
-                        <%= @ramen_noodle.favorites.count %>
+                        <i class="fa-regular fa-thumbs-up fa-2xl" style="color: #ff0000;"></i>
                       <% end %>
+                      ：<%= @ramen_noodle.favorites.count %>
                     </p>
                   <% end %>
                 </div>
                 <div class="col-xl-3">
-                   <p> 📄</p>
+                   <p><i class="fa-regular fa-comment fa-2xl" style="color: #ff0000;"></i>：<%= @ramen_noodle.ramen_noodle_comments.count %></p>
                 </div>
                 <div class="col-xl-6"></div>
               </div>
@@ -105,13 +105,47 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-xl-12 text-center">
+            <div class="col-xl-12">
               <div class="col-xl-5 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded text-center"><strong>レシピ</strong></div>
             </div>
           </div>
           <div class="row">
-            <div class="col-xl-12 text-center">
+            <div class="col-xl-12">
               <%= @ramen_noodle.recipe %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-12">
+              <%= form_with model: [@ramen_noodle, @ramen_noodle_comment] do |f| %>
+                <%= f.text_field :comment, rows: '5', placeholder: "コメントをここに入力してください", class: "shadow bg-body rounded" %><br>
+                <%= f.submit "コメント投稿", class: "btn btn-outline-warning shadow bg-body rounded" %>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="col-xl-5 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded text-center"><strong>コメント一覧</strong></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-12">
+              <% @ramen_noodle.ramen_noodle_comments.each do |ramen_noodle_comment| %>
+                <div class="card w-100 my-5 shadow bg-body rounded">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-xl-4">
+                        <%= image_tag(@ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle mr-2 img-fluid") %><%= @ramen_noodle.member.nickname %>
+                      </div>
+                      <div class="col-xl-8"></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xl-12">
+                        <%= ramen_noodle_comment.created_at.strftime('%Y/%m/%d') %><%= ramen_noodle_comment.comment %>
+                      </div>  
+                    </div>  
+                  </div>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>
