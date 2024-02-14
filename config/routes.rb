@@ -20,7 +20,9 @@ Rails.application.routes.draw do
     get 'members/complete' => 'members#complete', as: 'complete'
     get "search_tag" => "ramen_noodles#search_tag"
     resources :members, only: [:index, :show, :edit, :update]
-    resources :ramen_noodles, only: [:new, :index, :show, :edit, :create, :update, :destroy]
+    resources :ramen_noodles, only: [:new, :index, :show, :edit, :create, :update, :destroy] do
+      resource :favorite, only: [:create, :destroy]
+    end
   end
   
   namespace :admin do

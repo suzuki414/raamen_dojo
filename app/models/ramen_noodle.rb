@@ -35,6 +35,10 @@ class RamenNoodle < ApplicationRecord
       self.tags << tag
     end
   end
+  
+  def favorited_by?(member)
+    favorites.exists?(member_id: member.id)
+  end
 
   private
 
