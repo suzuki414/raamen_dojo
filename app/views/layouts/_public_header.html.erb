@@ -1,6 +1,11 @@
 <header class="shadow-sm border-bottom sticky-top bg-white">
   <nav class="navbar navbar-expand-xl navbar-light">
     <a class="navbar-brand float-left" href="/"><%= image_tag("raamen_dojo_logo.png", size: "100x100", class: "img-fluid ml-3") %></a>
+    <% if flash[:notice].present? %>
+      <div class="alert alert-info" role="alert">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
     <button class="navbar-toggler btn-danger" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                   aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -32,8 +37,7 @@
             <%= link_to "サイト紹介", about_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
           </li>
           <li class="nav-item mx-2 my-2">
-            <p>ゲストログイン</p>
-            <%#= link_to "ゲストログイン", destroy_member_session_path, method: :delete, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+            <%= link_to "ゲストログイン", members_guest_sign_in_path, method: :post, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
           </li>
           <li class="nav-item mx-2 my-2">
             <%= link_to '新規会員登録', new_member_registration_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
