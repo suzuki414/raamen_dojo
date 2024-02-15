@@ -7,47 +7,49 @@
             <% @ramen_noodles.each_with_index do |ramen_noodle, index| %>
               <div class="col-md-6 mb-3">
                 <div class="card shadow bg-body rounded">
-                  <div class="row">
-                    <!--投稿が偶数か判定する-->
-                    <% if index.even? %>
-                      <!--投稿を2で割った余りが0(偶数)か判定する-->
-                      <% if (index / 2).even? %>
-                        <div class="col-md-4 order-0 order-md-0">
+                  <%= link_to ramen_noodle_path(ramen_noodle) do %>
+                    <div class="row">
+                      <!--投稿が偶数か判定する-->
+                      <% if index.even? %>
+                        <!--投稿を2で割った余りが0(偶数)か判定する-->
+                        <% if (index / 2).even? %>
+                          <div class="col-md-4 order-0 order-md-0">
+                        <% else %>
+                          <div class="col-md-4 order-0 order-md-1">
+                        <% end %>
                       <% else %>
-                        <div class="col-md-4 order-0 order-md-1">
+                        <% if (index / 2).even? %>
+                          <div class="col-md-4 order-0 order-md-1">
+                        <% else %>
+                          <div class="col-md-4 order-0 order-md-0">
+                        <% end %>
                       <% end %>
-                    <% else %>
-                      <% if (index / 2).even? %>
-                        <div class="col-md-4 order-0 order-md-1">
-                      <% else %>
-                        <div class="col-md-4 order-0 order-md-0">
-                      <% end %>
-                    <% end %>
-                      <%= image_tag(ramen_noodle.post_image, class: 'img-fluid', style: 'width: 100%; height: 100%; object-fit: cover;') %>
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <div class="profile text-center">
-                          <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle mr-2") %><%= ramen_noodle.member.nickname %>
-                        </div>
-                        <ul class="title my-3">
-                          <li><%= ramen_noodle.title %></li>
-                        </ul>
-                        <div id="average_rating">
-                          <span id="average_rating_<%= ramen_noodle.id %>"></span>
-                          <%= ramen_noodle.average_rating %>
-                        </div>
-                        <div class="action">
-                          <p>
-                            <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>：<%= ramen_noodle.favorites.count %>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <i class="fa-regular fa-comment fa-xl" style="color: #ff0000;"></i>：<%= ramen_noodle.ramen_noodle_comments.count %>
-                          </p>
+                        <%= image_tag(ramen_noodle.post_image, class: 'img-fluid', style: 'width: 100%; height: 100%; object-fit: cover;') %>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <div class="profile text-center">
+                            <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle mr-2") %><%= ramen_noodle.member.nickname %>
+                          </div>
+                          <ul class="title my-3">
+                            <li><%= ramen_noodle.title %></li>
+                          </ul>
+                          <div id="average_rating">
+                            <span id="average_rating_<%= ramen_noodle.id %>"></span>
+                            <%= ramen_noodle.average_rating %>
+                          </div>
+                          <div class="action">
+                            <p>
+                              <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>：<%= ramen_noodle.favorites.count %>&nbsp;&nbsp;&nbsp;&nbsp;
+                              <i class="fa-regular fa-comment fa-xl" style="color: #ff0000;"></i>：<%= ramen_noodle.ramen_noodle_comments.count %>
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
           </div>
           <%= paginate @ramen_noodles %>

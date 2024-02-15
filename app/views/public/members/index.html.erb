@@ -4,7 +4,7 @@
       <div class="card text-center w-100 my-5 shadow bg-body rounded">
         <div class="card-body d-flex flex-wrap">
           <% @members.each do |member| %>
-            <% unless member.guest_member? %>
+            <% unless member.guest_member? || member == current_member %>
               <%= link_to member_path(member) do %>
                 <div class="card text-center w-100 my-3 mx-3 shadow bg-body rounded">
                   <div class="card-body">

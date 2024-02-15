@@ -1,6 +1,6 @@
-class CreateReferences < ActiveRecord::Migration[6.1]
+class CreateRelationships < ActiveRecord::Migration[6.1]
   def change
-    create_table :references do |t|
+    create_table :relationships do |t|
       t.references :follower, null: false, foreign_key: true
       t.references :followed, null: false, foreign_key: true
 

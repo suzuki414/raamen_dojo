@@ -11,6 +11,12 @@ module Public
       redirect_to ramen_noodle_path(ramen_noodle)
     end
 
+    def destroy
+      RamenNoodleComment.find(params[:id]).destroy
+      flash[:notice] = "コメントを削除しました。"
+      redirect_to ramen_noodle_path(params[:ramen_noodle_id])
+    end
+
     private
 
     def ramen_noodle_comment_params

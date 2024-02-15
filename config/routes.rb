@@ -23,10 +23,14 @@ Rails.application.routes.draw do
     patch 'members/withdraw' => 'members#withdraw', as: 'withdraw'
     get 'members/complete' => 'members#complete', as: 'complete'
     get "search_tag" => "ramen_noodles#search_tag"
-    resources :members, only: [:index, :show, :edit, :update]
+    resources :members, only: [:index, :show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      	get "followings" => "relationships#followings", as: "followings"
+      	get "followers" => "relationships#followers", as: "followers"
+    end
     resources :ramen_noodles, only: [:new, :index, :show, :edit, :create, :update, :destroy] do
       resource :favorite, only: [:create, :destroy]
-      resources :ramen_noodle_comments, only: [:create]
+      resources :ramen_noodle_comments, only: [:create, :destroy]
     end
   end
   
