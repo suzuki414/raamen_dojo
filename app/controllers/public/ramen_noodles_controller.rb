@@ -1,6 +1,6 @@
 module Public
   class RamenNoodlesController < ApplicationController
-    before_action :authenticate_member!
+    before_action :authenticate_member!, only: [:new, :edit, :create, :update]
 
     def new
       @ramen_noodle = RamenNoodle.new
@@ -51,13 +51,6 @@ module Public
       else
         render :edit
       end
-    end
-
-    def search_tag
-      @tag_list = Tag.all
-      @tag = Tag.find(params[:tag_id])
-      #検索されたタグに紐づく投稿を表示
-      @ramen_noodles = @tag.ramen_noodles
     end
 
     private

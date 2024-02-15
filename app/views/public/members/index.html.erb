@@ -1,38 +1,40 @@
 <div class="container">
   <div class="row">
     <div class="col-xl-12">
-      <div class="card text-center w-100 my-5 shadow bg-body rounded">
-        <div class="card-body d-flex flex-wrap">
-          <% @members.each do |member| %>
-            <% unless member.guest_member? || member == current_member %>
-              <%= link_to member_path(member) do %>
-                <div class="card text-center w-100 my-3 mx-3 shadow bg-body rounded">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-xl-4">
-                        <%= image_tag(member.get_profile_image(100, 100), class: "rounded-circle border border-warning my-5") %>
-                      </div>
-                      <div class="col-xl-4">
-                        <div class="col-xl-5 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded">サイト表示名</div>
-                        <div class="col-xl-7"><%= member.nickname %></div>
-                      </div>
-                      <div class="col-xl-4">
-                        <div class="col-xl-5 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded">ひとこと</div>
-                        <div class="col-xl-7"><%= member.comment %></div>
+      <div class="card w-100 my-5 shadow bg-body rounded">
+        <div class="card-body">
+          <div class="row">
+            <% @members.each do |member| %>
+              <% unless member.guest_member? || member == current_member %>
+                <%= link_to member_path(member) do %>
+                  <div class="card text-center w-100 my-3 mx-3 shadow bg-body rounded">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-xl-4">
+                          <%= image_tag(member.get_profile_image(100, 100), class: "rounded-circle border border-warning my-5") %>
+                        </div>
+                        <div class="col-xl-4">
+                          <div class="col-xl-5 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded">サイト表示名</div>
+                          <div class="col-xl-7"><%= member.nickname %></div>
+                        </div>
+                        <div class="col-xl-4">
+                          <div class="col-xl-5 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded">ひとこと</div>
+                          <div class="col-xl-7"><%= member.comment %></div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                <% end %>
               <% end %>
             <% end %>
-          <% end %>
-        </div>
-        <div class="row">
-          <div class="col-xl-4"></div>
-          <div class="col-xl-4">
-            <%= paginate @members %>
           </div>
-          <div class="col-xl-4"></div>
+          <div class="row">
+            <div class="col-xl-4"></div>
+            <div class="col-xl-4">
+              <%= paginate @members %>
+            </div>
+            <div class="col-xl-4"></div>
+          </div>
         </div>
       </div>
     </div>

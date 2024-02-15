@@ -39,6 +39,18 @@ class RamenNoodle < ApplicationRecord
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)
   end
+  
+  def self.search_for(content, method)
+    if method == 'perfect'
+      RamenNoodle.where(title: content)
+    elsif method == 'forward'
+      RamenNoodle.where('title LIKE ?', content + '%')
+    elsif method == 'backward'
+      RamenNoodle.where('title LIKE ?', '%' + content)
+    else
+      RamenNoodle.where('title LIKE ?', '%' + content + '%')
+    end
+  end
 
   private
 

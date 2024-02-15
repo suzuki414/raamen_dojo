@@ -3,4 +3,16 @@ class Tag < ApplicationRecord
   has_many :ramen_noodles, through: :ramen_noodle_tags
 
   validates :name, presence:true
+  
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Tag.where(title: content)
+    elsif method == 'forward'
+      Tag.where('name LIKE ?', content + '%')
+    elsif method == 'backward'
+      Tag.where('name LIKE ?', '%' + content)
+    else
+      Tag.where('name LIKE ?', '%' + content + '%')
+    end
+  end
 end

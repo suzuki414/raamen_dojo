@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2024_02_15_042141) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "name"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -114,15 +113,6 @@ ActiveRecord::Schema.define(version: 2024_02_15_042141) do
     t.index ["member_id"], name: "index_ramen_noodles_on_member_id"
   end
 
-  create_table "references", force: :cascade do |t|
-    t.integer "follower_id", null: false
-    t.integer "followed_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["followed_id"], name: "index_references_on_followed_id"
-    t.index ["follower_id"], name: "index_references_on_follower_id"
-  end
-
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id", null: false
     t.integer "followed_id", null: false
@@ -148,8 +138,6 @@ ActiveRecord::Schema.define(version: 2024_02_15_042141) do
   add_foreign_key "ramen_noodle_tags", "ramen_noodles"
   add_foreign_key "ramen_noodle_tags", "tags"
   add_foreign_key "ramen_noodles", "members"
-  add_foreign_key "references", "followeds"
-  add_foreign_key "references", "followers"
-  add_foreign_key "relationships", "followeds"
-  add_foreign_key "relationships", "followers"
+  add_foreign_key "relationships", "members", column: "followed_id"
+  add_foreign_key "relationships", "members", column: "follower_id"
 end

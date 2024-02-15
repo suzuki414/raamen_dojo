@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   devise_for :members,skip: [:passwords], controllers: {
     registrations: "public/registrations",
-    sessions: 'public/sessions'
+    sessions: "public/sessions"
   }
   
   devise_scope :member do
@@ -13,16 +13,18 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   
+  get "search_tag" => "ramen_noodles#search_tag", as: "search_tag"
+  
   scope module: :public do
-    root to: 'homes#top'
-    get 'home/about' => 'homes#about', as: 'about'
-    get 'members/my_page' => 'members#my_page', as: 'my_page'
-    get 'members/information/edit' => 'members#edit', as: 'edit_information'
-    patch 'members/information' => 'members#update', as: 'update_information'
-    get 'members/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
-    patch 'members/withdraw' => 'members#withdraw', as: 'withdraw'
-    get 'members/complete' => 'members#complete', as: 'complete'
-    get "search_tag" => "ramen_noodles#search_tag"
+    root to: "homes#top"
+    get "home/about" => "homes#about", as: "about"
+    get "members/my_page" => "members#my_page", as: "my_page"
+    get "members/information/edit" => "members#edit", as: "edit_information"
+    patch "members/information" => "members#update", as: "update_information"
+    get "members/unsubscribe" => "members#unsubscribe", as: "unsubscribe"
+    patch "members/withdraw" => "members#withdraw", as: "withdraw"
+    get "members/complete" => "members#complete", as: "complete"
+    get "/search" => "searches#search", as: "search"
     resources :members, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       	get "followings" => "relationships#followings", as: "followings"
@@ -35,7 +37,8 @@ Rails.application.routes.draw do
   end
   
   namespace :admin do
-    root to: 'homes#top'
+    root to: "homes#top"
+    get "admin/search" => "searches#search", as: "search"
     resources :members, only: [:index, :show, :edit, :update]
     resources :ramen_noodles, only: [:index, :show, :edit, :update, :destroy]
   end

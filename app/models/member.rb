@@ -3,7 +3,7 @@ class Member < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
   GUEST_MEMBER_EMAIL = "guest@example.com"
 
   def self.guest
@@ -12,7 +12,7 @@ class Member < ApplicationRecord
       member.name = "guestmember"
     end
   end
-  
+
   def guest_member?
     email == GUEST_MEMBER_EMAIL
   end
@@ -30,20 +30,33 @@ class Member < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   has_one_attached :profile_image
-  
+
   # 指定したユーザーをフォローする
   def follow(member)
+    # byebug
     active_relationships.create(followed_id: member.id)
   end
-  
+
   # 指定したユーザーのフォローを解除する
   def unfollow(member)
     active_relationships.find_by(followed_id: member.id).destroy
   end
-  
+
   # 指定したユーザーをフォローしているかどうかを判定
   def following?(member)
     followings.include?(member)
+  end
+  
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Member.where(name: content)
+    elsif method == 'forward'
+      Member.where('nickname LIKE ?', content + '%')
+    elsif method == 'backward'
+      Member.where('nickname LIKE ?', '%' + content)
+    else
+      Member.where('nickname LIKE ?', '%' + content + '%')
+    end
   end
 
   # プロフィール画像を指定した幅と高さにリサイズして返すためのメソッドです。

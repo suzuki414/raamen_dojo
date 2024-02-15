@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card w-100 my-5 shadow bg-body rounded">
+        <div class="card-body">
+          <div class="row">
+            <% if @model == 'member' %>
+                <h3>"<%= @content %>"の検索結果</h3>
+              <%= render 'members/index', members: @records %>
+            <% elsif @model == 'ramen_noodle' %>
+                <h3>"<%= @content %>"の検索結果</h3>
+              <%= render 'ramen_noodles/index', ramen_noodles: @records %>
+            <% elsif @model == 'tag' %>
+                <h3>"<%= @content %>"の検索結果</h3>
+              <%= render 'ramen_noodles/index', ramen_noodles: @records %>
+            <% end %>
+          </div>
+          <%= paginate @ramen_noodles %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
