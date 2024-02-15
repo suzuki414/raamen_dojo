@@ -20,9 +20,9 @@
             </div>
             <div class="col-xl-8">
               <div class="row my-3">
-                <div class="col-xl-6 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded text-center">サイト表示名</div>
+                <div class="col-xl-6 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded text-center">タイトル</div>
                 <div class="col-xl-6 text-center">
-                  <%= @ramen_noodle.member.nickname %>
+                  <%= @ramen_noodle.title %>
                 </div>
               </div>
               <div class="row my-3">
@@ -146,8 +146,8 @@
                     <div class="row">
                       <div class="col-xl-12">
                         <%= ramen_noodle_comment.created_at.strftime('%Y/%m/%d') %><%= ramen_noodle_comment.comment %>
-                      </div>  
-                    </div>  
+                      </div>
+                    </div>
                   </div>
                 </div>
               <% end %>
@@ -164,6 +164,7 @@
   $(document).on('turbolinks:load', function() {
     var elem = document.querySelector('#taste_rating');
     if (elem == null) return;
+    elem.innerHTML = ""
     var opt = {
       readOnly: true,
       starOn: "<%= asset_path('star-on.png') %>",
@@ -174,10 +175,11 @@
     };
     raty(elem, opt);
   });
-  
+
   $(document).on('turbolinks:load', function() {
     var elem = document.querySelector('#cook_time_rating');
     if (elem == null) return;
+    elem.innerHTML = ""
     var opt = {
       readOnly: true,
       starOn: "<%= asset_path('star-on.png') %>",
@@ -188,10 +190,11 @@
     };
     raty(elem, opt);
   });
-  
+
   $(document).on('turbolinks:load', function() {
     var elem = document.querySelector('#process_rating');
     if (elem == null) return;
+    elem.innerHTML = ""
     var opt = {
       readOnly: true,
       starOn: "<%= asset_path('star-on.png') %>",
@@ -202,10 +205,11 @@
     };
     raty(elem, opt);
   });
-  
+
   $(document).on('turbolinks:load', function() {
     var elem = document.querySelector('#difficulty_rating');
     if (elem == null) return;
+    elem.innerHTML = ""
     var opt = {
       readOnly: true,
       starOn: "<%= asset_path('star-on.png') %>",

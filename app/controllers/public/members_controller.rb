@@ -23,6 +23,14 @@ module Public
       @member = current_member
     end
 
+    def withdraw
+      @member = Member.find(current_member.id)
+      @member.update(is_active: false)
+      reset_session
+      flash[:notice] = "退会しました。"
+      redirect_to root_path
+    end
+
     private
 
     def ensure_guest_member

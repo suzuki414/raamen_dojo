@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <!--<div class="col-xl-12">-->
-      <div class="card text-center w-100 mb-3 shadow p-3 mb-5 bg-body rounded">
+    <div class="col-xl-12">
+      <div class="card text-center w-100 my-5 shadowZ bg-body rounded">
         <div class="card-body">
           <P>注意マーク</P>
           <h3 class="card-title">
@@ -21,9 +21,9 @@
             <strong>この操作は、取り消せません</strong>
           </p>
             <%= link_to "退会しない", my_page_path, class: "btn btn-outline-warning" %>
-            <%= link_to "退会する", withdraw_path, method: :patch, class: "btn btn-outline-warning btn-lg", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" } %>
+            <%= link_to "退会する", withdraw_path, method: :patch, class: "btn btn-outline-warning btn-lg", data: { confirm: "本当に退会しますか?" } %>
         </div>
       </div>
-    <!--</div>-->
+    </div>
   </div>
 </div>

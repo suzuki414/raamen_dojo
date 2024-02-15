@@ -57,7 +57,7 @@ class Member < ApplicationRecord
     else
       Member.where('nickname LIKE ?', '%' + content + '%')
     end
-  end
+  end  
 
   # プロフィール画像を指定した幅と高さにリサイズして返すためのメソッドです。
   # プロフィール画像が添付されていない場合は、デフォルトの画像を使用して同様のリサイズ処理を行います。

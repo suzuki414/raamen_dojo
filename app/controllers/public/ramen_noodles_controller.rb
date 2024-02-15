@@ -31,6 +31,7 @@ module Public
       @ramen_noodle.average_rating = raty_array.sum.fdiv(raty_array.length)
       if @ramen_noodle.save
         @ramen_noodle.save_tags(tag_list)
+        flash[:notice] = "投稿しました。"
         redirect_to ramen_noodle_path(@ramen_noodle)
       else
         render :new
@@ -47,6 +48,7 @@ module Public
       tag_list = params[:ramen_noodle][:name].split(',')
       if @ramen_noodle.update(ramen_noodle_params)
         @ramen_noodle.save_tags(tag_list)
+        flash[:notice] = "編集内容を反映させました。"
         redirect_to ramen_noodle_path(@ramen_noodle)
       else
         render :edit

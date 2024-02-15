@@ -1,0 +1,152 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card text-center w-100 my-5 shadow bg-body rounded">
+        <div class="card-body">
+          <%= form_with model: @ramen_noodle, url: ramen_noodle_path, method: :patch do |f| %>
+            <div class="row">
+              <div class="col-xl-8">
+                <table class="table table-borderless">
+                  <tr>
+                    <th><%= f.label "投稿画像" %></th>
+                    <td><%= f.file_field :post_image, accept: "image/*" %></td>
+                  </tr>
+                  <tr>
+                    <th><%= f.label "タイトル" %></th>
+                    <td><%= f.text_field :title, autofocus: true, placeholder: "タイトル" %></td>
+                  </tr>
+                  <tr>
+                    <th><%= f.label "タグ" %></th>
+                    <td><%= f.text_field :name, value: @tag_list, class: 'form-control', placeholder: "タグ(カンマ( , )で区切ると複数のタグが登録できます)" %></td>
+                  </tr>
+                  <tr>
+                    <th><%= f.label "説明" %></th>
+                    <td><%= f.text_area :description, rows: '5', placeholder: "ここに説明文を入力してください" %></td>
+                  </tr>
+                  <tr>
+                    <th><%= f.label "レシピ" %></th>
+                    <td><%= f.text_area :recipe, rows: '5', placeholder: "ここにレシピを入力してください" %></td>
+                  </tr>
+                </table>
+              </div>
+              <div class="col-xl-4">
+                <div class="row">
+                  <div class="col-xl-12 border-bottom border-dark">
+                    <h5><strong>評価</strong></h5>
+                  </div>
+                </div>
+                <div class="row mt-3 mb-3">
+                  <div class="col-xl-12">
+                    <strong><%= f.label "味" %></strong>
+                    <div class="mt-2">
+                      <strong>1<span id="taste_rating" class="mx-3"></span>5</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-3 mb-3">
+                  <div class="col-xl-12">
+                    <strong><%= f.label "調理時間" %></strong>
+                    <div class="mt-2">
+                      <strong>短<span id="cook_time_rating" class="mx-3"></span>長</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-3 mb-3">
+                  <div class="col-xl-12">
+                    <strong><%= f.label "工程数" %></strong>
+                    <div class="mt-2">
+                      <strong>少<span id="process_rating" class="mx-3"></span>多</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-3 mb-3">
+                  <div class="col-xl-12">
+                    <strong><%= f.label "難易度" %></strong>
+                    <div class="mt-2">
+                      <strong>低<span id="difficulty_rating" class="mx-3"></span>高</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-5 mb-5">
+                  <div class="col-xl-12">
+                    ※投稿後、評価の変更は出来ません
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-3"></div>
+              <div class="col-xl-6">
+                <%= f.submit "投稿", class: "btn btn-outline-warning" %>
+              </div>
+              <div class="col-xl-3"></div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  $(document).on('turbolinks:load', function() {
+    var elem = document.querySelector('#taste_rating');
+    if (elem == null) return;
+    elem.innerHTML = ""
+    var opt = {
+      readOnly: true,
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>",
+      scoreName: 'ramen_noodle[difficulty_rating]',
+      score: "<%= @ramen_noodle.taste_rating %>"
+    };
+    raty(elem, opt);
+  });
+
+  $(document).on('turbolinks:load', function() {
+    var elem = document.querySelector('#cook_time_rating');
+    if (elem == null) return;
+    elem.innerHTML = ""
+    var opt = {
+      readOnly: true,
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>",
+      scoreName: 'ramen_noodle[difficulty_rating]',
+      score: "<%= @ramen_noodle.cook_time_rating %>"
+    };
+    raty(elem, opt);
+  });
+
+  $(document).on('turbolinks:load', function() {
+    var elem = document.querySelector('#process_rating');
+    if (elem == null) return;
+    elem.innerHTML = ""
+    var opt = {
+      readOnly: true,
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>",
+      scoreName: 'ramen_noodle[difficulty_rating]',
+      score: "<%= @ramen_noodle.process_rating %>"
+    };
+    raty(elem, opt);
+  });
+
+  $(document).on('turbolinks:load', function() {
+    var elem = document.querySelector('#difficulty_rating');
+    if (elem == null) return;
+    elem.innerHTML = ""
+    var opt = {
+      readOnly: true,
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>",
+      scoreName: 'ramen_noodle[difficulty_rating]',
+      score: "<%= @ramen_noodle.difficulty_rating %>"
+    };
+    raty(elem, opt);
+  });
+</script>
