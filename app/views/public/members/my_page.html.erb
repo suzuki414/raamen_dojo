@@ -29,15 +29,19 @@
             </div>
             <div class="row">
               <div class="col-xl-3">
-                <%= link_to "会員情報編集", edit_member_registration_path, class: "btn btn-outline-warning mx-1" %>
+                <%= link_to "会員情報編集", edit_member_registration_path, class: "btn btn-outline-warning shadow bg-body rounded" %>
               </div>
-              <div class="col-xl-3 btn btn-outline-warning mx-1">投稿一覧</div>
-              <div class="col-xl-3 btn btn-outline-warning mx-1">いいねした投稿</div>
               <div class="col-xl-3">
-                <%= link_to member_followings_path(@member), class: "btn btn-outline-warning mx-1" do %>
+                <%= link_to "投稿一覧", ramen_noodles_path, class: "btn btn-outline-warning shadow bg-body rounded" %>
+              </div>  
+              <div class="col-xl-3">
+                <%= link_to "いいねした投稿", ramen_noodles_path, class: "btn btn-outline-warning shadow bg-body rounded" %>
+              </div>
+              <div class="col-xl-3">
+                <%= link_to member_followings_path(@member), class: "btn btn-outline-warning shadow bg-body rounded mx-1" do %>
                   フォロー <%= @member.followings.count %>
                 <% end %>/
-                <%= link_to member_followers_path(@member), class: "btn btn-outline-warning mx-1" do %>
+                <%= link_to member_followers_path(@member), class: "btn btn-outline-warning shadow bg-body rounded mx-1" do %>
                   フォロワー <%= @member.followers.count %>
                 <% end %>
               </div>

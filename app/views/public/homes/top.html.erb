@@ -8,12 +8,36 @@
     <div class="col-xl-4"></div>
   </div>
   <div class="row">
-    <P>新着投稿5件</P>
+    <div class="col-xl-1"></div>
+    <% @ramen_noodles.each do |ramen_noodle| %>
+      <div class="col-xl-2">
+        <div class="card shadow p-2 bg-body rounded" style="width: 18rem;">
+          <%= link_to ramen_noodle_path(ramen_noodle) do %>
+            <%= image_tag(ramen_noodle.post_image, class: 'img-fluid', style: 'width: 100%; height: 100%; object-fit: cover;') %>
+            <div class="card-body">
+              <div id="average_rating">
+                <span id="average_rating_ranking_<%= ramen_noodle.id %>"></span>
+                <%= ramen_noodle.average_rating.floor(1) %>
+              </div>
+              <ul class="title my-3">
+                <li><%= ramen_noodle.title %></li>
+              </ul>
+              <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>：<%= ramen_noodle.favorites.count %>&nbsp;&nbsp;&nbsp;&nbsp;
+              <i class="fa-regular fa-comment fa-xl" style="color: #ff0000;"></i>：<%= ramen_noodle.ramen_noodle_comments.count %>
+              <div class="profile text-center">
+                <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle mr-2") %><%= ramen_noodle.member.nickname %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <div class="col-xl-1"></div>
   </div>
   <div class="row">
     <div class="col-xl-10"></div>
     <div class="col-xl-2">
-      <P>link_to 投稿一覧</P>
+      <%= link_to "投稿一覧", ramen_noodles_path, class: "btn btn-outline-warning shadow bg-body rounded rounded-pill" %>
     </div>
   </div>
   <div class="row">
@@ -24,12 +48,76 @@
     <div class="col-xl-4"></div>
   </div>
   <div class="row">
-    <P>新着投稿5件</P>
+    <div class="col-xl-1"></div>
+    <% @top_ramen_noodles.each do |ramen_noodle| %>
+      <div class="col-xl-2">
+        <div class="card shadow p-2 bg-body rounded" style="width: 18rem;">
+          <%= link_to ramen_noodle_path(ramen_noodle) do %>
+            <%= image_tag(ramen_noodle.post_image, class: 'img-fluid', style: 'width: 100%; height: 100%; object-fit: cover;') %>
+            <div class="card-body">
+              <div id="average_rating">
+                <span id="average_rating_top_<%= ramen_noodle.id %>"></span>
+                <%= ramen_noodle.average_rating.floor(1) %>
+              </div>
+              <ul class="title my-3">
+                <li><%= ramen_noodle.title %></li>
+              </ul>
+              <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>：<%= ramen_noodle.favorites.count %>&nbsp;&nbsp;&nbsp;&nbsp;
+              <i class="fa-regular fa-comment fa-xl" style="color: #ff0000;"></i>：<%= ramen_noodle.ramen_noodle_comments.count %>
+              <div class="profile text-center">
+                <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle mr-2") %><%= ramen_noodle.member.nickname %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <div class="col-xl-1"></div>
   </div>
   <div class="row">
     <div class="col-xl-10"></div>
     <div class="col-xl-2">
-      <P>link_to 投稿一覧</P>
+      <%= link_to "投稿一覧", ramen_noodles_path, class: "btn btn-outline-warning shadow bg-body rounded rounded-pill" %>
     </div>
   </div>
 </div>
+
+
+<% @ramen_noodles.each do |ramen_noodle| %>
+  <script>
+    $(document).on('turbolinks:load', function() {
+      $('#average_rating_ranking_<%= ramen_noodle.id %>').empty();
+      var elem = document.querySelector('#average_rating_ranking_<%= ramen_noodle.id %>');
+      if (elem == null) return;
+      var opt = {
+        readOnly: true,
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        scoreName: 'ramen_noodle[difficulty_rating]',
+        score: "<%= ramen_noodle.average_rating %>"
+      };
+      raty(elem, opt);
+    });
+  </script>
+<% end %>
+
+
+<% @top_ramen_noodles.each do |ramen_noodle| %>
+  <script>
+    $(document).on('turbolinks:load', function() {
+      $('#average_rating_top_<%= ramen_noodle.id %>').empty();
+      var elem = document.querySelector('#average_rating_top_<%= ramen_noodle.id %>');
+      if (elem == null) return;
+      var opt = {
+        readOnly: true,
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        scoreName: 'ramen_noodle[difficulty_rating]',
+        score: "<%= ramen_noodle.average_rating %>"
+      };
+      raty(elem, opt);
+    });
+  </script>
+<% end %>

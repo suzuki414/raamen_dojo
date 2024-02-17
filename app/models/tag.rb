@@ -3,16 +3,17 @@ class Tag < ApplicationRecord
   has_many :ramen_noodles, through: :ramen_noodle_tags
 
   validates :name, presence:true
-  
+
   def self.search_for(content, method)
     if method == 'perfect'
-      Tag.where(title: content)
+      RamenNoodle.where(title: content)
     elsif method == 'forward'
-      Tag.where('name LIKE ?', content + '%')
+      RamenNoodle.where('title LIKE ?', content + '%')
     elsif method == 'backward'
-      Tag.where('name LIKE ?', '%' + content)
+      RamenNoodle.where('title LIKE ?', '%' + content)
     else
-      Tag.where('name LIKE ?', '%' + content + '%')
+      RamenNoodle.where('title LIKE ?', '%' + content + '%')
     end
   end
+
 end

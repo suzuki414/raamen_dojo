@@ -4,9 +4,15 @@
       <div class="card w-100 my-5 shadow bg-body rounded">
         <div class="card-body">
           <div class="row">
-            <%= render "ramen_noodles/index", ramen_noodles: @ramen_noodles %>
+            <%= render "public/ramen_noodles/index", ramen_noodles: @ramen_noodles %>
           </div>
-          <%= paginate @ramen_noodles %>
+          <div class="row">
+            <div class="col-xl-4"></div>
+            <div class="col-xl-4">
+              <%= paginate @ramen_noodles %>
+            </div>
+            <div class="col-xl-4"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -16,25 +22,19 @@
 
 <% @ramen_noodles.each do |ramen_noodle| %>
   <script>
-  $(document).on('turbolinks:load', function() {
-    var elem = document.querySelector('#average_rating_<%= ramen_noodle.id %>');
-    if (elem == null) return;
-    var opt = {
-      readOnly: true,
-      starOn: "<%= asset_path('star-on.png') %>",
-      starOff: "<%= asset_path('star-off.png') %>",
-      starHalf: "<%= asset_path('star-half.png') %>",
-      scoreName: 'ramen_noodle[difficulty_rating]',
-      score: "<%= ramen_noodle.average_rating %>"
-    };
-    raty(elem, opt);
-  });
+    $(document).on('turbolinks:load', function() {
+      $('#average_rating_<%= ramen_noodle.id %>').empty();
+      var elem = document.querySelector('#average_rating_<%= ramen_noodle.id %>');
+      if (elem == null) return;
+      var opt = {
+        readOnly: true,
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        scoreName: 'ramen_noodle[difficulty_rating]',
+        score: "<%= ramen_noodle.average_rating %>"
+      };
+      raty(elem, opt);
+    });
   </script>
 <% end %>
-
-<!--タグリスト-->
-<!--  <%# @tag_list.each do |list|%>-->
-<!--    <i class="fa-sharp fa-solid fa-tag"></i>-->
-<!--    <%#=link_to list.name,search_tag_path(workout_tag_id: list.id) %>-->
-<!--    <%#="(#{list.post_workouts.count})" %>-->
-<!--  <%# end %>-->

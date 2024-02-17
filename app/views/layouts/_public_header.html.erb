@@ -12,8 +12,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
-        <form class="d-flex mx-2 my-2" role="search">
-          <%= form_with url: search_url, method: :get, local: true do |f| %>
+        <!--<form class="d-flex mx-2 my-2" role="search">-->
+          <%= form_with url: "/search", method: :get, local: true do |f| %>
             <%= f.text_field :content, placeholder: "検索ワードを入力してください", style: "width: 280px; height: 40px" %>
             <%= f.select :model, options_for_select({"会員" => "member", "投稿" => "ramen_noodle", "タグ" => "tag"}) %>
             <%= f.select :method, options_for_select({"完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}) %>
@@ -21,7 +21,7 @@
           <% end %>
           <!--<input class="form-control me-2 shadow bg-body rounded" type="search" placeholder="検索ワードを入力してください" aria-label="Search" style="width: 280px; height: 40px;">-->
           <!--<button class="btn btn-outline-warning shadow bg-body rounded ml-1" type="submit">検索</button>-->
-        </form>
+        <!--</form>-->
         <% if member_signed_in? %>
           <li class="nav-item mx-2 my-2">
             <%= link_to '会員一覧', members_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
@@ -43,7 +43,7 @@
             <%= link_to "サイト紹介", about_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
           </li>
           <li class="nav-item mx-2 my-2">
-            <%= link_to "ゲストログイン", members_guest_sign_in_path, method: :post, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+            <%= link_to "ゲスト会員", members_guest_sign_in_path, method: :post, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
           </li>
           <li class="nav-item mx-2 my-2">
             <%= link_to '新規会員登録', new_member_registration_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>

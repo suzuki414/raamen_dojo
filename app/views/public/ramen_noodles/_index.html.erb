@@ -30,7 +30,7 @@
               </ul>
               <div id="average_rating">
                 <span id="average_rating_<%= ramen_noodle.id %>"></span>
-                <%= ramen_noodle.average_rating %>
+                <%= ramen_noodle.average_rating.floor(1) %>
               </div>
               <div class="action">
                 <p>

@@ -5,19 +5,42 @@
         <div class="card-body">
           <div class="row">
             <% if @model == 'member' %>
-                <h3>"<%= @content %>"の検索結果</h3>
-              <%= render 'members/index', members: @records %>
+              <%= render 'public/members/index', members: @records %>
             <% elsif @model == 'ramen_noodle' %>
-                <h3>"<%= @content %>"の検索結果</h3>
-              <%= render 'ramen_noodles/index', ramen_noodles: @records %>
+              <%= render 'public/ramen_noodles/index', ramen_noodles: @records %>
             <% elsif @model == 'tag' %>
-                <h3>"<%= @content %>"の検索結果</h3>
-              <%= render 'ramen_noodles/index', ramen_noodles: @records %>
+              <%= render 'public/ramen_noodles/index', ramen_noodles: @records %>
             <% end %>
           </div>
-          <%= paginate @ramen_noodles %>
+          <div class="row">
+            <div class="col-xl-4"></div>
+            <div class="col-xl-4">
+              <%#= paginate @records %>
+            </div>
+            <div class="col-xl-4"></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+<% @records.each do |ramen_noodle| %>
+  <script>
+    $(document).on('turbolinks:load', function() {
+      $('#average_rating_<%= ramen_noodle.id %>').empty();
+      var elem = document.querySelector('#average_rating_<%= ramen_noodle.id %>');
+      if (elem == null) return;
+      var opt = {
+        readOnly: true,
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        scoreName: 'ramen_noodle[difficulty_rating]',
+        score: "<%= ramen_noodle.average_rating %>"
+      };
+      raty(elem, opt);
+    });
+  </script>
+<% end %>

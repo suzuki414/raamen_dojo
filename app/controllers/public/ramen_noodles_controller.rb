@@ -15,7 +15,6 @@ module Public
 
     def index
       @ramen_noodles = RamenNoodle.page(params[:page]).per(10)
-      @tag_list = Tag.all
     end
 
     def create
@@ -53,6 +52,13 @@ module Public
       else
         render :edit
       end
+    end
+
+    def search_tag
+      @tag_list = Tag.all
+      @tag = Tag.find(params[:tag_id])
+      #検索されたタグに紐づく投稿を表示
+      @ramen_noodles = @tag.ramen_noodles
     end
 
     private

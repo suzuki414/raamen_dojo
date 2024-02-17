@@ -11,6 +11,7 @@ class RamenNoodle < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :recipe, presence: true
+  validates :average_rating, presence: true
   validates :taste_rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
   validates :cook_time_rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
   validates :process_rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
@@ -35,11 +36,11 @@ class RamenNoodle < ApplicationRecord
       self.tags << tag
     end
   end
-  
+
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)
   end
-  
+
   def self.search_for(content, method)
     if method == 'perfect'
       RamenNoodle.where(title: content)

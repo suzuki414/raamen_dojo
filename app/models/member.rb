@@ -31,6 +31,10 @@ class Member < ApplicationRecord
 
   has_one_attached :profile_image
 
+  validates :name, presence: true
+  validates :nickname, presence: true
+  validates :comment, presence: true
+
   # 指定したユーザーをフォローする
   def follow(member)
     # byebug
@@ -46,7 +50,7 @@ class Member < ApplicationRecord
   def following?(member)
     followings.include?(member)
   end
-  
+
   def self.search_for(content, method)
     if method == 'perfect'
       Member.where(name: content)
@@ -57,7 +61,7 @@ class Member < ApplicationRecord
     else
       Member.where('nickname LIKE ?', '%' + content + '%')
     end
-  end  
+  end
 
   # プロフィール画像を指定した幅と高さにリサイズして返すためのメソッドです。
   # プロフィール画像が添付されていない場合は、デフォルトの画像を使用して同様のリサイズ処理を行います。

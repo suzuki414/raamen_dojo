@@ -1,0 +1,18 @@
+
+<% ramen_noodles.each do |ramen_noodle| %>
+  <script>
+  $(document).on('turbolinks:load', function() {
+    var elem = document.querySelector('.average_rating_<%= ramen_noodle.id %>');
+    if (elem == null) return;
+    var opt = {
+      readOnly: true,
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>",
+      scoreName: 'ramen_noodle[difficulty_rating]',
+      score: "<%= ramen_noodle.average_rating %>"
+    };
+    raty(elem, opt);
+  });
+  </script>
+<% end %>

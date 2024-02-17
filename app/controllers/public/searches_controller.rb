@@ -12,7 +12,8 @@ module Public
       elsif @model == "ramen_noodle"
         @records = RamenNoodle.search_for(@content, @method)
       elsif @model == "tag"
-        @records = Tag.search_for(@content, @method)
+        @tag = Tag.search_for(@content, @method)
+        @records = @tag.ramen_noodles
       end
     end
 

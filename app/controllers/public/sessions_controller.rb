@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  
+
   # 最後消す
   # # before_action :configure_permitted_parameters, if: :devise_controller?
-  
+
   before_action :authenticate_member!
   # before_action :configure_sign_in_params, only: [:create]
   before_action :member_state, only: [:create]
@@ -41,11 +41,23 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   private
-  
+
   def member_state
+    if params[:member][:email].blank? || params[:member][:password].blank?
+      flash[:notice] = "全ての項目を入力してください。"
+      redirect_to new_member_session_path
+      return
+    end
+
     member = Member.find_by(email: params[:member][:email])
-    return if member.nil?
+    unless member
+      flash[:notice] = "該当する会員情報が見つかりません。"
+      redirect_to new_member_session_path
+      return
+    end
+
     return unless member.valid_password?(params[:member][:password])
+
     if member.is_active
       sign_in(member)
       flash[:notice] = "ログインしました。"
