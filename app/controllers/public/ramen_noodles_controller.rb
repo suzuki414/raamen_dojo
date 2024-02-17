@@ -22,12 +22,13 @@ module Public
       @ramen_noodle.member_id = current_member.id
       tag_list = params[:ramen_noodle][:name].split(',')
       raty_array = [
-        @ramen_noodle.taste_rating,
-        @ramen_noodle.cook_time_rating,
-        @ramen_noodle.process_rating,
-        @ramen_noodle.difficulty_rating,
+        (@ramen_noodle.taste_rating)? @ramen_noodle.taste_rating : 1,
+        (@ramen_noodle.cook_time_rating)? @ramen_noodle.cook_time_rating : 1,
+        (@ramen_noodle.process_rating)? @ramen_noodle.process_rating : 1,
+        (@ramen_noodle.difficulty_rating)? @ramen_noodle.difficulty_rating : 1,
       ]
       @ramen_noodle.average_rating = raty_array.sum.fdiv(raty_array.length)
+
       if @ramen_noodle.save
         @ramen_noodle.save_tags(tag_list)
         flash[:notice] = "投稿しました。"
@@ -54,12 +55,12 @@ module Public
       end
     end
 
-    def search_tag
-      @tag_list = Tag.all
-      @tag = Tag.find(params[:tag_id])
-      #検索されたタグに紐づく投稿を表示
-      @ramen_noodles = @tag.ramen_noodles
-    end
+    # def search_tag
+    #   @tag_list = Tag.all
+    #   @tag = Tag.find(params[:tag_id])
+    #   #検索されたタグに紐づく投稿を表示
+    #   @ramen_noodles = @tag.ramen_noodles
+    # end
 
     private
 

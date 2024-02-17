@@ -6,13 +6,13 @@ class Tag < ApplicationRecord
 
   def self.search_for(content, method)
     if method == 'perfect'
-      RamenNoodle.where(title: content)
+      Tag.where(name: content)
     elsif method == 'forward'
-      RamenNoodle.where('title LIKE ?', content + '%')
+      Tag.where('name LIKE ?', content + '%')
     elsif method == 'backward'
-      RamenNoodle.where('title LIKE ?', '%' + content)
+      Tag.where('name LIKE ?', '%' + content)
     else
-      RamenNoodle.where('title LIKE ?', '%' + content + '%')
+      Tag.where('name LIKE ?', '%' + content + '%')
     end
   end
 

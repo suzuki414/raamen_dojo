@@ -53,7 +53,7 @@ class Member < ApplicationRecord
 
   def self.search_for(content, method)
     if method == 'perfect'
-      Member.where(name: content)
+      Member.where(nickname: content)
     elsif method == 'forward'
       Member.where('nickname LIKE ?', content + '%')
     elsif method == 'backward'

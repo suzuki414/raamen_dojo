@@ -6,14 +6,16 @@ module Public
       @content = params[:content]
       @method = params[:method]
 
+      @ramen_noodles = []
       # 選択したモデルに応じて検索を実行
       if @model == "member"
-        @records = Member.search_for(@content, @method)
+        @members = Member.search_for(@content, @method)
       elsif @model == "ramen_noodle"
-        @records = RamenNoodle.search_for(@content, @method)
+        @ramen_noodles = RamenNoodle.search_for(@content, @method)
       elsif @model == "tag"
-        @tag = Tag.search_for(@content, @method)
-        @records = @tag.ramen_noodles
+        tag_ids = Tag.search_for(@content, @method).pluck(:id)
+        tag_ramen_noodle_ids = RamenNoodleTag.where(tag_id: tag_ids).pluck(:ramen_noodle_id)
+        @ramen_noodles = RamenNoodle.where(id: tag_ramen_noodle_ids)
       end
     end
 

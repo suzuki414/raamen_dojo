@@ -5,11 +5,11 @@
         <div class="card-body">
           <div class="row">
             <% if @model == 'member' %>
-              <%= render 'public/members/index', members: @records %>
+              <%= render 'public/members/index', members: @members %>
             <% elsif @model == 'ramen_noodle' %>
-              <%= render 'public/ramen_noodles/index', ramen_noodles: @records %>
+              <%= render 'public/ramen_noodles/index', ramen_noodles: @ramen_noodles %>
             <% elsif @model == 'tag' %>
-              <%= render 'public/ramen_noodles/index', ramen_noodles: @records %>
+              <%= render 'public/ramen_noodles/index', ramen_noodles: @ramen_noodles %>
             <% end %>
           </div>
           <div class="row">
@@ -26,7 +26,7 @@
 </div>
 
 
-<% @records.each do |ramen_noodle| %>
+<% @ramen_noodles.each do |ramen_noodle| %>
   <script>
     $(document).on('turbolinks:load', function() {
       $('#average_rating_<%= ramen_noodle.id %>').empty();

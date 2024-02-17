@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
-  
+
   devise_for :members,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
-  
+
   devise_scope :member do
     post "members/guest_sign_in" => "members/sessions#guest_sign_in"
   end
-  
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
-  get "search_tag" => "ramen_noodles#search_tag", as: "search_tag"
-  
+
+  # get "search_tag" => "ramen_noodles#search_tag", as: "search_tag"
+
   scope module: :public do
     root to: "homes#top"
     get "home/about" => "homes#about", as: "about"
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
       resources :ramen_noodle_comments, only: [:create, :destroy]
     end
   end
-  
+
   namespace :admin do
     root to: "homes#top"
     get "admin/search" => "searches#search", as: "search"
