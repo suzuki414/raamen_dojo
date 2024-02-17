@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-  # get "search_tag" => "ramen_noodles#search_tag", as: "search_tag"
 
   scope module: :public do
     root to: "homes#top"

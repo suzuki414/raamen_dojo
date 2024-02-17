@@ -14,7 +14,17 @@ module Public
     end
 
     def index
-      @ramen_noodles = RamenNoodle.page(params[:page]).per(10)
+      if params[:latest]
+        @ramen_noodles = RamenNoodle.latest.page(params[:page]).per(10)
+      elsif params[:old]
+        @ramen_noodles = RamenNoodle.old.page(params[:page]).per(10)
+      elsif params[:average_rating_count]
+        @ramen_noodles = RamenNoodle.average_rating_count.page(params[:page]).per(10)
+      elsif params[:favorite_count]
+        @ramen_noodles = RamenNoodle.order_by_favorite_count.page(params[:page]).per(10)
+      else
+        @ramen_noodles = RamenNoodle.latest.page(params[:page]).per(10)
+      end
     end
 
     def create
@@ -28,7 +38,6 @@ module Public
         (@ramen_noodle.difficulty_rating)? @ramen_noodle.difficulty_rating : 1,
       ]
       @ramen_noodle.average_rating = raty_array.sum.fdiv(raty_array.length)
-
       if @ramen_noodle.save
         @ramen_noodle.save_tags(tag_list)
         flash[:notice] = "投稿しました。"
@@ -54,13 +63,6 @@ module Public
         render :edit
       end
     end
-
-    # def search_tag
-    #   @tag_list = Tag.all
-    #   @tag = Tag.find(params[:tag_id])
-    #   #検索されたタグに紐づく投稿を表示
-    #   @ramen_noodles = @tag.ramen_noodles
-    # end
 
     private
 

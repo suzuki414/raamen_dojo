@@ -10,6 +10,8 @@ class Member < ApplicationRecord
     find_or_create_by!(email: GUEST_MEMBER_EMAIL) do |member|
       member.password = SecureRandom.urlsafe_base64
       member.name = "guestmember"
+      member.nickname = "guest"
+      member.comment = "I'm a guest login"
     end
   end
 

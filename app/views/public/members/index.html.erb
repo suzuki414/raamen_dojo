@@ -4,6 +4,24 @@
       <div class="card w-100 my-5 shadow bg-body rounded">
         <div class="card-body">
           <div class="row">
+            <div class="col-xl-12 mb-3">
+              <ul class="nav nav-tabs">
+                <li class="nav-sort">
+                  <a class="nav-link <%= 'active' if params[:latest] %>" aria-current="page" href="<%= ramen_noodles_path(latest: "true") %>">新しい順</a>
+                </li>
+                <li class="nav-sort">
+                  <a class="nav-link <%= 'active' if params[:old] %>" aria-current="page" href="<%= ramen_noodles_path(latest: "true") %>">古い順</a>
+                </li>
+                <li class="nav-sort">
+                  <a class="nav-link <%= 'active' if params[:average_rating_count] %>" aria-current="page" href="<%= ramen_noodles_path(latest: "true") %>">評価の高い順</a>
+                </li>
+                <li class="nav-sort">
+                  <a class="nav-link <%= 'active' if params[:favorite_count] %>" aria-current="page" href="<%= ramen_noodles_path(latest: "true") %>">いいねが多い順</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
             <%= render "public/members/index", members: @members %>
           </div>
           <div class="row">

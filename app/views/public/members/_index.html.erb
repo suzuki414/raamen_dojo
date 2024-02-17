@@ -8,12 +8,14 @@
               <%= image_tag(member.get_profile_image(100, 100), class: "rounded-circle border border-warning my-5") %>
             </div>
             <div class="col-xl-4">
-              <div class="col-xl-5 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded">サイト表示名</div>
               <div class="col-xl-7"><%= member.nickname %></div>
             </div>
             <div class="col-xl-4">
-              <div class="col-xl-5 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded">ひとこと</div>
-              <div class="col-xl-7"><%= member.comment %></div>
+              <div class="col-xl-7">
+                <ul class="title my-3">
+                  <li><%= member.comment %></li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

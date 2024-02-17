@@ -39,6 +39,12 @@
                 </div>
               </div>
               <div class="row my-3">
+                <div class="col-xl-6 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded text-center">投稿日</div>
+                <div class="col-xl-6 text-center">
+                  <%= @ramen_noodle.created_at.strftime('%Y/%m/%d') %>
+                </div>
+              </div>
+              <div class="row my-3">
                 <div class="col-xl-3 text-center">
                   <% if @ramen_noodle.favorited_by?(current_member) %>
                     <p>

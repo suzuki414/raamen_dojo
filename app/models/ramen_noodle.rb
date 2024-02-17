@@ -11,7 +11,6 @@ class RamenNoodle < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :recipe, presence: true
-  validates :average_rating, presence: true
   validates :taste_rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
   validates :cook_time_rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
   validates :process_rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
@@ -51,6 +50,15 @@ class RamenNoodle < ApplicationRecord
     else
       RamenNoodle.where('title LIKE ?', '%' + content + '%')
     end
+  end
+
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :average_rating_count, -> {order(average_rating: :desc)}
+  scope :favorite_count, -> {order(average_rating: :desc)}
+  
+  def self.order_by_favorite_count
+    joins(:favorites).group(:id).order('COUNT(favorites.id) DESC')
   end
 
   private

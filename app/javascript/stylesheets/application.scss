@@ -10,6 +10,30 @@
   width: 122px;
 }
 
+// ソート機能の選択肢幅
+.nav-sort {
+  width: 146px;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #000000;
+}
+
+a {
+    color: #000000;
+}
+
+// ホバー時のデザイン
+.nav-tabs>li>a:hover {
+  color: #ff0000;   //赤色にする
+  border-color: #fff #fff #000000;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: #ff0000;
+  border-color: #000000 #000000 #fff;
+}
+
 // 5段階評価の星サイズ
 #taste_rating {
   img {
