@@ -1,2 +1,58 @@
-<h1>Admin::RamenNoodles#index</h1>
-<p>Find me in app/views/admin/ramen_noodles/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card w-100 my-3 shadow bg-body rounded">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-xl-12 mb-3">
+              <ul class="nav nav-tabs">
+                <li class="nav-sort">
+                  <a class="nav-link <%= 'active' if params[:latest] %>" aria-current="page" href="<%= ramen_noodles_path(latest: "true") %>">新しい順</a>
+                </li>
+                <li class="nav-sort">
+                  <a class="nav-link <%= 'active' if params[:old] %>" aria-current="page" href="<%= ramen_noodles_path(latest: "true") %>">古い順</a>
+                </li>
+                <li class="nav-sort">
+                  <a class="nav-link <%= 'active' if params[:average_rating_count] %>" aria-current="page" href="<%= ramen_noodles_path(latest: "true") %>">評価の高い順</a>
+                </li>
+                <li class="nav-sort">
+                  <a class="nav-link <%= 'active' if params[:favorite_count] %>" aria-current="page" href="<%= ramen_noodles_path(latest: "true") %>">いいねが多い順</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <%= render "public/ramen_noodles/index", ramen_noodles: @ramen_noodles %>
+          </div>
+          <div class="row">
+            <div class="col-xl-4"></div>
+            <div class="col-xl-4">
+              <%= paginate @ramen_noodles %>
+            </div>
+            <div class="col-xl-4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% @ramen_noodles.each do |ramen_noodle| %>
+  <script>
+    $(document).on('turbolinks:load', function() {
+      $('#average_rating_<%= ramen_noodle.id %>').empty();
+      var elem = document.querySelector('#average_rating_<%= ramen_noodle.id %>');
+      if (elem == null) return;
+      var opt = {
+        readOnly: true,
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        scoreName: 'ramen_noodle[difficulty_rating]',
+        score: "<%= ramen_noodle.average_rating %>"
+      };
+      raty(elem, opt);
+    });
+  </script>
+<% end %>

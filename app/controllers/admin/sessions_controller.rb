@@ -6,6 +6,8 @@ class Admin::SessionsController < Devise::SessionsController
   # before_action :configure_permitted_parameters, if: :devise_controller?
 
   before_action :authenticate_admin!
+
+  before_action :configure_sign_in_params, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -37,4 +39,8 @@ class Admin::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def configure_sign_in_params
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:encrypted_password])
+  end
 end

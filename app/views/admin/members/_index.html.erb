@@ -1,0 +1,25 @@
+<% members.each do |member| %>
+  <% unless member.guest_member? || member == current_member %>
+    <%= link_to member_path(member) do %>
+      <div class="card text-center w-100 my-3 mx-3 shadow bg-body rounded">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-xl-4">
+              <%= image_tag(member.get_profile_image(100, 100), class: "rounded-circle border border-warning my-5") %>
+            </div>
+            <div class="col-xl-4">
+              <div class="col-xl-7"><%= member.nickname %></div>
+            </div>
+            <div class="col-xl-4">
+              <div class="col-xl-7">
+                <ul class="title my-3">
+                  <li><%= member.comment %></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
