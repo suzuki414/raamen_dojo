@@ -10,13 +10,13 @@
                   <a class="nav-link <%= 'active' if params[:latest] %>" aria-current="page" href="<%= ramen_noodles_path(latest: "true") %>">新しい順</a>
                 </li>
                 <li class="nav-sort">
-                  <a class="nav-link <%= 'active' if params[:old] %>" aria-current="page" href="<%= ramen_noodles_path(latest: "true") %>">古い順</a>
+                  <a class="nav-link <%= 'active' if params[:old] %>" aria-current="page" href="<%= ramen_noodles_path(old: "true") %>">古い順</a>
                 </li>
                 <li class="nav-sort">
-                  <a class="nav-link <%= 'active' if params[:average_rating_count] %>" aria-current="page" href="<%= ramen_noodles_path(latest: "true") %>">評価の高い順</a>
+                  <a class="nav-link <%= 'active' if params[:average_rating_count] %>" aria-current="page" href="<%= ramen_noodles_path(average_rating_count: "true") %>">評価の高い順</a>
                 </li>
                 <li class="nav-sort">
-                  <a class="nav-link <%= 'active' if params[:favorite_count] %>" aria-current="page" href="<%= ramen_noodles_path(latest: "true") %>">いいねが多い順</a>
+                  <a class="nav-link <%= 'active' if params[:favorite_count] %>" aria-current="page" href="<%= ramen_noodles_path(favorite_count: "true") %>">いいねが多い順</a>
                 </li>
               </ul>
             </div>

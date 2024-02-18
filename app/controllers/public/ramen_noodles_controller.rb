@@ -14,17 +14,20 @@ module Public
     end
 
     def index
-      if params[:latest]
-        @ramen_noodles = RamenNoodle.latest.page(params[:page]).per(10)
-      elsif params[:old]
-        @ramen_noodles = RamenNoodle.old.page(params[:page]).per(10)
-      elsif params[:average_rating_count]
-        @ramen_noodles = RamenNoodle.average_rating_count.page(params[:page]).per(10)
-      elsif params[:favorite_count]
-        @ramen_noodles = RamenNoodle.order_by_favorite_count.page(params[:page]).per(10)
+      if params[:mypage_ramen_noddle]
+        @member = Member.find(params[:id])
+        @ramen_noddles = @member.ramen_nobbles_id
       else
-        @ramen_noodles = RamenNoodle.latest.page(params[:page]).per(10)
-      end
+        if params[:old]
+          @ramen_noodles = RamenNoodle.old.page(params[:page]).per(10)
+        elsif params[:average_rating_count]
+          @ramen_noodles = RamenNoodle.average_rating_count.page(params[:page]).per(10)
+        elsif params[:favorite_count]
+          @ramen_noodles = RamenNoodle.order_by_favorite_count.page(params[:page]).per(10)
+        else
+          @ramen_noodles = RamenNoodle.latest.page(params[:page]).per(10)
+        end
+      end  
     end
 
     def create

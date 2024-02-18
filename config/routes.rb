@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    root to: "homes#top"
+    root to: "ramen_noodles#index"
     get "admin/search" => "searches#search", as: "search"
     resources :members, only: [:index, :show, :edit, :update]
     resources :ramen_noodles, only: [:index, :show, :edit, :update, :destroy]

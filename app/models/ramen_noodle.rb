@@ -58,7 +58,7 @@ class RamenNoodle < ApplicationRecord
   scope :favorite_count, -> {order(average_rating: :desc)}
   
   def self.order_by_favorite_count
-    joins(:favorites).group(:id).order('COUNT(favorites.id) DESC')
+    left_joins(:favorites).group(:id).order('COUNT(favorites.id) DESC')
   end
 
   private

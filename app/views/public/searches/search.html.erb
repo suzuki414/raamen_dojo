@@ -15,7 +15,11 @@
           <div class="row">
             <div class="col-xl-4"></div>
             <div class="col-xl-4">
-              <%#= paginate @records %>
+              <% if @model == "member" %>
+                <%= paginate @members %>
+              <% else %>
+                <%= paginate @ramen_noodles %>
+              <% end %>
             </div>
             <div class="col-xl-4"></div>
           </div>

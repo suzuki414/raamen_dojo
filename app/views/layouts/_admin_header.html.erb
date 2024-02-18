@@ -26,10 +26,17 @@
             <%= link_to '投稿一覧', ramen_noodles_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
           </li>
           <li class="nav-item mx-2 my-2">
+            <%= link_to "会員側", root_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+          </li>
+          <li class="nav-item mx-2 my-2">
             <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+          </li>
+        <% else %>
+          <li class="nav-item mx-2 my-2">
+            <%= link_to "会員側", root_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
           </li>
         <% end %>
       </ul>
-    </div>
+    </div>f
   </nav>
 </header>
