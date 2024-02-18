@@ -14,9 +14,12 @@ module Public
     end
 
     def index
-      if params[:mypage_ramen_noddle]
+      if  params[:mypage_ramen_noodle]
+        @member = current_member
+        @ramen_noodles = @member.ramen_noodles.page(params[:page]).per(10)
+      elsif params[:member_ramen_noodle]
         @member = Member.find(params[:id])
-        @ramen_noddles = @member.ramen_nobbles_id
+        @ramen_noodles = @member.ramen_noodles.page(params[:page]).per(10)
       else
         if params[:old]
           @ramen_noodles = RamenNoodle.old.page(params[:page]).per(10)
@@ -27,7 +30,7 @@ module Public
         else
           @ramen_noodles = RamenNoodle.latest.page(params[:page]).per(10)
         end
-      end  
+      end
     end
 
     def create
