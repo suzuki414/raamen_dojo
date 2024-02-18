@@ -7,16 +7,16 @@
             <div class="col-xl-12 mb-3">
               <ul class="nav nav-tabs">
                 <li class="nav-sort">
-                  <a class="nav-link <%= 'active' if params[:latest] %>" aria-current="page" href="<%= ramen_noodles_path(latest: "true") %>">新しい順</a>
+                  <a class="nav-link <%= 'active' if params[:latest] %>" aria-current="page" href="<%= members_path(latest: "true") %>">登録順(新)</a>
                 </li>
                 <li class="nav-sort">
-                  <a class="nav-link <%= 'active' if params[:old] %>" aria-current="page" href="<%= ramen_noodles_path(latest: "true") %>">古い順</a>
+                  <a class="nav-link <%= 'active' if params[:old] %>" aria-current="page" href="<%= members_path(old: "true") %>">登録順(古)</a>
                 </li>
                 <li class="nav-sort">
-                  <a class="nav-link <%= 'active' if params[:average_rating_count] %>" aria-current="page" href="<%= ramen_noodles_path(latest: "true") %>">評価の高い順</a>
+                  <a class="nav-link <%= 'active' if params[:followed_count] %>" aria-current="page" href="<%= members_path(followed_count: "true") %>">フォロワーが多い順</a>
                 </li>
                 <li class="nav-sort">
-                  <a class="nav-link <%= 'active' if params[:favorite_count] %>" aria-current="page" href="<%= ramen_noodles_path(latest: "true") %>">いいねが多い順</a>
+                  <a class="nav-link <%= 'active' if params[:ramen_noodle_count] %>" aria-current="page" href="<%= members_path(ramen_noodle_count: "true") %>">投稿が多い順</a>
                 </li>
               </ul>
             </div>

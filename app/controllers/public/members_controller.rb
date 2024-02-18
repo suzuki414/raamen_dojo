@@ -1,10 +1,19 @@
 module Public
   class MembersController < ApplicationController
-    before_action :authenticate_member!, only: [:my_page, :edit, :update, :show]
-    before_action :ensure_guest_member, only: [:show, :edit]
+    before_action :authenticate_member!, only: [:my_page, :edit, :update, :withdraw]
+    before_action :ensure_guest_member, only: [:edit, :update, :withdraw]
 
     def index
       @members = Member.page(params[:page]).per(12)
+      if params[:old]
+        @members = @members.old
+      elsif params[:followed_count]
+        @members = @members.order_by_followed_count
+      elsif params[:ramen_noodle_count]
+        @members = @members.order_by_ramen_noodle_count
+      else
+        @members = @members.latest
+      end
     end
 
     def show
@@ -21,6 +30,12 @@ module Public
 
     def update
       @member = current_member
+      if @member.update(member_params)
+        flash[:success] = "会員情報を変更しました。"
+        redirect_to my_page_path
+      else
+        render 'edit'
+      end
     end
 
     def withdraw
@@ -32,6 +47,10 @@ module Public
     end
 
     private
+
+    def member_params
+      params.require(:member).permit(:profile_image, :name, :nickname, :comment, :is_active)
+    end
 
     def ensure_guest_member
       @member = Member.find(params[:id])

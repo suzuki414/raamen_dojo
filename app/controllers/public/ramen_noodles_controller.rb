@@ -14,32 +14,23 @@ module Public
     end
 
     def index
+      # パラメーターに応じた投稿ページを表示
       if params[:mypage_ramen_noodle]
-        @member = current_member
-        @ramen_noodles = @member.ramen_noodles
+        @ramen_noodles = current_member.ramen_noodles
       elsif params[:member_ramen_noodle]
         @member = Member.find(params[:id])
         @ramen_noodles = @member.ramen_noodles
       else
+        # パラメーターに応じたいいねした投稿ページを表示
         if params[:mypage_ramen_noodle_favorite]
-          # @member = current_member
-          # @favorite_ramen_noodles = @member.favorites.includes(:ramen_noodle).map(&:ramen_noodle)
-          # @ramen_noodles = Kaminari.paginate_array(@favorite_ramen_noodles).page(params[:page]).per(10)
-          
-          コメント
-          
-          
-          
           @ramen_noodles = current_member.favorite_ramen_noodles
         elsif params[:member_ramen_noodle_favorite]
           @member = Member.find(params[:id])
-          # @favorite_ramen_noodles = @member.favorites.includes(:ramen_noodle).map(&:ramen_noodle)
-          # @ramen_noodles = Kaminari.paginate_array(@favorite_ramen_noodles).page(params[:page]).per(10)
-          
           @ramen_noodles = @member.favorite_ramen_noodles
         else
           @ramen_noodles = RamenNoodle.all
           @ramen_noodles = @ramen_noodles.where.not(member_id: current_member.id) if current_member
+          # ソート機能
           if params[:old]
             @ramen_noodles = @ramen_noodles.old
           elsif params[:average_rating_count]
@@ -49,7 +40,6 @@ module Public
           else
             @ramen_noodles = @ramen_noodles.latest
           end
-         
         end
       end
       @ramen_noodles = @ramen_noodles.page(params[:page]).per(10)

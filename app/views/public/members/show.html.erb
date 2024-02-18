@@ -21,7 +21,7 @@
           <div class="row">
             <div class="col-xl-4"></div>
             <div class="col-xl-4">
-              <% if current_member != @member %>
+              <% if current_member && current_member != @member %>
                 <% if current_member.following?(@member) %>
                   <%= link_to "フォローを外す", member_relationships_path(@member.id), method: :delete, class: "btn btn-info" %>
                 <% else %>
@@ -33,10 +33,10 @@
           </div>
           <div class="row">
             <div class="col-xl-4">
-              <%= link_to "投稿一覧", ramen_noodles_path(member_ramen_noodle: 'true', id: @member.id), class: "btn btn-outline-warning shadow bg-body rounded" %>
+              <%= link_to "投稿一覧", ramen_noodles_path(member_ramen_noodle: "true", id: @member.id), class: "btn btn-outline-warning shadow bg-body rounded" %>
             </div>
             <div class="col-xl-4">
-              <%= link_to "いいねした投稿", ramen_noodles_path(member_ramen_noodle_favorite: 'true', id: @member.id), class: "btn btn-outline-warning shadow bg-body rounded" %>
+              <%= link_to "いいねした投稿", ramen_noodles_path(member_ramen_noodle_favorite: "true", id: @member.id), class: "btn btn-outline-warning shadow bg-body rounded" %>
             </div>
             <div class="col-xl-4">
               <%= link_to member_followings_path(@member), class: "btn btn-outline-warning mx-1" do %>

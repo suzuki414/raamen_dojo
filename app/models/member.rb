@@ -9,9 +9,9 @@ class Member < ApplicationRecord
   def self.guest
     find_or_create_by!(email: GUEST_MEMBER_EMAIL) do |member|
       member.password = SecureRandom.urlsafe_base64
-      member.name = "guestmember"
-      member.nickname = "guest"
-      member.comment = "I'm a guest login"
+      member.name = "ゲスト会員"
+      member.nickname = "ゲスト"
+      member.comment = "ゲスト会員です"
     end
   end
 
@@ -22,7 +22,6 @@ class Member < ApplicationRecord
   has_many :ramen_noodles, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_ramen_noodles, through: :favorites, source: :ramen_noodle
-  
   has_many :ramen_noodle_comments, dependent: :destroy
   # フォローしている関連付け
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -65,6 +64,21 @@ class Member < ApplicationRecord
     else
       Member.where('nickname LIKE ?', '%' + content + '%')
     end
+  end
+
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :followed_count, -> {order(followed: :desc)}
+  scope :ramen_noodle_count, -> {order(ramen_noodle: :desc)}
+
+  # フォロワー数を取得し、降順に並べ替える(フォロワー数が0も含める)
+  def self.order_by_followed_count
+    left_joins(:followers).group(:id).order('COUNT(followed_id) DESC')
+  end
+
+  # 投稿数を取得し、降順に並べ替える(投稿数が0も含める)
+  def self.order_by_ramen_noodle_count
+    left_joins(:ramen_noodles).group(:id).order('COUNT(ramen_noodles.id) DESC')
   end
 
   # プロフィール画像を指定した幅と高さにリサイズして返すためのメソッドです。

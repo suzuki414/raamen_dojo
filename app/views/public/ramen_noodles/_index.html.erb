@@ -1,5 +1,4 @@
 <% ramen_noodles.each_with_index do |ramen_noodle, index| %>
-  <%# unless ramen_noodle.member == current_member || params[:mypage_ramen_noodle] == "false" %>
     <div class="col-md-6 mb-3">
       <div class="card shadow bg-body rounded">
         <%= link_to ramen_noodle_path(ramen_noodle) do %>
@@ -45,5 +44,4 @@
         <% end %>
       </div>
     </div>
-  <%# end %>
 <% end %>
