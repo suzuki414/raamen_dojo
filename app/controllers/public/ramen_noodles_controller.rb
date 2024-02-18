@@ -14,23 +14,45 @@ module Public
     end
 
     def index
-      if  params[:mypage_ramen_noodle]
+      if params[:mypage_ramen_noodle]
         @member = current_member
-        @ramen_noodles = @member.ramen_noodles.page(params[:page]).per(10)
+        @ramen_noodles = @member.ramen_noodles
       elsif params[:member_ramen_noodle]
         @member = Member.find(params[:id])
-        @ramen_noodles = @member.ramen_noodles.page(params[:page]).per(10)
+        @ramen_noodles = @member.ramen_noodles
       else
-        if params[:old]
-          @ramen_noodles = RamenNoodle.old.page(params[:page]).per(10)
-        elsif params[:average_rating_count]
-          @ramen_noodles = RamenNoodle.average_rating_count.page(params[:page]).per(10)
-        elsif params[:favorite_count]
-          @ramen_noodles = RamenNoodle.order_by_favorite_count.page(params[:page]).per(10)
+        if params[:mypage_ramen_noodle_favorite]
+          # @member = current_member
+          # @favorite_ramen_noodles = @member.favorites.includes(:ramen_noodle).map(&:ramen_noodle)
+          # @ramen_noodles = Kaminari.paginate_array(@favorite_ramen_noodles).page(params[:page]).per(10)
+          
+          コメント
+          
+          
+          
+          @ramen_noodles = current_member.favorite_ramen_noodles
+        elsif params[:member_ramen_noodle_favorite]
+          @member = Member.find(params[:id])
+          # @favorite_ramen_noodles = @member.favorites.includes(:ramen_noodle).map(&:ramen_noodle)
+          # @ramen_noodles = Kaminari.paginate_array(@favorite_ramen_noodles).page(params[:page]).per(10)
+          
+          @ramen_noodles = @member.favorite_ramen_noodles
         else
-          @ramen_noodles = RamenNoodle.latest.page(params[:page]).per(10)
+          @ramen_noodles = RamenNoodle.all
+          @ramen_noodles = @ramen_noodles.where.not(member_id: current_member.id) if current_member
+          if params[:old]
+            @ramen_noodles = @ramen_noodles.old
+          elsif params[:average_rating_count]
+            @ramen_noodles = @ramen_noodles.average_rating_count
+          elsif params[:favorite_count]
+            @ramen_noodles = @ramen_noodles.order_by_favorite_count
+          else
+            @ramen_noodles = @ramen_noodles.latest
+          end
+         
         end
       end
+      @ramen_noodles = @ramen_noodles.page(params[:page]).per(10)
     end
 
     def create

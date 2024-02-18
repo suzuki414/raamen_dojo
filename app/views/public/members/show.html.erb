@@ -35,7 +35,9 @@
             <div class="col-xl-4">
               <%= link_to "投稿一覧", ramen_noodles_path(member_ramen_noodle: 'true', id: @member.id), class: "btn btn-outline-warning shadow bg-body rounded" %>
             </div>
-            <div class="col-xl-4 btn btn-outline-warning mx-1">いいねした投稿</div>
+            <div class="col-xl-4">
+              <%= link_to "いいねした投稿", ramen_noodles_path(member_ramen_noodle_favorite: 'true', id: @member.id), class: "btn btn-outline-warning shadow bg-body rounded" %>
+            </div>
             <div class="col-xl-4">
               <%= link_to member_followings_path(@member), class: "btn btn-outline-warning mx-1" do %>
                 フォロー <%= @member.followings.count %>

@@ -21,6 +21,8 @@ class Member < ApplicationRecord
 
   has_many :ramen_noodles, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorite_ramen_noodles, through: :favorites, source: :ramen_noodle
+  
   has_many :ramen_noodle_comments, dependent: :destroy
   # フォローしている関連付け
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
