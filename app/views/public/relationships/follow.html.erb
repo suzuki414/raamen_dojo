@@ -10,13 +10,45 @@
                   <a class="nav-link <%= 'active' unless params[:follower] %>" aria-current="page" href="<%= member_follow_path(@member) %>">フォロー&#40;<%= @member.followings.count %>&#41;</a>
                 </li>
                 <li class="nav-sort">
-                  <a class="nav-link <%= 'active' if params[:follower] %>" aria-current="page" href="<%= member_follow_path(@member)(follower: "true") %>">フォロワー&#40;<%= @member.followers.count %>&#41;</a>
+                  <a class="nav-link <%= 'active' if params[:follower] %>" aria-current="page" href="<%= member_follow_path(@member.id, follower: "true") %>">フォロワー&#40;<%= @member.followers.count %>&#41;</a>
                 </li>
               </ul>
             </div>
           </div>
           <div class="row">
-            <%= render "public/members/index", members: @members %>
+            <% @members.each do |member| %>
+              <% if member.present? %>
+                <%= link_to member_path(member) do %>
+                  <div class="card text-center w-100 my-3 mx-3 shadow bg-body rounded">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-xl-4">
+                          <%= image_tag(member.get_profile_image(100, 100), class: "rounded-circle border border-warning") %>
+                        </div>
+                        <div class="col-xl-8">
+                          <div class="row">
+                            <div class="col-xl-12">
+                              <p><%= member.nickname %></p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xl-12">
+                              <p>
+                                投稿数&nbsp;&#0058;&nbsp;<%= member.ramen_noodles.count %>&nbsp;
+                                フォロー数&nbsp;&#0058;&nbsp;<%= member.followings.count %>&nbsp;
+                                フォロワー数&nbsp;&#0058;&nbsp;<%= member.followers.count %>&nbsp;
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% else %>
+                <strong>ユーザーはいません</strong>
+              <% end %>
+            <% end %>
           </div>
           <div class="row">
             <div class="col-xl-4"></div>

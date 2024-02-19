@@ -5,16 +5,22 @@
         <div class="card-body">
           <div class="row">
             <div class="col-xl-4">
-              <%= image_tag(member.get_profile_image(100, 100), class: "rounded-circle border border-warning my-5") %>
+              <%= image_tag(member.get_profile_image(100, 100), class: "rounded-circle border border-warning") %>
             </div>
-            <div class="col-xl-4">
-              <div class="col-xl-7"><%= member.nickname %></div>
-            </div>
-            <div class="col-xl-4">
-              <div class="col-xl-7">
-                <ul class="title my-3">
-                  <li><%= member.comment %></li>
-                </ul>
+            <div class="col-xl-8">
+              <div class="row">
+                <div class="col-xl-12">
+                  <p><%= member.nickname %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-12">
+                  <p>
+                    投稿数&nbsp;&#0058;&nbsp;<%= member.ramen_noodles.count %>&nbsp;
+                    フォロー数&nbsp;&#0058;&nbsp;<%= member.followings.count %>&nbsp;
+                    フォロワー数&nbsp;&#0058;&nbsp;<%= member.followers.count %>&nbsp;
+                  </p>
+                </div>
               </div>
             </div>
           </div>

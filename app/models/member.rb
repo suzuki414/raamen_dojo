@@ -28,9 +28,9 @@ class Member < ApplicationRecord
   # フォローされている関連付け
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   # フォローしているユーザーを取得
-  has_many :followings, through: :active_relationships, source: :followed
+  has_many :followings, -> {order("relationships.created_at desc")}, through: :active_relationships, source: :followed
   # フォロワーを取得
-  has_many :followers, through: :passive_relationships, source: :follower
+  has_many :followers, -> {order("relationships.created_at desc")}, through: :passive_relationships, source: :follower
 
   has_one_attached :profile_image
 
@@ -66,15 +66,11 @@ class Member < ApplicationRecord
     end
   end
 
-  # 投稿一覧画面(ソート機能)
+  # 会員一覧画面(ソート機能)
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
   scope :followed_count, -> {order(followed: :desc)}
   scope :ramen_noodle_count, -> {order(ramen_noodle: :desc)}
-  
-  # フォロー、フォロワー一覧画面(ソート機能)
-  # scope :following, -> {order(followed: :desc)}
-  # scope :follower, -> {order(follower: :desc)}
 
   # フォロワー数を取得し、降順に並べ替える(フォロワー数が0も含める)
   def self.order_by_followed_count

@@ -5,13 +5,13 @@ module Public
 
     def index
       if params[:old]
-        @members = @members.old
+        @members = Member.old.page(params[:page]).per(12)
       elsif params[:followed_count]
-        @members = @members.order_by_followed_count
+        @members = Member.order_by_followed_count.page(params[:page]).per(12)
       elsif params[:ramen_noodle_count]
-        @members = @members.order_by_ramen_noodle_count
+        @members = Member.order_by_ramen_noodle_count.page(params[:page]).per(12)
       else
-        @members = Member.page(params[:page]).per(12).latest
+        @members = Member.latest.page(params[:page]).per(12)
       end
     end
 

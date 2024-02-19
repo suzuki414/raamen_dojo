@@ -26,8 +26,6 @@ Rails.application.routes.draw do
     resources :members, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
         get "follow" => "relationships#follow", as: "follow"
-      # 	get "followings" => "relationships#followings", as: "followings"
-      # 	get "followers" => "relationships#followers", as: "followers"
     end
     resources :ramen_noodles, only: [:new, :index, :show, :edit, :create, :update, :destroy] do
       resource :favorite, only: [:create, :destroy]
