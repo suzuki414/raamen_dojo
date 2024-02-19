@@ -1,6 +1,7 @@
 module Public
   class RamenNoodleCommentsController < ApplicationController
     before_action :authenticate_member!
+    before_action :ensure_guest_member
 
     def create
       ramen_noodle = RamenNoodle.find(params[:ramen_noodle_id])
@@ -21,6 +22,13 @@ module Public
 
     def ramen_noodle_comment_params
       params.require(:ramen_noodle_comment).permit(:comment)
+    end
+    
+    def ensure_guest_member
+      @member = Member.find(params[:id])
+      if @member.guest_member?
+        redirect_to request.referer, notice: "コメントをするには、会員登録が必要です"
+      end
     end
 
   end

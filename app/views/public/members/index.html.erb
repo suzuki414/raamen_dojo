@@ -7,7 +7,7 @@
             <div class="col-xl-12 mb-3">
               <ul class="nav nav-tabs">
                 <li class="nav-sort">
-                  <a class="nav-link <%= 'active' if params[:latest] %>" aria-current="page" href="<%= members_path(latest: "true") %>">登録順(新)</a>
+                  <a class="nav-link <%= 'active' unless params[:old] || params[:followed_count] || params[:ramen_noodle_count] %>" aria-current="page" href="<%= members_path %>">登録順(新)</a>
                 </li>
                 <li class="nav-sort">
                   <a class="nav-link <%= 'active' if params[:old] %>" aria-current="page" href="<%= members_path(old: "true") %>">登録順(古)</a>

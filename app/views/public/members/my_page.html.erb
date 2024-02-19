@@ -38,12 +38,18 @@
                 <%= link_to "いいねした投稿", ramen_noodles_path(mypage_ramen_noodle_favorite: "true"), class: "btn btn-outline-warning shadow bg-body rounded" %>
               </div>
               <div class="col-xl-3">
-                <%= link_to member_followings_path(@member), class: "btn btn-outline-warning shadow bg-body rounded mx-1" do %>
-                  フォロー <%= @member.followings.count %>
-                <% end %>/
-                <%= link_to member_followers_path(@member), class: "btn btn-outline-warning shadow bg-body rounded mx-1" do %>
-                  フォロワー <%= @member.followers.count %>
+                
+                <%= link_to member_follow_path, class: "btn btn-outline-warning shadow bg-body rounded mx-1" do %>
+                  フォロー&#40;<%= @member.followings.count %>&#41; / フォロワー&#40;<%#= @member.followers.count %>&#41;
                 <% end %>
+                
+                
+                <!--<%#= link_to member_followings_path(@member), class: "btn btn-outline-warning shadow bg-body rounded mx-1" do %>-->
+                <!--  フォロー <%#= @member.followings.count %>-->
+                <!--<%# end %>/-->
+                <!--<%#= link_to member_followers_path(@member), class: "btn btn-outline-warning shadow bg-body rounded mx-1" do %>-->
+                <!--  フォロワー <%#= @member.followers.count %>-->
+                <!--<%# end %>-->
               </div>
             </div>
           <% else %>

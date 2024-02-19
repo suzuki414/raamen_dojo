@@ -1,6 +1,7 @@
 module Public
   class RamenNoodlesController < ApplicationController
     before_action :authenticate_member!, only: [:new, :edit, :create, :update]
+    before_action :ensure_guest_member, only: [:new, :edit, :create, :update]
 
     def new
       @ramen_noodle = RamenNoodle.new
@@ -86,6 +87,13 @@ module Public
 
     def ramen_noodle_params
       params.require(:ramen_noodle).permit(:post_image, :title, :description, :recipe, :average_rating, :taste_rating, :cook_time_rating, :process_rating, :difficulty_rating, :status)
+    end
+
+    def ensure_guest_member
+      @member = Member.find(params[:id])
+      if @member.guest_member?
+        redirect_to request.referer, notice: "投稿をするには、会員登録が必要です"
+      end
     end
   end
 end

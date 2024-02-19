@@ -4,7 +4,6 @@ module Public
     before_action :ensure_guest_member, only: [:edit, :update, :withdraw]
 
     def index
-      @members = Member.page(params[:page]).per(12)
       if params[:old]
         @members = @members.old
       elsif params[:followed_count]
@@ -12,7 +11,7 @@ module Public
       elsif params[:ramen_noodle_count]
         @members = @members.order_by_ramen_noodle_count
       else
-        @members = @members.latest
+        @members = Member.page(params[:page]).per(12).latest
       end
     end
 
@@ -55,7 +54,7 @@ module Public
     def ensure_guest_member
       @member = Member.find(params[:id])
       if @member.guest_member?
-        redirect_to my_page_path, notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+        redirect_to request.referer, notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
       end
     end
 
