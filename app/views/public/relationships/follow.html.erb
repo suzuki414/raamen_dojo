@@ -1,1 +1,32 @@
-<h1>フォロー</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card w-100 my-5 shadow bg-body rounded">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-xl-12 mb-3">
+              <ul class="nav nav-tabs">
+                <li class="nav-sort">
+                  <a class="nav-link <%= 'active' unless params[:follower] %>" aria-current="page" href="<%= member_follow_path(@member) %>">フォロー&#40;<%= @member.followings.count %>&#41;</a>
+                </li>
+                <li class="nav-sort">
+                  <a class="nav-link <%= 'active' if params[:follower] %>" aria-current="page" href="<%= member_follow_path(@member)(follower: "true") %>">フォロワー&#40;<%= @member.followers.count %>&#41;</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <%= render "public/members/index", members: @members %>
+          </div>
+          <div class="row">
+            <div class="col-xl-4"></div>
+            <div class="col-xl-4">
+              <%= paginate @members %>
+            </div>
+            <div class="col-xl-4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

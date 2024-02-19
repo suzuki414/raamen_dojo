@@ -16,9 +16,19 @@ module Public
     end
     
     def follow
-      member = Member.find(params[:member_id])
-      @followings = member.followings
-      @followers = member.follower
+      if params[:mypage_ramen_noodle]
+        @member = current_member.followings
+      elsif params[:member_ramen_noodle]
+        member = Member.find(params[:member_id])
+        @member = member.followings
+      else
+        if params[:follower]
+          @member = member.follower
+        else
+          @member = member.followings
+        end
+      end
+      @member = @member.page(params[:page]).per(12)
     end
 
     # def followings
