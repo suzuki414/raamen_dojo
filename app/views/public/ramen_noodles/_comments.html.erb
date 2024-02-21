@@ -1,0 +1,26 @@
+<% if comments.blank? %>
+  <strong>投稿されたコメントはありません</strong>
+<% else %>
+  <% comments.each do |ramen_noodle_comment| %>
+    <div class="card w-100 my-5 shadow bg-body rounded">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-xl-4">
+            <%= image_tag(ramen_noodle_comment.member.get_profile_image(50, 50), class: "rounded-circle mr-2 img-fluid") %><%= ramen_noodle_comment.member.nickname %>
+          </div>
+          <div class="col-xl-4"></div>
+          <div class="col-xl-4">
+            <% if ramen_noodle_comment.member == current_member %>
+              <%= link_to "コメント削除", ramen_noodle_ramen_noodle_comment_path(ramen_noodle_comment.ramen_noodle, ramen_noodle_comment), data: { confirm: "本当に削除しますか?" }, method: :delete, remote: true %>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12">
+            <%= ramen_noodle_comment.created_at.strftime('%Y/%m/%d') %><%= ramen_noodle_comment.comment %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

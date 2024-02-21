@@ -17,6 +17,10 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+import Swiper from 'swiper/swiper-bundle.js';
+import 'swiper/swiper-bundle.css';
+window.Swiper = Swiper;
+
 window.$ = window.jQuery = require('jquery');
 
 import Raty from "./raty.js"

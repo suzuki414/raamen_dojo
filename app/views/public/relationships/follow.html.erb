@@ -16,8 +16,8 @@
             </div>
           </div>
           <div class="row">
-            <% @members.each do |member| %>
-              <% if member.present? %>
+            <% if @members.present? %>
+              <% @members.each do |member| %>
                 <%= link_to member_path(member) do %>
                   <div class="card text-center w-100 my-3 mx-3 shadow bg-body rounded">
                     <div class="card-body">
@@ -45,9 +45,9 @@
                     </div>
                   </div>
                 <% end %>
-              <% else %>
-                <strong>ユーザーはいません</strong>
               <% end %>
+            <% else %>
+              <strong>ユーザーはいません</strong>
             <% end %>
           </div>
           <div class="row">
