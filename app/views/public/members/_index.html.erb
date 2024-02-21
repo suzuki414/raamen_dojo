@@ -5,18 +5,18 @@
         <div class="card-body">
           <div class="row">
             <div class="col-xl-4">
-              <%= image_tag(member.get_profile_image(100, 100), class: "rounded-circle border border-warning") %>
+              <%= image_tag(member.get_profile_image(100, 100), class: "img-fluid rounded-circle border border-warning") %>
             </div>
             <div class="col-xl-8">
               <div class="row">
-                <div class="col-xl-12">
+                <div class="col-xl-12 text-left">
                   <p><%= member.nickname %></p>
                 </div>
               </div>
               <div class="row">
-                <div class="col-xl-12">
+                <div class="col-xl-12 text-left">
                   <p>
-                    投稿数&nbsp;&#0058;&nbsp;<%= member.ramen_noodles.count %>&nbsp;
+                    投稿数&nbsp;&#0058;&nbsp;<%= member.ramen_noodles.count %>&nbsp;<br>
                     フォロー数&nbsp;&#0058;&nbsp;<%= member.followings.count %>&nbsp;
                     フォロワー数&nbsp;&#0058;&nbsp;<%= member.followers.count %>&nbsp;
                   </p>
