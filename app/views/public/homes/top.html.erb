@@ -1,80 +1,82 @@
-<%= image_tag("public_top.jpg", alt: "ラーメン屋の暖簾画像", class: "img-fluid") %>
+<%#= image_tag("public_top.jpg", alt: "ラーメン屋の暖簾画像", class: "img-fluid") %>
 <div class="container my-5">
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-xl-4"></div>
-    <div class="col-xl-4">
+    <div class="col-xl-4 bg-warning rounded-pill shadow bg-body-tertiary text-center">
       <h2><strong>新着投稿</strong></h2>
     </div>
     <div class="col-xl-4"></div>
   </div>
   <div class="row">
-    <div class="col-xl-1"></div>
     <% @ramen_noodles.each do |ramen_noodle| %>
-      <div class="col-xl-2">
+      <div class="col-xl-2 mx-3">
         <div class="card shadow p-2 bg-body rounded" style="width: 18rem;">
           <%= link_to ramen_noodle_path(ramen_noodle) do %>
             <%= image_tag(ramen_noodle.post_image, class: 'img-fluid', style: 'width: 100%; height: 100%; object-fit: cover;') %>
-            <div class="card-body">
-              <div id="average_rating">
-                <span id="average_rating_ranking_<%= ramen_noodle.id %>"></span>
-                <%= ramen_noodle.average_rating.floor(1) %>
-              </div>
-              <ul class="title my-3">
-                <li><%= ramen_noodle.title %></li>
-              </ul>
-              <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>：<%= ramen_noodle.favorites.count %>&nbsp;&nbsp;&nbsp;&nbsp;
-              <i class="fa-regular fa-comment fa-xl" style="color: #ff0000;"></i>：<%= ramen_noodle.ramen_noodle_comments.count %>
-              <div class="profile text-center">
-                <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle mr-2") %><%= ramen_noodle.member.nickname %>
-              </div>
+            <div class="row">
+              <div class="col-xl-12 mx-2 my-2">
+                <div id="average_rating" class="text-start">
+                  <span id="average_rating_ranking_<%= ramen_noodle.id %>"></span>
+                  <%= ramen_noodle.average_rating.floor(1) %>
+                </div>
+                <li class="title my-3">
+                  <%= ramen_noodle.title %>
+                </li>
+                <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<%= ramen_noodle.favorites.count %>&nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="fa-regular fa-comment fa-xl" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<%= ramen_noodle.ramen_noodle_comments.count %>
+                <div class="profile text-center mt-3">
+                  <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle mr-2") %>
+                  <%= ramen_noodle.member.nickname %>
+                </div>
+              </div>  
             </div>
           <% end %>
         </div>
       </div>
     <% end %>
-    <div class="col-xl-1"></div>
   </div>
-  <div class="row">
+  <div class="row my-5">
     <div class="col-xl-10"></div>
     <div class="col-xl-2">
       <%= link_to "投稿一覧", ramen_noodles_path, class: "btn btn-outline-warning shadow bg-body rounded rounded-pill" %>
     </div>
   </div>
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-xl-4"></div>
-    <div class="col-xl-4">
+    <div class="btntop col-xl-4 bg-warning rounded-pill shadow bg-body-tertiary text-center">
       <h2><strong>高評価TOP5</strong></h2>
     </div>
     <div class="col-xl-4"></div>
   </div>
   <div class="row">
-    <div class="col-xl-1"></div>
     <% @top_ramen_noodles.each do |ramen_noodle| %>
-      <div class="col-xl-2">
+      <div class="col-xl-2 mx-3">
         <div class="card shadow p-2 bg-body rounded" style="width: 18rem;">
           <%= link_to ramen_noodle_path(ramen_noodle) do %>
             <%= image_tag(ramen_noodle.post_image, class: 'img-fluid', style: 'width: 100%; height: 100%; object-fit: cover;') %>
-            <div class="card-body">
-              <div id="average_rating">
-                <span id="average_rating_top_<%= ramen_noodle.id %>"></span>
-                <%= ramen_noodle.average_rating.floor(1) %>
-              </div>
-              <ul class="title my-3">
-                <li><%= ramen_noodle.title %></li>
-              </ul>
-              <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>：<%= ramen_noodle.favorites.count %>&nbsp;&nbsp;&nbsp;&nbsp;
-              <i class="fa-regular fa-comment fa-xl" style="color: #ff0000;"></i>：<%= ramen_noodle.ramen_noodle_comments.count %>
-              <div class="profile text-center">
-                <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle mr-2") %><%= ramen_noodle.member.nickname %>
-              </div>
+            <div>
+              <div class="col-xl-12 mx-2 my-2">
+                <div id="average_rating">
+                  <span id="average_rating_top_<%= ramen_noodle.id %>"></span>
+                  <%= ramen_noodle.average_rating.floor(1) %>
+                </div>
+                <li class="title my-3">
+                  <%= ramen_noodle.title %>
+                </li>
+                <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>：<%= ramen_noodle.favorites.count %>&nbsp;&nbsp;&nbsp;&nbsp;
+                <i class="fa-regular fa-comment fa-xl" style="color: #ff0000;"></i>：<%= ramen_noodle.ramen_noodle_comments.count %>
+                <div class="profile text-center mt-3">
+                  <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle mr-2") %>
+                  <%= ramen_noodle.member.nickname %>
+                </div>
+              </div>  
             </div>
           <% end %>
         </div>
       </div>
     <% end %>
-    <div class="col-xl-1"></div>
   </div>
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-xl-10"></div>
     <div class="col-xl-2">
       <%= link_to "高評価順投稿一覧", ramen_noodles_path(average_rating_count: "true"), class: "btn btn-outline-warning shadow bg-body rounded rounded-pill" %>

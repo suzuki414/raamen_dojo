@@ -22,11 +22,9 @@
             <div class="col-xl-4"></div>
             <div class="col-xl-4">
               <% if current_member && current_member != @member %>
-                <% if current_member.following?(@member) %>
-                  <%= link_to "フォローを外す", member_relationships_path(@member.id), method: :delete, class: "btn btn-info" %>
-                <% else %>
-                  <%= link_to "フォローする", member_relationships_path(@member.id), method: :post, class: "btn btn-success" %>
-                <% end %>
+                <div id="follow-ajax">
+                  <%= render "public/relationships/follow", member: @member %>
+                </div>  
               <% end %>
             </div>
             <div class="col-xl-4"></div>

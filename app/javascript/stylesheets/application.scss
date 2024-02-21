@@ -1,5 +1,17 @@
 @use '~bootstrap/scss/bootstrap';
 
+// ヘッダーのロゴサイズ
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+// 検索フォームの枠色
+.form-control {
+  border-color: #ffc107;
+  border-width: 1px;
+}
+
 // ヘッダー下部のボーダー色
 .navbar {
   border-bottom: 6px solid red;
@@ -89,3 +101,29 @@ a {
 footer {
   margin-top: auto;
 }
+
+
+
+
+
+
+.about-image {
+  position: relative;
+  }
+
+.about-image .lo {/*classがfaのアイコンに対して*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;/*余計な隙間を除く*/
+  padding:0;/*余計な隙間を除く*/
+  color: white;/*アイコン色*/
+  font-size: 60px;/*サイズ*/
+  }
+
+.about-image img {
+  width: 100%;
+  }

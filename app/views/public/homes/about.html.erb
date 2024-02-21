@@ -1,22 +1,20 @@
-<!--<div class="container mt-5 mb-5">-->
-<!--  <div class="row">-->
-    <!--<div class="col-12">-->
-      <div class="card bg-dark text-white">
-        <img src="<%= asset_path('public_about.jpg') %>" class="card-img" alt="About Us" style="width: 100%; height: auto;">
-          <div class="card-img-overlay">
-            <h5 class="card-title">いらっしゃい！</h5>
-            <p class="card-text">
-              らぁめん道場はインスタントラーメンのアレンジ術をシェアするサイトです！<br>
-              オリジナルインスタントラーメンを作り、ちょっとした贅沢をしてはいかがですか？
-            </p>
-            <p class="card-text">
-              会員になるとオリジナルインスタントラーメンをシェア出来たり、<br>
-              気になる投稿にいいねをして保存出来たり、他の会員をフォローしたりと機能が盛り沢山！</p>
-            <p class="card-text">是非、登録を！</p><br>
-            <button type="button" class="btn btn-outline-warning mx-3">新規会員登録はこちら</button>
-            <button type="button" class="btn btn-outline-warning mx-3">ゲストログインはこちら</button>
-          </div>
-      </div>
-    <!--</div>-->
-<!--  </div>-->
-<!--</div>-->
+<div class="about-image">
+  <%= image_tag("サイト紹介暖簾.svg", class: "img-fluid") %>
+  <%= image_tag("らぁめん道場ロゴ.svg", class: "lo img-fluid ml-3") %>
+</div>  
+<div class="card bg-dark text-white mt-3 mb-5">
+  <img src="<%= asset_path('public_about.jpg') %>" class="card-img" alt="About Us" style="width: 100%; height: auto;">
+    <div class="card-img-overlay">
+      <h5 class="card-title">いらっしゃい！</h5>
+      <p class="card-text">
+        らぁめん道場はインスタントラーメンのアレンジ術をシェアするサイトです！<br>
+        オリジナルインスタントラーメンを作り、ちょっとした贅沢をしてはいかがですか？
+      </p>
+      <p class="card-text">
+        会員になるとオリジナルインスタントラーメンをシェア出来たり、<br>
+        気になる投稿にいいねをして保存出来たり、他の会員をフォローしたりと機能が盛り沢山！</p>
+      <p class="card-text">是非、登録を！</p><br>
+      <%= link_to '新規会員登録はこちら', new_member_registration_path, class: 'btn btn-outline-warning btn-lg mr-4 shadow bg-body rounded' %>
+      <%= link_to "ゲスト会員はこちら", members_guest_sign_in_path, method: :post, class: 'btn btn-outline-warning btn-lg shadow bg-body rounded' %>
+    </div>
+</div>

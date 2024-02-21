@@ -1,6 +1,8 @@
 <header class="shadow-sm border-bottom sticky-top bg-white">
   <nav class="navbar navbar-expand-xl navbar-light">
-    <a class="navbar-brand float-left" href="/"><%= image_tag("raamen_dojo_logo.png", size: "100x100", class: "img-fluid ml-3") %></a>
+    <a class="navbar-brand float-left" href="/">
+      <%= image_tag("らぁめん道場ロゴ.svg", class: "logo img-fluid ml-3") %>
+    </a>
     <% if flash[:notice].present? %>
       <div class="alert alert-info" role="alert">
         <%= flash[:notice] %>
@@ -13,7 +15,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
           <%= form_with url: "/search", method: :get, local: true do |f| %>
-            <%= f.text_field :content, placeholder: "検索ワードを入力してください", style: "width: 280px; height: 40px" %>
+            <%= f.text_field :content, placeholder: "検索ワードを入力してください", style: "width: 280px; height: 40px", class: "form-control shadow bg-body rounded" %>
             <%= f.select :model, options_for_select({"会員" => "member", "投稿" => "ramen_noodle", "タグ" => "tag"}) %>
             <%= f.select :method, options_for_select({"完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}) %>
             <%= f.submit "検索", class: "btn btn-outline-warning shadow bg-body rounded ml-1" %>

@@ -6,7 +6,9 @@
           <div class="row">
             <div class="col-xl-4"></div>
             <div class="col-xl-4">
-              <%= image_tag(@ramen_noodle.member.get_profile_image(100, 100), class: "rounded-circle mr-2 img-fluid") %><%= @ramen_noodle.member.nickname %>
+              <%= link_to member_path(@ramen_noodle.member) do %>
+                <%= image_tag(@ramen_noodle.member.get_profile_image(100, 100), class: "rounded-circle mr-2 img-fluid") %><%= @ramen_noodle.member.nickname %>
+              <% end %>  
             </div>
             <div class="col-xl-4">
               <% if @ramen_noodle.member_id == current_member.id %>
@@ -47,9 +49,8 @@
               <div id="favorite_btn_<%= @ramen_noodle.id %>" class="row my-3">
                 <%= render "public/favorites/btn", ramen_noodle: @ramen_noodle %>
               </div>
-              <div class="col-xl-3">
-                <i class="fa-regular fa-comment fa-2xl" style="color: #ff0000;"></i>
-                &#058;<%= @ramen_noodle.ramen_noodle_comments.count %>
+              <div id="comment_counter" class="col-xl-3">
+                <%= render "public/ramen_noodle_comments/counter", ramen_noodle: @ramen_noodle %>
               </div>
               <div class="col-xl-6"></div>
             </div>
@@ -112,8 +113,8 @@
         </div>
         <div class="row">
           <div class="col-xl-12">
-            <%= form_with model: [@ramen_noodle, @ramen_noodle_comment] do |f| %>
-              <%= f.text_field :comment, rows: '5', placeholder: "コメントをここに入力してください", class: "shadow bg-body rounded" %><br>
+            <%= form_with model: [@ramen_noodle, @ramen_noodle_comment], local: false do |f| %>
+              <%= f.text_field :comment, rows: '5', placeholder: "コメントをここに入力してください", class: "shadow bg-body rounded", id: "comment_textarea" %><br>
               <%= f.submit "コメント投稿", class: "btn btn-outline-warning shadow bg-body rounded" %>
             <% end %>
           </div>
@@ -124,7 +125,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-xl-12">
+          <div id="comment_index" class="col-xl-12">
             <% if @ramen_noodle.ramen_noodle_comments.blank? %>
               <strong>投稿されたコメントはありません</strong>
             <% else %>
@@ -138,7 +139,7 @@
                       <div class="col-xl-4"></div>
                       <div class="col-xl-4">
                         <% if ramen_noodle_comment.member == current_member %>
-                          <%= link_to "コメント削除", ramen_noodle_ramen_noodle_comment_path(ramen_noodle_comment.ramen_noodle, ramen_noodle_comment), method: :delete %>
+                          <%= link_to "コメント削除", ramen_noodle_ramen_noodle_comment_path(ramen_noodle_comment.ramen_noodle, ramen_noodle_comment), data: { confirm: "本当に削除しますか?" }, method: :delete, remote: true %>
                         <% end %>
                       </div>
                     </div>
