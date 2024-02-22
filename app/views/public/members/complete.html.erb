@@ -1,19 +1,22 @@
+<%= image_tag("会員登録完了暖簾.svg", class: "img-fluid") %>
 <div class="container">
   <div class="row">
     <div class="col-xl-12">
-      <div class="card text-center w-100 my-5 shadow bg-body rounded">
+      <div class="card-border card text-center w-100 my-5 shadow bg-body rounded">
         <div class="card-body">
-          <h5 class="card-title">
+          <h4 class="card-title">
             「らぁめん道場」への会員登録ありがとうございます。<br>
             会員登録により、下記の機能が使えるようになりました！
-          </h5>
+          </h4>
           <p class="card-text">
-            ・投稿機能<br>
-            ・コメント機能<br>
-            ・フォロー機能<br>
-            ・いいね機能<br>
+            <strong>
+              ・投稿機能<br>
+              ・コメント機能<br>
+              ・フォロー機能<br>
+              ・いいね機能<br>
+            </strong>  
           </p>
-          <%= link_to "マイページ", my_page_path, class: "btn btn-outline-warning" %>
+          <%= link_to "マイページ", my_page_path, class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 150px;" %>
         </div>
       </div>
     </div>

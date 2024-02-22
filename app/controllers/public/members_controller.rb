@@ -1,6 +1,6 @@
 module Public
   class MembersController < ApplicationController
-    before_action :authenticate_member!, only: [:my_page, :edit, :update, :withdraw]
+    before_action :authenticate_member!, only: [:my_page, :edit, :update, :withdraw, :complete, :unsubscribe]
     before_action :ensure_guest_member, only: [:edit, :update, :withdraw]
 
     def index
