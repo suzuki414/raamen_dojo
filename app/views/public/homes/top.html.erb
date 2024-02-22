@@ -8,7 +8,7 @@
     <div class="col-xl-4"></div>
   </div>
   <div class="row">
-    <div class="col-xl-10 mx-auto shadow p-3 bg-body rounded">
+    <div class="col-xl-9 mx-auto shadow p-3 bg-body rounded">
       <div class="swiper new">
         <div class="swiper-wrapper">
           <% @ramen_noodles.each do |ramen_noodle| %>
@@ -22,7 +22,7 @@
                       <%= ramen_noodle.average_rating.floor(1) %>
                     </div>
                     <div class="title my-3">
-                      &#149;<%= ramen_noodle.title %>
+                      &#149;<strong><%= ramen_noodle.title %></strong>
                     </div>
                     <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<%= ramen_noodle.favorites.count %>&nbsp;&nbsp;&nbsp;&nbsp;
                     <i class="fa-regular fa-comment fa-xl" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<%= ramen_noodle.ramen_noodle_comments.count %>
@@ -59,7 +59,7 @@
     <div class="col-xl-4"></div>
   </div>
   <div class="row">
-    <div class="col-xl-10 mx-auto shadow p-3 bg-body rounded">
+    <div class="col-xl-9 mx-auto shadow p-3 bg-body rounded">
       <div class="swiper ranking">
         <div class="swiper-wrapper">
           <% @top_ramen_noodles.each do |ramen_noodle| %>
@@ -73,7 +73,7 @@
                         <%= ramen_noodle.average_rating.floor(1) %>
                       </div>
                       <li class="title my-3">
-                        <%= ramen_noodle.title %>
+                        &#149;<strong><%= ramen_noodle.title %></strong>
                       </li>
                       <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<%= ramen_noodle.favorites.count %>&nbsp;&nbsp;&nbsp;&nbsp;
                       <i class="fa-regular fa-comment fa-xl" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<%= ramen_noodle.ramen_noodle_comments.count %>
