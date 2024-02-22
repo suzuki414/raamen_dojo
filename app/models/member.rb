@@ -69,8 +69,8 @@ class Member < ApplicationRecord
   # 会員一覧画面(ソート機能)
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
-  scope :followed_count, -> {order(followed: :desc)}
-  scope :ramen_noodle_count, -> {order(ramen_noodle: :desc)}
+  scope :followed_count, -> {order(followed: :desc, created_at: :desc)}
+  scope :ramen_noodle_count, -> {order(ramen_noodle: :desc, created_at: :desc)}
 
   # フォロワー数を取得し、降順に並べ替える(フォロワー数が0も含める)
   def self.order_by_followed_count

@@ -55,8 +55,8 @@ class RamenNoodle < ApplicationRecord
   # 投稿一覧画面(ソート機能)
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
-  scope :average_rating_count, -> {order(average_rating: :desc)}
-  scope :favorite_count, -> {order(favorite: :desc)}
+  scope :average_rating_count, -> {order(average_rating: :desc, created_at: :desc)}
+  scope :favorite_count, -> {order(favorite: :desc, created_at: :desc)}
 
   # いいね数を取得し、降順に並べ替える(いいね数が0も含める)
   def self.order_by_favorite_count

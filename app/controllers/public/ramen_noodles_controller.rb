@@ -14,14 +14,14 @@ module Public
     end
 
     def index
-      # パラメーターに応じた投稿ページを表示
+      # パラメーターに応じた、投稿ページを表示
       if params[:mypage_ramen_noodle]
         @ramen_noodles = current_member.ramen_noodles
       elsif params[:member_ramen_noodle]
         @member = Member.find(params[:id])
         @ramen_noodles = @member.ramen_noodles
       else
-        # パラメーターに応じたいいねした投稿ページを表示
+        # パラメーターに応じた、いいねした投稿ページを表示
         if params[:mypage_ramen_noodle_favorite]
           @ramen_noodles = current_member.favorite_ramen_noodles
         elsif params[:member_ramen_noodle_favorite]
