@@ -1,46 +1,52 @@
+<%= image_tag("新規会員登録暖簾.svg", class: "img-fluid") %>
 <div class="container">
   <div class="row">
     <div class="col-xl-12">
-      <div class="card text-center w-100 my-5 shadow bg-body rounded">
-        <div class="card-body">
+      <div class="card-border card w-100 px-5 mt-4 mb-5 shadow bg-body rounded">
+        <div class="card-body mt-4">
           <%= form_with model: @member, url: member_registration_path do |f| %>
             <%= render "public/shared/error_messages", resource: resource %>
-            <div class="field">
-              <%= f.label "プロフィール画像" %>
-              <%= f.file_field :profile_image, accept: "image/*" %>
-            </div>
-            <div class="field">
-              <%= f.label "名前" %>
-              <%= f.text_field :name, autofocus: true %>
-            </div>
-            <div class="field">
-              <%= f.label "ニックネーム" %>
-              <%= f.text_field :nickname %>
-            </div>
-            <div class="field">
-              <%= f.label "ひとこと" %>
-              <%= f.text_field :comment %>
-            </div>
-            <div class="field">
-              <%= f.label "メールアドレス" %>
-              <%= f.email_field :email, autocomplete: "email" %>
-            </div>
-            <div class="field">
-              <%= f.label "パスワード" %>
-              <% if @minimum_password_length %>
-              <em>(<%= @minimum_password_length %> 文字以上)</em>
-              <% end %>
-              <%= f.password_field :password, autocomplete: "new-password" %>
-            </div>
-            <div class="field">
-              <%= f.label "パスワード(確認用)" %>
-              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-            </div>
-            <div class="actions">
-              <%= f.submit "会員登録" %>
-            </div>
+            <table class="table table-borderless">
+              <tr>
+                <th><%= f.label "プロフィール画像", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %></th>
+                <td><%= f.file_field :profile_image, accept: "image/*" %></td>
+              </tr>
+              <tr>
+                <th><%= f.label "名前", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %></th>
+                <td><%= f.text_field :name, autofocus: true, class: "form-control shadow bg-body rounded" %></td>
+              </tr>
+              <tr>
+                <th><%= f.label "ニックネーム", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %></th>
+                <td><%= f.text_field :nickname, class: "form-control shadow bg-body rounded" %></td>
+              </tr>
+              <tr>
+                <th><%= f.label "ひとこと", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %></th>
+                <td><%= f.text_field :comment, class: "form-control shadow bg-body rounded" %></td>
+              </tr>
+              <tr>
+                <th><%= f.label "メールアドレス", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %></th>
+                <td><%= f.email_field :email, autocomplete: "email", class: "form-control shadow bg-body rounded" %></td>
+              </tr>
+              <tr>
+                <th>
+                  <% if @minimum_password_length %>
+                    <%= f.label "パスワード(#{@minimum_password_length} 文字以上)", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %>
+                  <% end %>
+                </th>
+                <td><%= f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上", class: "form-control shadow bg-body rounded" %></td>
+              </tr>
+              <tr>
+                <th>
+                  <%= f.label "パスワード(確認用)", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %>
+                </th>
+                <td><%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "確認用", class: "form-control shadow bg-body rounded" %></td>
+              </tr>
+              <tr>
+                <th></th>
+                <td><%= f.submit "会員登録", class: 'btn btn-outline-warning btn-lg mr-4 shadow bg-body rounded' %></td>
+              </tr>
+            </table>  
           <% end %>
-          <%= render "public/shared/links" %>
         </div>
       </div>
     </div>

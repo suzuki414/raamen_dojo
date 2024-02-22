@@ -22,38 +22,38 @@
           <% end %>
         <% if member_signed_in? %>
           <li class="nav-item mx-2 my-2">
-            <%= link_to '会員一覧', members_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+            <%= link_to '会員一覧', members_path, class: 'bn47' %>
           </li>
           <li class="nav-item mx-2 my-2">
-            <%= link_to '投稿一覧', ramen_noodles_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+            <%= link_to '投稿一覧', ramen_noodles_path, class: 'bn47' %>
           </li>
           <li class="nav-item mx-2 my-2">
-            <%= link_to "新規投稿", new_ramen_noodle_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+            <%= link_to "新規投稿", new_ramen_noodle_path, class: 'bn47' %>
           </li>
           <li class="nav-item mx-2 my-2">
-            <%= link_to "マイページ", my_page_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+            <%= link_to "マイページ", my_page_path, class: 'bn47' %>
           </li>
           <li class="nav-item mx-2 my-2">
-            <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+            <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: 'bn47' %>
           </li>
         <% else %>
           <li class="nav-item mx-2 my-2">
-            <%= link_to "サイト紹介", about_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+            <%= link_to "サイト紹介", about_path, class: 'bn47' %>
           </li>
           <li class="nav-item mx-2 my-2">
-            <%= link_to "ゲスト会員", members_guest_sign_in_path, method: :post, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+            <%= link_to "ゲスト会員", members_guest_sign_in_path, method: :post, class: 'bn47' %>
           </li>
           <li class="nav-item mx-2 my-2">
-            <%= link_to '新規会員登録', new_member_registration_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+            <%= link_to '新規会員登録', new_member_registration_path, class: 'bn47' %>
           </li>
           <li class="nav-item mx-2 my-2">
-            <%= link_to 'ログイン', new_member_session_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+            <%= link_to 'ログイン', new_member_session_path, class: 'bn47' %>
           </li>
           <li class="nav-item mx-2 my-2">
-            <%= link_to "会員一覧", members_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+            <%= link_to "会員一覧", members_path, class: 'bn47' %>
           </li>
           <li class="nav-item mx-2 my-2">
-            <%= link_to "投稿一覧", ramen_noodles_path, class: 'btn btn-secondary btn-block shadow bg-body rounded rounded-pill' %>
+            <%= link_to "投稿一覧", ramen_noodles_path, class: 'bn47' %>
           </li>
         <% end %>
       </ul>
