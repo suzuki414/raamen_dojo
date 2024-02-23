@@ -80,25 +80,50 @@ a {
 // 5段階評価の星サイズ
 #taste_rating {
   img {
-    width: 33px;
+    width: 38px;
   }
 }
 
 #cook_time_rating {
   img {
-    width: 33px;
+    width: 38px;
   }
 }
 
 #process_rating {
   img {
-    width: 33px;
+    width: 38px;
   }
 }
 
 #difficulty_rating {
   img {
-    width: 33px;
+    width: 38px;
+  }
+}
+
+// (投稿詳細画面)5段階評価の星サイズ
+#taste_rating_show {
+  img {
+    width: 50px;
+  }
+}
+
+#cook_time_rating_show {
+  img {
+    width: 50px;
+  }
+}
+
+#process_rating_show {
+  img {
+    width: 50px;
+  }
+}
+
+#difficulty_rating_show {
+  img {
+    width: 50px;
   }
 }
 

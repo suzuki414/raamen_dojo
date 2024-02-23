@@ -2,26 +2,26 @@
 <div class="container">
   <div class="row">
     <div class="col-xl-12">
-      <div class="card-border card text-center w-100 my-5 shadow bg-body rounded">
+      <div class="card-border card w-100 my-5 shadow bg-body rounded">
         <div class="card-body my-3">
           <div class="row">
             <div class="col-xl-4"></div>
-            <div class="col-xl-4">
+            <div class="col-xl-4 text-center">
               <%= link_to member_path(@ramen_noodle.member) do %>
                 <%= image_tag(@ramen_noodle.member.get_profile_image(100, 100), class: "rounded-circle mr-2 img-fluid") %><%= @ramen_noodle.member.nickname %>
               <% end %>
             </div>
-            <div class="col-xl-4">
+            <div class="col-xl-4 text-center">
               <% if @ramen_noodle.member_id == current_member.id %>
-                <%= link_to "投稿編集", edit_ramen_noodle_path, class: "btn btn-outline-secondary my-5 shadow bg-body rounded", style: "width: 175px;" %>
+                <%= link_to "投稿編集", edit_ramen_noodle_path, class: "btn btn-warning my-5 shadow bg-body rounded", style: "width: 175px;" %>
               <% end %>
             </div>
           </div>
           <div class="row">
-            <div class="col-xl-4">
+            <div class="col-xl-6">
               <%= image_tag(@ramen_noodle.post_image, class: 'img-fluid', style: 'width: 100%; height: auto; object-fit: cover;') %>
             </div>
-            <div class="col-xl-8">
+            <div class="col-xl-6">
               <div class="row my-3">
                 <div class="col-xl-4 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded text-center">タイトル</div>
                 <div class="col-xl-8 text-center mt-2">
@@ -48,7 +48,7 @@
                 </div>
               </div>
               <div class="row my-3">
-                <div class="col-xl-4">
+                <div class="col-xl-4 mt-2 text-center">
                   <div id="favorite_btn_<%= @ramen_noodle.id %>" class="d-inline-block mr-4">
                     <%= render "public/favorites/btn", ramen_noodle: @ramen_noodle %>
                   </div>
@@ -68,32 +68,36 @@
             <div class="col-xl-1"></div>
           </div>
           <div class="row">
-            <div class="col-xl-6 text-center">
-              <div class="col-xl-5 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded text-center"><strong>味</strong></div>
-              <div class="mt-2">
-                <strong>1<span id="taste_rating" class="mx-3"></span>5</strong>
+            <div class="col-xl-1"></div>
+            <div class="col-xl-5 mb-5">
+              <div class="bg-warning rounded-pill p-2 mx-3 mb-4 shadow bg-body-tertiary rounded text-center"><strong>味</strong></div>
+              <div class="mt-2 text-center">
+                <h4><b>1<span id="taste_rating_show" class="mx-3"></span>5</b></h4>
               </div>
             </div>
-            <div class="col-xl-6">
-              <div class="col-xl-5 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded text-center"><strong>調理時間</strong></div>
-              <div class="mt-2">
-                <strong>短<span id="cook_time_rating" class="mx-3"></span>長</strong>
+            <div class="col-xl-5 mb-5">
+              <div class="bg-warning rounded-pill p-2 mx-3 mb-4 shadow bg-body-tertiary rounded text-center"><strong>調理時間</strong></div>
+              <div class="mt-2 text-center">
+                <h4><b>長<span id="cook_time_rating_show" class="mx-3"></span>短</b></h4>
               </div>
             </div>
+            <div class="col-xl-1"></div>
           </div>
           <div class="row">
-            <div class="col-xl-6">
-              <div class="col-xl-5 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded text-center"><strong>工程数</strong></div>
-              <div class="mt-2">
-                <strong>少<span id="process_rating" class="mx-3"></span>多</strong>
+            <div class="col-xl-1"></div>
+            <div class="col-xl-5 mb-5">
+              <div class="bg-warning rounded-pill p-2 mx-3 mb-4 shadow bg-body-tertiary rounded text-center"><strong>工程数</strong></div>
+              <div class="mt-2 text-center">
+                <h4><b>多<span id="process_rating_show" class="mx-3"></span>少</b></h4>
               </div>
             </div>
-            <div class="col-xl-6">
-              <div class="col-xl-5 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded text-center"><strong>難易度</strong></div>
-              <div class="mt-2">
-                <strong>低<span id="difficulty_rating" class="mx-3"></span>高</strong>
+            <div class="col-xl-5 mb-5">
+              <div class="bg-warning rounded-pill p-2 mx-3 mb-4 shadow bg-body-tertiary rounded text-center"><strong>難易度</strong></div>
+              <div class="mt-2 text-center">
+                <h4><b>高<span id="difficulty_rating_show" class="mx-3"></span>低</b></h4>
               </div>
             </div>
+            <div class="col-xl-1"></div>
           </div>
           <div class="row">
             <div class="col-xl-12 text-center">
@@ -101,7 +105,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-xl-12 text-center">
+            <div class="col-xl-12">
               <%= @ramen_noodle.description %>
             </div>
           </div>
@@ -142,7 +146,7 @@
 
 <script>
   $(document).on('turbolinks:load', function() {
-    var elem = document.querySelector('#taste_rating');
+    var elem = document.querySelector('#taste_rating_show');
     if (elem == null) return;
     elem.innerHTML = ""
     var opt = {
@@ -150,14 +154,14 @@
       starOn: "<%= asset_path('star-on.png') %>",
       starOff: "<%= asset_path('star-off.png') %>",
       starHalf: "<%= asset_path('star-half.png') %>",
-      scoreName: 'ramen_noodle[difficulty_rating]',
+      scoreName: 'ramen_noodle[taste_rating]',
       score: "<%= @ramen_noodle.taste_rating %>"
     };
     raty(elem, opt);
   });
 
   $(document).on('turbolinks:load', function() {
-    var elem = document.querySelector('#cook_time_rating');
+    var elem = document.querySelector('#cook_time_rating_show');
     if (elem == null) return;
     elem.innerHTML = ""
     var opt = {
@@ -165,14 +169,14 @@
       starOn: "<%= asset_path('star-on.png') %>",
       starOff: "<%= asset_path('star-off.png') %>",
       starHalf: "<%= asset_path('star-half.png') %>",
-      scoreName: 'ramen_noodle[difficulty_rating]',
+      scoreName: 'ramen_noodle[cook_time_rating]',
       score: "<%= @ramen_noodle.cook_time_rating %>"
     };
     raty(elem, opt);
   });
 
   $(document).on('turbolinks:load', function() {
-    var elem = document.querySelector('#process_rating');
+    var elem = document.querySelector('#process_rating_show');
     if (elem == null) return;
     elem.innerHTML = ""
     var opt = {
@@ -180,14 +184,14 @@
       starOn: "<%= asset_path('star-on.png') %>",
       starOff: "<%= asset_path('star-off.png') %>",
       starHalf: "<%= asset_path('star-half.png') %>",
-      scoreName: 'ramen_noodle[difficulty_rating]',
+      scoreName: 'ramen_noodle[process_rating]',
       score: "<%= @ramen_noodle.process_rating %>"
     };
     raty(elem, opt);
   });
 
   $(document).on('turbolinks:load', function() {
-    var elem = document.querySelector('#difficulty_rating');
+    var elem = document.querySelector('#difficulty_rating_show');
     if (elem == null) return;
     elem.innerHTML = ""
     var opt = {

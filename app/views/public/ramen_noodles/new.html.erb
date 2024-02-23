@@ -6,7 +6,7 @@
         <div class="card-body my-3">
           <%= form_with model: @ramen_noodle, url: ramen_noodles_path, method: :post do |f| %>
             <div class="row">
-              <div class="col-xl-8">
+              <div class="col-xl-8 my-5">
                 <table class="table table-borderless">
                   <tr>
                     <th><%= f.label "投稿画像", class: "bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center w-170px", style: "width: 170px;" %></th>
@@ -30,7 +30,7 @@
                   </tr>
                 </table>
               </div>
-              <div class="col-xl-4 pr-5">
+              <div class="col-xl-4 pr-5 mt-4">
                 <div class="row">
                   <div class="col-xl-12 border-bottom border-dark">
                     <h4><strong>評価</strong></h4>
@@ -56,7 +56,7 @@
                   <div class="col-xl-12">
                     <strong><%= f.label "工程数", class: "bg-warning rounded-pill p-2 mt-2 mb-3 shadow bg-body-tertiary text-center", style: "width: 170px;" %></strong>
                     <div class="mt-2">
-                      <b>長<span id="process_rating" class="mx-3"></span>少</b>
+                      <b>多<span id="process_rating" class="mx-3"></span>少</b>
                     </div>
                   </div>
                 </div>
