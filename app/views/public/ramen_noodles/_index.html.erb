@@ -26,7 +26,7 @@
                   <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle mr-2") %><%= ramen_noodle.member.nickname %>
                 </div>
                 <div class="title my-3">
-                  &#149;<%= ramen_noodle.title %>
+                  <b>&#149;<%= ramen_noodle.title %></b>
                 </div>
                 <div id="average_rating">
                   <span id="average_rating_<%= ramen_noodle.id %>"></span>
@@ -34,8 +34,8 @@
                 </div>
                 <div class="action mt-3">
                   <p>
-                    <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>：<%= ramen_noodle.favorites.count %>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <i class="fa-regular fa-comment fa-xl" style="color: #ff0000;"></i>：<%= ramen_noodle.ramen_noodle_comments.count %>
+                    <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>：<%= ramen_noodle.favorites.count %>
+                    <i class="fa-regular fa-comment fa-xl ml-4" style="color: #ff0000;"></i>：<%= ramen_noodle.ramen_noodle_comments.count %>
                   </p>
                 </div>
               </div>

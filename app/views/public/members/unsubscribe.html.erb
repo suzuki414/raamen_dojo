@@ -1,9 +1,10 @@
+<%= image_tag("退会確認暖簾.svg", class: "img-fluid") %>
 <div class="container">
   <div class="row">
     <div class="col-xl-12">
-      <div class="card text-center w-100 my-5 shadowZ bg-body rounded">
-        <div class="card-body">
-          <P>注意マーク</P>
+      <div class="card-border card text-center w-100 my-5 shadow bg-body rounded">
+        <div class="card-body my-4">
+          <%= image_tag("退会確認画面注意マーク.svg", class: "img-fluid mb-4", style: 'width: 80px; height: auto;') %>
           <h3 class="card-title">
             <strong>本当に退会しますか？</strong>
           </h3>
@@ -12,16 +13,18 @@
             ※退会後でも他会員の投稿は閲覧できます
           </p>
           <p class="card-text">
-            ・投稿機能<br>
-            ・コメント機能<br>
-            ・フォロー機能<br>
-            ・いいね機能<br>
+            <strong>
+              ・投稿機能<br>
+              ・コメント機能<br>
+              ・フォロー機能<br>
+              ・いいね機能<br>
+            </strong>
           </p>
           <p class="card-text">
             <strong>この操作は、取り消せません</strong>
           </p>
-            <%= link_to "退会しない", my_page_path, class: "btn btn-outline-warning" %>
-            <%= link_to "退会する", withdraw_path, method: :patch, class: "btn btn-outline-warning btn-lg", data: { confirm: "本当に退会しますか?" } %>
+            <%= link_to "退会しない", my_page_path, class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 150px;" %>
+            <%= link_to "退会する", withdraw_path, method: :patch, class: "btn btn-outline-danger btn-lg shadow bg-body rounded", style: "width: 150px;", data: { confirm: "本当に退会しますか?" } %>
         </div>
       </div>
     </div>

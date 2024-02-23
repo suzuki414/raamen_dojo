@@ -3,13 +3,13 @@
     <%= link_to ramen_noodle_favorite_path(ramen_noodle), method: :delete, remote: true do %>
       <i class="fa-solid fa-thumbs-up fa-2xl" style="color: #ff0000;"></i>
     <% end %>
-    &#058;<%= ramen_noodle.favorites.count %>
+    &nbsp;&#058;&nbsp;<%= ramen_noodle.favorites.count %>
   </p>
   <% else %>
   <p>
     <%= link_to ramen_noodle_favorite_path(ramen_noodle_id: ramen_noodle.id), method: :post, remote: true do %>
       <i class="fa-regular fa-thumbs-up fa-2xl" style="color: #ff0000;"></i>
     <% end %>
-    &#058;<%= ramen_noodle.favorites.count %>
+    &nbsp;&#058;&nbsp;<%= ramen_noodle.favorites.count %>
   </p>
 <% end %>
