@@ -16,21 +16,23 @@
               <%= link_to ramen_noodle_path(ramen_noodle) do %>
                 <%= image_tag(ramen_noodle.post_image, class: 'img-fluid d-block mx-auto', style: 'width: 100%; height: auto; object-fit: cover;') %>
                 <div class="row">
-                  <div class="col-xl-12 mx-2 mt-2 mb-4">
-                    <div id="average_rating" class="text-start">
-                      <span id="average_rating_ranking_<%= ramen_noodle.id %>"></span>
-                      <%= ramen_noodle.average_rating.floor(1) %>
+                  <div class="col-xl-5 mt-3 mb-4">
+                    <div id="average_rating_top" class="text-start">
+                      <span id="average_rating_top_<%= ramen_noodle.id %>"></span>
+                      <b><%= ramen_noodle.average_rating.floor(1) %></b>
                     </div>
                     <div class="title my-3">
-                      &#149;<b><%= ramen_noodle.title %></b>
+                      <h5>&#149;<b><%= ramen_noodle.title %></b></h5>
                     </div>
-                    <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<%= ramen_noodle.favorites.count %>
-                    <i class="fa-regular fa-comment fa-xl ml-3" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<%= ramen_noodle.ramen_noodle_comments.count %>
-                    <div class="profile text-center mt-3">
-                      <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle mr-2 border-warning") %>
-                      <%= ramen_noodle.member.nickname %>
-                    </div>
+                    <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<b><%= ramen_noodle.favorites.count %></b>
+                    <i class="fa-regular fa-comment fa-xl ml-3" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<b><%= ramen_noodle.ramen_noodle_comments.count %></b>
                   </div>
+                  <div class="col-xl-5 mt-5 pr-5">
+                    <div class="profile text-right mt-4">
+                      <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle border border-warning mr-2 border-warning") %>
+                      <b><%= ramen_noodle.member.nickname %></b>
+                    </div>
+                  </div>  
                 </div>
               <% end %>
             </div>
@@ -40,14 +42,14 @@
         <!-- ページネーションの要素 -->
         <div class="swiper-pagination new-pagination"></div>
         <!-- ナビゲーションボタン （前、次） -->
-        <div class="swiper-button-prev new-button-prev"></div>
-        <div class="swiper-button-next new-button-next"></div>
+        <div class="swiper-button-prev new-button-prev pl-4"></div>
+        <div class="swiper-button-next new-button-next pr-4"></div>
     </div>
   </div>
   <div class="row my-5">
     <div class="col-xl-9"></div>
     <div class="col-xl-2">
-      <%= link_to "投稿一覧", ramen_noodles_path, class: "btn btn-outline-warning shadow bg-body rounded rounded-pill", style: "width: 155px; height: 50px;" %>
+      <%= link_to "投稿一覧", ramen_noodles_path, class: "btn btn-outline-warning shadow bg-body rounded rounded-pill d-flex align-items-center justify-content-center", style: "width: 155px; height: 50px;" %>
     </div>
     <div class="col-xl-1"></div>
   </div>
@@ -67,19 +69,21 @@
               <%= link_to ramen_noodle_path(ramen_noodle) do %>
                 <%= image_tag(ramen_noodle.post_image, class: 'img-fluid d-block mx-auto', style: 'width: 100%; height: auto; object-fit: cover;') %>
                   <div class="row">
-                    <div class="col-xl-12 mx-2 mt-2 mb-4">
-                      <div id="average_rating">
-                        <span id="average_rating_top_<%= ramen_noodle.id %>"></span>
-                        <%= ramen_noodle.average_rating.floor(1) %>
+                    <div class="col-xl-6 mt-3 mb-4">
+                      <div id="average_rating_ranking">
+                        <span id="average_rating_ranking_<%= ramen_noodle.id %>"></span>
+                        <b><%= ramen_noodle.average_rating.floor(1) %></b>
                       </div>
                       <li class="title my-3">
-                        &#149;<b><%= ramen_noodle.title %></b>
+                        <h5>&#149;<b><%= ramen_noodle.title %></b></h5>
                       </li>
-                      <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<%= ramen_noodle.favorites.count %>
-                      <i class="fa-regular fa-comment fa-xl ml-3" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<%= ramen_noodle.ramen_noodle_comments.count %>
-                      <div class="profile text-center mt-3">
-                        <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle mr-2 border-warning") %>
-                        <%= ramen_noodle.member.nickname %>
+                      <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<b><%= ramen_noodle.favorites.count %></b>
+                      <i class="fa-regular fa-comment fa-xl ml-3" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<b><%= ramen_noodle.ramen_noodle_comments.count %></b>
+                    </div>
+                    <div class="col-xl-6 mt-5 pr-5">
+                      <div class="profile text-right mt-4">
+                        <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle border border-warning mr-2 border-warning") %>
+                        <b><%= ramen_noodle.member.nickname %></b>
                       </div>
                     </div>
                   </div>
@@ -91,14 +95,14 @@
       <!-- ページネーションの要素 -->
       <div class="swiper-pagination ranking-pagination"></div>
       <!-- ナビゲーションボタン （前、次） -->
-      <div class="swiper-button-prev ranking-button-prev"></div>
-      <div class="swiper-button-next ranking-button-next"></div>
+      <div class="swiper-button-prev ranking-button-prev pl-4"></div>
+      <div class="swiper-button-next ranking-button-next pr-4"></div>
     </div>  
   </div>
   <div class="row mt-5">
     <div class="col-xl-9"></div>
     <div class="col-xl-2">
-      <%= link_to "高評価順投稿一覧", ramen_noodles_path(average_rating_count: "true"), class: "btn btn-outline-warning shadow bg-body rounded rounded-pill", style: "width: 155px; height: 50px;" %>
+      <%= link_to "高評価順投稿一覧", ramen_noodles_path(average_rating_count: "true"), class: "btn btn-outline-warning shadow bg-body rounded rounded-pill d-flex align-items-center justify-content-center", style: "width: 155px; height: 50px;" %>
     </div>
     <div class="col-xl-1"></div>
   </div>
@@ -108,15 +112,15 @@
 <% @ramen_noodles.each do |ramen_noodle| %>
   <script>
     $(document).on('turbolinks:load', function() {
-      $('#average_rating_ranking_<%= ramen_noodle.id %>').empty();
-      var elem = document.querySelector('#average_rating_ranking_<%= ramen_noodle.id %>');
+      $('#average_rating_top_<%= ramen_noodle.id %>').empty();
+      var elem = document.querySelector('#average_rating_top_<%= ramen_noodle.id %>');
       if (elem == null) return;
       var opt = {
         readOnly: true,
         starOn: "<%= asset_path('star-on.png') %>",
         starOff: "<%= asset_path('star-off.png') %>",
         starHalf: "<%= asset_path('star-half.png') %>",
-        scoreName: 'ramen_noodle[difficulty_rating]',
+        scoreName: 'ramen_noodle[average_rating]',
         score: "<%= ramen_noodle.average_rating %>"
       };
       raty(elem, opt);
@@ -128,15 +132,15 @@
 <% @top_ramen_noodles.each do |ramen_noodle| %>
   <script>
     $(document).on('turbolinks:load', function() {
-      $('#average_rating_top_<%= ramen_noodle.id %>').empty();
-      var elem = document.querySelector('#average_rating_top_<%= ramen_noodle.id %>');
+      $('#average_rating_ranking_<%= ramen_noodle.id %>').empty();
+      var elem = document.querySelector('#average_rating_ranking_<%= ramen_noodle.id %>');
       if (elem == null) return;
       var opt = {
         readOnly: true,
         starOn: "<%= asset_path('star-on.png') %>",
         starOff: "<%= asset_path('star-off.png') %>",
         starHalf: "<%= asset_path('star-half.png') %>",
-        scoreName: 'ramen_noodle[difficulty_rating]',
+        scoreName: 'ramen_noodle[average_rating]',
         score: "<%= ramen_noodle.average_rating %>"
       };
       raty(elem, opt);

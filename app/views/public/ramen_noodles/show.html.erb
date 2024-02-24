@@ -6,30 +6,31 @@
         <div class="card-body my-3">
           <div class="row">
             <div class="col-xl-4"></div>
-            <div class="col-xl-4 text-center">
+            <div class="col-xl-4 pb-5 text-center">
               <%= link_to member_path(@ramen_noodle.member) do %>
-                <%= image_tag(@ramen_noodle.member.get_profile_image(100, 100), class: "rounded-circle mr-2 img-fluid") %><%= @ramen_noodle.member.nickname %>
+                <%= image_tag(@ramen_noodle.member.get_profile_image(100, 100), class: "rounded-circle border border-warning mr-2 img-fluid") %>
+                <b><%= @ramen_noodle.member.nickname %></b>
               <% end %>
             </div>
-            <div class="col-xl-4 text-center">
+            <div class="col-xl-4 pb-5 text-center">
               <% if @ramen_noodle.member_id == current_member.id %>
-                <%= link_to "投稿編集", edit_ramen_noodle_path, class: "btn btn-warning my-5 shadow bg-body rounded", style: "width: 175px;" %>
+                <%= link_to "投稿編集", edit_ramen_noodle_path, class: "btn btn-outline-warning btn-lg mt-4 shadow bg-body rounded", style: "width: 175px;" %>
               <% end %>
             </div>
           </div>
-          <div class="row">
+          <div class="row pb-5">
             <div class="col-xl-6">
               <%= image_tag(@ramen_noodle.post_image, class: 'img-fluid', style: 'width: 100%; height: auto; object-fit: cover;') %>
             </div>
-            <div class="col-xl-6">
+            <div class="col-xl-6 mt-4">
               <div class="row my-3">
-                <div class="col-xl-4 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded text-center">タイトル</div>
+                <div class="col-xl-4 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded text-center"><strong>タイトル</strong></div>
                 <div class="col-xl-8 text-center mt-2">
                   <b><%= @ramen_noodle.title %></b>
                 </div>
               </div>
               <div class="row my-3">
-                <div class="col-xl-4 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded text-center">タグ</div>
+                <div class="col-xl-4 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded text-center"><strong>タグ</strong></div>
                 <div class="col-xl-8 text-center mt-2">
                   <% if @ramen_noodle_tags.present? %>
                     <% @ramen_noodle_tags.each do |tag| %>
@@ -42,7 +43,7 @@
                 </div>
               </div>
               <div class="row my-3">
-                <div class="col-xl-4 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded text-center">投稿日</div>
+                <div class="col-xl-4 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded text-center"><strong>投稿日</strong></div>
                 <div class="col-xl-8 text-center mt-2">
                   <b><%= @ramen_noodle.created_at.strftime('%Y/%m/%d') %></b>
                 </div>
@@ -63,79 +64,73 @@
           <div class="row">
             <div class="col-xl-1"></div>
             <div class="col-xl-10 my-5 border-bottom border-dark text-center">
-              <h5><strong>評価</strong></h5>
+              <h3><strong>評価</strong></h3>
             </div>
             <div class="col-xl-1"></div>
           </div>
           <div class="row">
             <div class="col-xl-1"></div>
             <div class="col-xl-5 mb-5">
-              <div class="bg-warning rounded-pill p-2 mx-3 mb-4 shadow bg-body-tertiary rounded text-center"><strong>味</strong></div>
+              <div class="bg-warning rounded-pill p-2 mb-4 shadow bg-body-tertiary rounded text-center"><strong>味</strong></div>
               <div class="mt-2 text-center">
                 <h4><b>1<span id="taste_rating_show" class="mx-3"></span>5</b></h4>
               </div>
             </div>
             <div class="col-xl-5 mb-5">
-              <div class="bg-warning rounded-pill p-2 mx-3 mb-4 shadow bg-body-tertiary rounded text-center"><strong>調理時間</strong></div>
+              <div class="bg-warning rounded-pill p-2 mb-4 shadow bg-body-tertiary rounded text-center"><strong>調理時間</strong></div>
               <div class="mt-2 text-center">
                 <h4><b>長<span id="cook_time_rating_show" class="mx-3"></span>短</b></h4>
               </div>
             </div>
             <div class="col-xl-1"></div>
           </div>
-          <div class="row">
+          <div class="row pb-5">
             <div class="col-xl-1"></div>
             <div class="col-xl-5 mb-5">
-              <div class="bg-warning rounded-pill p-2 mx-3 mb-4 shadow bg-body-tertiary rounded text-center"><strong>工程数</strong></div>
+              <div class="bg-warning rounded-pill p-2 mb-4 shadow bg-body-tertiary rounded text-center"><strong>工程数</strong></div>
               <div class="mt-2 text-center">
                 <h4><b>多<span id="process_rating_show" class="mx-3"></span>少</b></h4>
               </div>
             </div>
             <div class="col-xl-5 mb-5">
-              <div class="bg-warning rounded-pill p-2 mx-3 mb-4 shadow bg-body-tertiary rounded text-center"><strong>難易度</strong></div>
+              <div class="bg-warning rounded-pill p-2 mb-4 shadow bg-body-tertiary rounded text-center"><strong>難易度</strong></div>
               <div class="mt-2 text-center">
                 <h4><b>高<span id="difficulty_rating_show" class="mx-3"></span>低</b></h4>
               </div>
             </div>
             <div class="col-xl-1"></div>
           </div>
-          <div class="row">
-            <div class="col-xl-12 text-center">
-              <div class="col-xl-5 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded text-center"><strong>説明</strong></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xl-12">
+          <div class="row mb-5">
+            <div class="col-xl-1"></div>
+            <div class="col-xl-10">
+              <div class="bg-warning rounded-pill p-2 mb-4 shadow bg-body-tertiary rounded text-center"><strong>説明</strong></div>
               <%= @ramen_noodle.description %>
             </div>
+            <div class="col-xl-1"></div>
           </div>
-          <div class="row">
-            <div class="col-xl-12">
-              <div class="col-xl-5 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded text-center"><strong>レシピ</strong></div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xl-12">
+          <div class="row mb-5 pt-5">
+            <div class="col-xl-1"></div>
+            <div class="col-xl-10">
+              <div class="bg-warning rounded-pill p-2 mb-4 shadow bg-body-tertiary rounded text-center"><strong>レシピ</strong></div>
               <%= @ramen_noodle.recipe %>
             </div>
+            <div class="col-xl-1"></div>
           </div>
-          <div class="row">
-            <div class="col-xl-12">
+          <div class="row mb-4 pt-5">
+            <div class="col-xl-1"></div>
+            <div class="col-xl-10">
+              <div class="bg-warning rounded-pill p-2 mb-4 shadow bg-body-tertiary rounded text-center"><strong>コメント</strong></div>
               <%= form_with model: [@ramen_noodle, @ramen_noodle_comment], local: false do |f| %>
-                <%= f.text_field :comment, rows: '5', placeholder: "コメントをここに入力してください", class: "shadow bg-body rounded", id: "comment_textarea" %><br>
-                <%= f.submit "コメント投稿", class: "btn btn-outline-warning shadow bg-body rounded" %>
+                <div class="form-group d-flex mb-5 mx-4">
+                  <%= f.text_field :comment, rows: '5', placeholder: "コメントをここに入力してください", class: "form-control shadow bg-body rounded", id: "comment_textarea" %>
+                  <%= f.submit "コメント投稿", class: "btn btn-outline-warning shadow bg-body rounded ml-2" %>
+                </div>
               <% end %>
+              <div id="comment_index">
+                <%= render 'public/ramen_noodles/comments', comments: @ramen_noodle.ramen_noodle_comments %>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-xl-12">
-              <div class="col-xl-5 bg-warning rounded-pill p-2 shadow bg-body-tertiary rounded text-center"><strong>コメント一覧</strong></div>
-            </div>
-          </div>
-          <div class="row">
-            <div id="comment_index" class="col-xl-12">
-              <%= render 'public/ramen_noodles/comments', comments: @ramen_noodle.ramen_noodle_comments %>
-            </div>
+            <div class="col-xl-1"></div>
           </div>
         </div>
       </div>

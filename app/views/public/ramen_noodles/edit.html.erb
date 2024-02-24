@@ -1,75 +1,76 @@
+<%= image_tag("投稿編集暖簾.svg", class: "img-fluid") %>
 <div class="container">
   <div class="row">
     <div class="col-xl-12">
-      <div class="card text-center w-100 my-5 shadow bg-body rounded">
-        <div class="card-body">
+      <div class="card-border card text-center w-100 my-5 shadow bg-body rounded">
+        <div class="card-body my-3">
           <%= form_with model: @ramen_noodle, url: ramen_noodle_path, method: :patch do |f| %>
             <div class="row">
-              <div class="col-xl-8">
+              <div class="col-xl-8 my-5">
                 <table class="table table-borderless">
                   <tr>
-                    <th><%= f.label "投稿画像" %></th>
-                    <td><%= f.file_field :post_image, accept: "image/*" %></td>
+                    <th><%= f.label "投稿画像", class: "bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center w-170px", style: "width: 170px;" %></th>
+                    <td><%= f.file_field :post_image, accept: "image/*", class: "mt-2" %></td>
                   </tr>
                   <tr>
-                    <th><%= f.label "タイトル" %></th>
-                    <td><%= f.text_field :title, autofocus: true, placeholder: "タイトル" %></td>
+                    <th><%= f.label "タイトル", class: "bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center", style: "width: 170px;" %></th>
+                    <td><%= f.text_field :title, autofocus: true, placeholder: "タイトル", class: "form-control mt-1 shadow bg-body rounded" %></td>
                   </tr>
                   <tr>
-                    <th><%= f.label "タグ" %></th>
-                    <td><%= f.text_field :name, value: @tag_list, class: 'form-control', placeholder: "タグ(カンマ( , )で区切ると複数のタグが登録できます)" %></td>
+                    <th><%= f.label "タグ", class: "bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center", style: "width: 170px;" %></th>
+                    <td><%= f.text_field :name, value: @tag_list, class: 'form-control', placeholder: "タグ(カンマ( , )で区切ると複数のタグが登録できます)", class: "form-control mt-1 shadow bg-body rounded" %></td>
                   </tr>
                   <tr>
-                    <th><%= f.label "説明" %></th>
-                    <td><%= f.text_area :description, rows: '5', placeholder: "ここに説明文を入力してください" %></td>
+                    <th><%= f.label "説明", class: "bg-warning rounded-pill p-2 my-5 shadow bg-body-tertiary text-center", style: "width: 170px;" %></th>
+                    <td><%= f.text_area :description, rows: '5', placeholder: "ここに説明文を入力してください", class: "form-control mt-1 shadow bg-body rounded" %></td>
                   </tr>
                   <tr>
-                    <th><%= f.label "レシピ" %></th>
-                    <td><%= f.text_area :recipe, rows: '5', placeholder: "ここにレシピを入力してください" %></td>
+                    <th><%= f.label "レシピ", class: "bg-warning rounded-pill p-2 my-5 shadow bg-body-tertiary text-center", style: "width: 170px;" %></th>
+                    <td><%= f.text_area :recipe, rows: '5', placeholder: "ここにレシピを入力してください", class: "form-control mt-1 shadow bg-body rounded" %></td>
                   </tr>
                 </table>
               </div>
-              <div class="col-xl-4">
+              <div class="col-xl-4 pr-5 mt-4">
                 <div class="row">
                   <div class="col-xl-12 border-bottom border-dark">
-                    <h5><strong>評価</strong></h5>
+                    <h4><strong>評価</strong></h4>
                   </div>
                 </div>
                 <div class="row mt-3 mb-3">
                   <div class="col-xl-12">
-                    <strong><%= f.label "味" %></strong>
+                    <strong><%= f.label "味", class: "bg-warning rounded-pill p-2 mt-2 mb-3 shadow bg-body-tertiary text-center", style: "width: 170px;" %></strong>
                     <div class="mt-2">
-                      <strong>1<span id="taste_rating" class="mx-3"></span>5</strong>
+                      <b>1<span id="taste_rating" class="mx-3"></span>5</b>
                     </div>
                   </div>
                 </div>
                 <div class="row mt-3 mb-3">
                   <div class="col-xl-12">
-                    <strong><%= f.label "調理時間" %></strong>
+                    <strong><%= f.label "調理時間", class: "bg-warning rounded-pill p-2 mt-2 mb-3 shadow bg-body-tertiary text-center", style: "width: 170px;" %></strong>
                     <div class="mt-2">
-                      <strong>短<span id="cook_time_rating" class="mx-3"></span>長</strong>
+                      <b>長<span id="cook_time_rating" class="mx-3"></span>短</b>
                     </div>
                   </div>
                 </div>
                 <div class="row mt-3 mb-3">
                   <div class="col-xl-12">
-                    <strong><%= f.label "工程数" %></strong>
+                    <strong><%= f.label "工程数", class: "bg-warning rounded-pill p-2 mt-2 mb-3 shadow bg-body-tertiary text-center", style: "width: 170px;" %></strong>
                     <div class="mt-2">
-                      <strong>少<span id="process_rating" class="mx-3"></span>多</strong>
+                      <b>多<span id="process_rating" class="mx-3"></span>少</b>
                     </div>
                   </div>
                 </div>
                 <div class="row mt-3 mb-3">
                   <div class="col-xl-12">
-                    <strong><%= f.label "難易度" %></strong>
+                    <strong><%= f.label "難易度", class: "bg-warning rounded-pill p-2 mt-2 mb-3 shadow bg-body-tertiary text-center", style: "width: 170px;" %></strong>
                     <div class="mt-2">
-                      <strong>低<span id="difficulty_rating" class="mx-3"></span>高</strong>
+                      <b>高<span id="difficulty_rating" class="mx-3"></span>低</b>
                     </div>
                   </div>
                 </div>
-                <div class="row mt-5 mb-5">
+                <div class="row mt-5 mb-3">
                   <div class="col-xl-12">
-                    ※投稿後、評価の変更は出来ません
+                    <p><strong>※投稿後、評価の変更は出来ません</strong></p>
                   </div>
                 </div>
               </div>
@@ -77,8 +78,8 @@
             <div class="row">
               <div class="col-xl-3"></div>
               <div class="col-xl-6">
-                <%= f.submit "投稿", class: "btn btn-outline-warning" %>
-                <%= link_to "キャンセル", ramen_noodle_path(@ramen_noodle), class: "btn btn-outline-warning" %>
+                <%= f.submit "投稿", class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 175px;" %>
+                <%= link_to "キャンセル", ramen_noodle_path(@ramen_noodle), class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 175px;" %>
               </div>
               <div class="col-xl-3"></div>
             </div>

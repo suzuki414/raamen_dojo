@@ -127,6 +127,20 @@ a {
   }
 }
 
+// (トップ画面)新規5投稿の5段階評価の星サイズ
+#average_rating_top {
+  img {
+    width: 40px;
+  }
+}
+
+// (トップ画面)TOP5の5段階評価の星サイズ
+#average_rating_ranking {
+  img {
+    width: 40px;
+  }
+}
+
 // ページネーションのデザイン
 .pagination>li>a {
   border: none !important;
@@ -196,3 +210,17 @@ footer {
 .card-border {
   border-color: #dc143c;
 }
+
+// サイト紹介画面のロゴ
+.about-image .logo {
+  width: 250px;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 80%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;/*余計な隙間を除く*/
+  padding:0;/*余計な隙間を除く*/
+  }
