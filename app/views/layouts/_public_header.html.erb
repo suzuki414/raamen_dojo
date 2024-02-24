@@ -14,12 +14,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
-          <%= form_with url: "/search", method: :get, local: true do |f| %>
-            <%= f.text_field :content, placeholder: "検索ワードを入力してください", style: "width: 280px; height: 40px", class: "form-control shadow bg-body rounded" %>
-            <%= f.select :model, options_for_select({"会員" => "member", "投稿" => "ramen_noodle", "タグ" => "tag"}) %>
-            <%= f.select :method, options_for_select({"完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}) %>
-            <%= f.submit "検索", class: "btn btn-outline-warning shadow bg-body rounded ml-1" %>
-          <% end %>
+        <%= form_with url: "/search", method: :get, local: true do |f| %>
+          <%= f.text_field :content, placeholder: "検索ワードを入力してください", style: "width: 280px; height: 40px", class: "form-control shadow bg-body rounded" %>
+          <%= f.select :model, options_for_select({"会員" => "member", "投稿" => "ramen_noodle", "タグ" => "tag"}), {}, { class: "form-control" } %>
+          <%= f.select :method, options_for_select({"完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}), {}, { class: "form-control" } %>
+          <%= f.submit "検索", class: "btn btn-outline-warning shadow bg-body rounded ml-1" %>
+        <% end %>
         <% if member_signed_in? %>
           <li class="nav-item mx-2 my-2">
             <%= link_to '会員一覧', members_path, class: 'bn47' %>

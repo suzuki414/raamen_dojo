@@ -7,7 +7,7 @@
     </div>
     <div class="col-xl-4"></div>
   </div>
-  <div class="row">
+  <div class="row pt-5">
     <div class="col-xl-9 mx-auto shadow p-3 bg-body rounded">
       <div class="swiper new">
         <div class="swiper-wrapper">
@@ -16,7 +16,7 @@
               <%= link_to ramen_noodle_path(ramen_noodle) do %>
                 <%= image_tag(ramen_noodle.post_image, class: 'img-fluid d-block mx-auto', style: 'width: 100%; height: auto; object-fit: cover;') %>
                 <div class="row">
-                  <div class="col-xl-5 mt-3 mb-4">
+                  <div class="col-xl-6 mt-3 mb-4">
                     <div id="average_rating_top" class="text-start">
                       <span id="average_rating_top_<%= ramen_noodle.id %>"></span>
                       <b><%= ramen_noodle.average_rating.floor(1) %></b>
@@ -27,18 +27,18 @@
                     <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<b><%= ramen_noodle.favorites.count %></b>
                     <i class="fa-regular fa-comment fa-xl ml-3" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<b><%= ramen_noodle.ramen_noodle_comments.count %></b>
                   </div>
-                  <div class="col-xl-5 mt-5 pr-5">
+                  <div class="col-xl-6 mt-5 pr-5">
                     <div class="profile text-right mt-4">
                       <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle border border-warning mr-2 border-warning") %>
                       <b><%= ramen_noodle.member.nickname %></b>
                     </div>
-                  </div>  
+                  </div>
                 </div>
               <% end %>
             </div>
           <% end %>
         </div>
-      </div>  
+      </div>
         <!-- ページネーションの要素 -->
         <div class="swiper-pagination new-pagination"></div>
         <!-- ナビゲーションボタン （前、次） -->
@@ -46,7 +46,7 @@
         <div class="swiper-button-next new-button-next pr-4"></div>
     </div>
   </div>
-  <div class="row my-5">
+  <div class="row my-5 mr-4">
     <div class="col-xl-9"></div>
     <div class="col-xl-2">
       <%= link_to "投稿一覧", ramen_noodles_path, class: "btn btn-outline-warning shadow bg-body rounded rounded-pill d-flex align-items-center justify-content-center", style: "width: 155px; height: 50px;" %>
@@ -60,7 +60,7 @@
     </div>
     <div class="col-xl-4"></div>
   </div>
-  <div class="row">
+  <div class="row pt-5">
     <div class="col-xl-9 mx-auto shadow p-3 bg-body rounded">
       <div class="swiper ranking">
         <div class="swiper-wrapper">
@@ -91,15 +91,15 @@
             </div>
           <% end %>
         </div>
-      </div>  
+      </div>
       <!-- ページネーションの要素 -->
       <div class="swiper-pagination ranking-pagination"></div>
       <!-- ナビゲーションボタン （前、次） -->
       <div class="swiper-button-prev ranking-button-prev pl-4"></div>
       <div class="swiper-button-next ranking-button-next pr-4"></div>
-    </div>  
+    </div>
   </div>
-  <div class="row mt-5">
+  <div class="row mt-5 mr-4">
     <div class="col-xl-9"></div>
     <div class="col-xl-2">
       <%= link_to "高評価順投稿一覧", ramen_noodles_path(average_rating_count: "true"), class: "btn btn-outline-warning shadow bg-body rounded rounded-pill d-flex align-items-center justify-content-center", style: "width: 155px; height: 50px;" %>

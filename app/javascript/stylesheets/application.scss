@@ -63,7 +63,7 @@
 }
 
 a {
-    color: #000000;
+  color: #000000;
 }
 
 // ホバー時のデザイン
@@ -189,16 +189,26 @@ footer {
 }
 
 .top-post {
-  position: relative;
   padding: 1rem 2rem;
   border-radius: 5px;
   box-shadow: 7px 7px #ffc107, 7px 7px 0 3px #353535;
   outline: 3px solid #353535;
   background-color: #fefefe;
   color: #353535;
-  font-size: 26px;
+  font-size: 40px;
   font-weight: bold;
   text-align: center;
+}
+
+.top-post::before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 110%;
+  height: 10px;
+  border-radius: 200px / 10px;
+  box-shadow: 0 50px 20px rgba(0, 0, 0, .5);
+  content: '';
 }
 
 // 入力フォームタイトル幅
@@ -217,10 +227,31 @@ footer {
   height: auto;
   position: absolute;
   top: 50%;
-  left: 80%;
+  left: 85%;
   -ms-transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   margin:0;/*余計な隙間を除く*/
   padding:0;/*余計な隙間を除く*/
   }
+  
+// サイト紹介画面のタイトル
+.about-image .title {
+  width: 500px;
+  height: auto;
+  position: absolute;
+  top: 20%;
+  left: 19%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;/*余計な隙間を除く*/
+  padding:0;/*余計な隙間を除く*/
+  }  
+  
+// サイト紹介画面のテキスト
+.about-text {
+  font-size: 23px;
+  font-weight: 900;
+  margin-top: 179px;
+}

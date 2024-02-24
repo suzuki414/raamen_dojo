@@ -1,25 +1,27 @@
 <% members.each do |member| %>
   <% unless member.guest_member? || member == current_member %>
     <%= link_to member_path(member) do %>
-      <div class="card text-center w-100 my-3 mx-3 shadow bg-body rounded">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-xl-4">
-              <%= image_tag(member.get_profile_image(100, 100), class: "img-fluid rounded-circle border border-warning") %>
-            </div>
-            <div class="col-xl-8">
-              <div class="row">
-                <div class="col-xl-12 text-left">
-                  <p><b><%= member.nickname %></b></p>
-                </div>
+      <div class="col-xl-12 my-3">
+        <div class="card w-100 shadow bg-body rounded">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-xl-4">
+                <%= image_tag(member.get_profile_image(100, 100), class: "img-fluid rounded-circle border border-warning") %>
               </div>
-              <div class="row">
-                <div class="col-xl-12 text-left">
-                  <p>
-                    投稿数&nbsp;&#0058;&nbsp;<%= member.ramen_noodles.count %>&nbsp;<br>
-                    フォロー数&nbsp;&#0058;&nbsp;<%= member.followings.count %>&nbsp;<br>
-                    フォロワー数&nbsp;&#0058;&nbsp;<%= member.followers.count %>&nbsp;
-                  </p>
+              <div class="col-xl-8">
+                <div class="row">
+                  <div class="col-xl-12 text-left">
+                    <p><b><%= member.nickname %></b></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xl-12 text-left">
+                    <p>
+                      投稿数&nbsp;&#0058;&nbsp;<%= member.ramen_noodles.count %>&nbsp;<br>
+                      フォロー数&nbsp;&#0058;&nbsp;<%= member.followings.count %>&nbsp;<br>
+                      フォロワー数&nbsp;&#0058;&nbsp;<%= member.followers.count %>&nbsp;
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
