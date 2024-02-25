@@ -104,7 +104,7 @@
             <div class="col-xl-1"></div>
             <div class="col-xl-10">
               <div class="bg-warning rounded-pill p-2 mb-4 shadow bg-body-tertiary rounded text-center"><strong>説明</strong></div>
-              <%= @ramen_noodle.description %>
+              <%= simple_format @ramen_noodle.description %>
             </div>
             <div class="col-xl-1"></div>
           </div>
@@ -112,7 +112,7 @@
             <div class="col-xl-1"></div>
             <div class="col-xl-10">
               <div class="bg-warning rounded-pill p-2 mb-4 shadow bg-body-tertiary rounded text-center"><strong>レシピ</strong></div>
-              <%= @ramen_noodle.recipe %>
+              <%= simple_format @ramen_noodle.recipe %>
             </div>
             <div class="col-xl-1"></div>
           </div>

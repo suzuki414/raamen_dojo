@@ -1,5 +1,5 @@
 <header class="shadow-sm border-bottom sticky-top bg-white">
-  <nav class="navbar navbar-expand-xl navbar-light">
+  <nav class="navbar navbar-expand-xl navbar-light" style="justify-content: space-between;">
     <a class="navbar-brand float-left" href="/">
       <%= image_tag("らぁめん道場ロゴ.svg", class: "logo img-fluid ml-3") %>
     </a>
@@ -12,51 +12,65 @@
                   aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto">
+    <div>
+      <div class="collapse navbar-collapse mb-2" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto justify-content-end my-3">
+          <% if member_signed_in? %>
+            <li class="nav-item mx-2 my-2">
+              <%= link_to '会員一覧', members_path, class: 'bn47' %>
+            </li>
+            <li class="nav-item mx-2 my-2">
+              <%= link_to '投稿一覧', ramen_noodles_path, class: 'bn47' %>
+            </li>
+            <li class="nav-item mx-2 my-2">
+              <%= link_to "新規投稿", new_ramen_noodle_path, class: 'bn47' %>
+            </li>
+            <li class="nav-item mx-2 my-2">
+              <%= link_to "マイページ", my_page_path, class: 'bn47' %>
+            </li>
+            <li class="nav-item mx-2 my-2">
+              <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: 'bn47' %>
+            </li>
+          <% else %>
+            <li class="nav-item mx-2 my-2">
+              <%= link_to "サイト紹介", about_path, class: 'bn47' %>
+            </li>
+            <li class="nav-item mx-2 my-2">
+              <%= link_to "ゲスト会員", members_guest_sign_in_path, method: :post, class: 'bn47' %>
+            </li>
+            <li class="nav-item mx-2 my-2">
+              <%= link_to '新規会員登録', new_member_registration_path, class: 'bn47' %>
+            </li>
+            <li class="nav-item mx-2 my-2">
+              <%= link_to 'ログイン', new_member_session_path, class: 'bn47' %>
+            </li>
+            <li class="nav-item mx-2 my-2">
+              <%= link_to "会員一覧", members_path, class: 'bn47' %>
+            </li>
+            <li class="nav-item mx-2 my-2">
+              <%= link_to "投稿一覧", ramen_noodles_path, class: 'bn47' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div>
         <%= form_with url: "/search", method: :get, local: true do |f| %>
-          <%= f.text_field :content, placeholder: "検索ワードを入力してください", style: "width: 280px; height: 40px", class: "form-control shadow bg-body rounded" %>
-          <%= f.select :model, options_for_select({"会員" => "member", "投稿" => "ramen_noodle", "タグ" => "tag"}), {}, { class: "form-control" } %>
-          <%= f.select :method, options_for_select({"完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}), {}, { class: "form-control" } %>
-          <%= f.submit "検索", class: "btn btn-outline-warning shadow bg-body rounded ml-1" %>
+          <ul class="navbar-nav ml-auto justify-content-end my-3">
+            <li>
+              <%= f.text_field :content, placeholder: "検索ワードを入力してください", style: "width: 280px; height: 40px", class: "form-control shadow bg-body rounded" %>
+            </li>
+            <li>
+              <%= f.select :model, options_for_select({"会員" => "member", "投稿" => "ramen_noodle", "タグ" => "tag"}), {}, { class: "form-control shadow bg-body rounded ml-1", style: "width: 78px; height: 40px" } %>
+            </li>
+            <li>
+              <%= f.select :method, options_for_select({"完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}), {}, { class: "form-control shadow bg-body rounded ml-1", style: "width: 110px; height: 40px" } %>
+            </li>
+            <li>
+              <%= f.submit "検索", class: "btn btn-outline-warning shadow bg-body rounded ml-1" %>
+            </li>
+          </ul>
         <% end %>
-        <% if member_signed_in? %>
-          <li class="nav-item mx-2 my-2">
-            <%= link_to '会員一覧', members_path, class: 'bn47' %>
-          </li>
-          <li class="nav-item mx-2 my-2">
-            <%= link_to '投稿一覧', ramen_noodles_path, class: 'bn47' %>
-          </li>
-          <li class="nav-item mx-2 my-2">
-            <%= link_to "新規投稿", new_ramen_noodle_path, class: 'bn47' %>
-          </li>
-          <li class="nav-item mx-2 my-2">
-            <%= link_to "マイページ", my_page_path, class: 'bn47' %>
-          </li>
-          <li class="nav-item mx-2 my-2">
-            <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: 'bn47' %>
-          </li>
-        <% else %>
-          <li class="nav-item mx-2 my-2">
-            <%= link_to "サイト紹介", about_path, class: 'bn47' %>
-          </li>
-          <li class="nav-item mx-2 my-2">
-            <%= link_to "ゲスト会員", members_guest_sign_in_path, method: :post, class: 'bn47' %>
-          </li>
-          <li class="nav-item mx-2 my-2">
-            <%= link_to '新規会員登録', new_member_registration_path, class: 'bn47' %>
-          </li>
-          <li class="nav-item mx-2 my-2">
-            <%= link_to 'ログイン', new_member_session_path, class: 'bn47' %>
-          </li>
-          <li class="nav-item mx-2 my-2">
-            <%= link_to "会員一覧", members_path, class: 'bn47' %>
-          </li>
-          <li class="nav-item mx-2 my-2">
-            <%= link_to "投稿一覧", ramen_noodles_path, class: 'bn47' %>
-          </li>
-        <% end %>
-      </ul>
+      </div>
     </div>
   </nav>
 </header>
