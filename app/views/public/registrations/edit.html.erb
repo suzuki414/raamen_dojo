@@ -4,7 +4,7 @@
     <div class="col-xl-12">
       <div class="card-border card w-100 px-5 my-5 shadow bg-body rounded">
         <div class="card-body mt-3">
-          <%= form_with model: @member, url: member_registration_path do |f| %>
+          <%= form_with model: @member, url: member_registration_path, method: :patch do |f| %>
             <%= render "public/shared/error_messages", resource: resource %>
             <table class="table table-borderless">
               <tr>
@@ -52,8 +52,8 @@
                 <th></th>
                 <td>
                   <%= f.submit "編集内容を保存", class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 175px;" %>
-                  <%= link_to "退会", unsubscribe_path, class: "btn btn-outline-danger btn-lg mx-4 shadow bg-body rounded", style: "width: 175px;" %>
-                  <%= link_to "キャンセル", :back, class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 175px;" %>
+                  <%= link_to "キャンセル", :back, class: "btn btn-outline-warning btn-lg mx-4 shadow bg-body rounded", style: "width: 175px;" %>
+                  <%= link_to "退会", unsubscribe_path, class: "btn btn-outline-danger btn-lg shadow bg-body rounded", style: "width: 175px;" %>
                 </td>
               </tr>
             </table>

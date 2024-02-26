@@ -1,6 +1,7 @@
 module Public
   class MembersController < ApplicationController
     before_action :authenticate_member!, only: [:my_page, :edit, :update, :withdraw, :complete, :unsubscribe]
+    before_action :configure_permitted_parameters, if: :devise_controller?
     before_action :ensure_guest_member, only: [:edit, :update, :withdraw, :complete, :unsubscribe]
 
     def index
@@ -46,13 +47,17 @@ module Public
     end
 
     private
+    
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:account_update, keys: [:name, :nickname, :comment])
+    end
 
     def member_params
       params.require(:member).permit(:profile_image, :name, :nickname, :comment, :is_active)
     end
 
     def ensure_guest_member
-      @member = Member.find(params[:id])
+      @member = Member.find(current_member.id)
       if @member.guest_member?
         redirect_to request.referer, notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
       end

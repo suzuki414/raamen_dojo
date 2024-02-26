@@ -5,9 +5,9 @@
       <div class="card-border card text-center w-100 my-5 shadow bg-body rounded">
         <div class="card-body my-4">
           <%= image_tag("退会確認画面注意マーク.svg", class: "img-fluid mb-4", style: 'width: 80px; height: auto;') %>
-          <h3 class="card-title">
+          <h2 class="card-title">
             <strong>本当に退会しますか？</strong>
-          </h3>
+          </h2>
           <p class="card-text">
             退会すると、下記機能の情報が削除され、ご利用できなくなります。<br>
             ※退会後でも他会員の投稿は閲覧できます
@@ -21,7 +21,7 @@
             </strong>
           </p>
           <p class="card-text">
-            <strong>この操作は、取り消せません</strong>
+            <h5><strong style="color: red;">※この操作は、取り消せません</strong></h5>
           </p>
             <%= link_to "退会しない", my_page_path, class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 150px;" %>
             <%= link_to "退会する", withdraw_path, method: :patch, class: "btn btn-outline-danger btn-lg shadow bg-body rounded", style: "width: 150px;", data: { confirm: "本当に退会しますか?" } %>
