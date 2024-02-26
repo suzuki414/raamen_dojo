@@ -37,7 +37,11 @@ class RamenNoodle < ApplicationRecord
   end
 
   def favorited_by?(member)
-    favorites.exists?(member_id: member.id)
+    if member
+      favorites.exists?(member_id: member.id)
+    else
+      false
+    end
   end
 
   def self.search_for(content, method)
@@ -59,8 +63,8 @@ class RamenNoodle < ApplicationRecord
   scope :favorite_count, -> {order(favorite: :desc, created_at: :desc)}
 
   # いいね数を取得し、降順に並べ替える(いいね数が0も含める)
-  def self.order_by_favorite_count
-    left_joins(:favorites).group(:id).order('COUNT(favorites.id) DESC')
+  def self.order_by_favorite_count_and_latest
+    left_joins(:favorites).group(:id).order('COUNT(favorites.id) DESC, created_at DESC')
   end
 
   private

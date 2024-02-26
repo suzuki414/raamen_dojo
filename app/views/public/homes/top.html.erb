@@ -64,29 +64,41 @@
     <div class="col-xl-9 mx-auto shadow p-3 bg-body rounded">
       <div class="swiper ranking">
         <div class="swiper-wrapper">
-          <% @top_ramen_noodles.each do |ramen_noodle| %>
+          <% @top_ramen_noodles.each.with_index(1) do |ramen_noodle, index| %>
             <div class="swiper-slide">
               <%= link_to ramen_noodle_path(ramen_noodle) do %>
+                <span class="<%= index > 3 ? 'text-white' : "text-black" %>" style="position: absolute; font-size: 23px; top: 53px; left: 44px; z-index: 9999;"><b><%= index %>位</b></span>
+                <% case index %>
+                <% when 1 %>
+                  <% color = "#ffc800" %>
+                <% when 2 %>
+                  <% color = "#bababa" %>
+                <% when 3 %>
+                  <% color = "#ae4c4c" %>
+                <% else %>
+                  <% color = "#ff0000" %>
+                <% end %>
+                <i class="fa-solid fa-crown fa-beat fa-5x" style="position: absolute; top: 15px; left: 18px; z-index: 9998; color: <%= color %>;"></i>
                 <%= image_tag(ramen_noodle.post_image, class: 'img-fluid d-block mx-auto', style: 'width: 100%; height: auto; object-fit: cover;') %>
-                  <div class="row">
-                    <div class="col-xl-6 mt-3 mb-4">
-                      <div id="average_rating_ranking">
-                        <span id="average_rating_ranking_<%= ramen_noodle.id %>"></span>
-                        <b><%= ramen_noodle.average_rating.floor(1) %></b>
-                      </div>
-                      <li class="title my-3">
-                        <h5>&#149;<b><%= ramen_noodle.title %></b></h5>
-                      </li>
-                      <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<b><%= ramen_noodle.favorites.count %></b>
-                      <i class="fa-regular fa-comment fa-xl ml-3" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<b><%= ramen_noodle.ramen_noodle_comments.count %></b>
+                <div class="row">
+                  <div class="col-xl-6 mt-3 mb-4">
+                    <div id="average_rating_ranking">
+                      <span id="average_rating_ranking_<%= ramen_noodle.id %>"></span>
+                      <b><%= ramen_noodle.average_rating.floor(1) %></b>
                     </div>
-                    <div class="col-xl-6 mt-5 pr-5">
-                      <div class="profile text-right mt-4">
-                        <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle border border-warning mr-2 border-warning") %>
-                        <b><%= ramen_noodle.member.nickname %></b>
-                      </div>
+                    <li class="title my-3">
+                      <h5>&#149;<b><%= ramen_noodle.title %></b></h5>
+                    </li>
+                    <i class="fa-solid fa-thumbs-up fa-xl" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<b><%= ramen_noodle.favorites.count %></b>
+                    <i class="fa-regular fa-comment fa-xl ml-3" style="color: #ff0000;"></i>&nbsp;&#058;&nbsp;<b><%= ramen_noodle.ramen_noodle_comments.count %></b>
+                  </div>
+                  <div class="col-xl-6 mt-5 pr-5">
+                    <div class="profile text-right mt-4">
+                      <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle border border-warning mr-2 border-warning") %>
+                      <b><%= ramen_noodle.member.nickname %></b>
                     </div>
                   </div>
+                </div>
               <% end %>
             </div>
           <% end %>

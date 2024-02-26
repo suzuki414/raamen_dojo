@@ -36,7 +36,7 @@ module Public
           elsif params[:average_rating_count]
             @ramen_noodles = @ramen_noodles.average_rating_count
           elsif params[:favorite_count]
-            @ramen_noodles = @ramen_noodles.order_by_favorite_count
+            @ramen_noodles = @ramen_noodles.order_by_favorite_count_and_latest
           else
             @ramen_noodles = @ramen_noodles.latest
           end

@@ -74,12 +74,12 @@ class Member < ApplicationRecord
 
   # フォロワー数を取得し、降順に並べ替える(フォロワー数が0も含める)
   def self.order_by_followed_count
-    left_joins(:followers).group(:id).order('COUNT(followed_id) DESC')
+    left_joins(:followers).group(:id).order('COUNT(followed_id) DESC, created_at DESC')
   end
 
   # 投稿数を取得し、降順に並べ替える(投稿数が0も含める)
   def self.order_by_ramen_noodle_count
-    left_joins(:ramen_noodles).group(:id).order('COUNT(ramen_noodles.id) DESC')
+    left_joins(:ramen_noodles).group(:id).order('COUNT(ramen_noodles.id) DESC, created_at DESC')
   end
 
   # プロフィール画像を指定した幅と高さにリサイズして返すためのメソッドです。
