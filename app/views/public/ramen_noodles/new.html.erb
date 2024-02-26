@@ -14,7 +14,7 @@
                   </tr>
                   <tr>
                     <th><%= f.label "タイトル", class: "bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center", style: "width: 170px;" %></th>
-                    <td><%= f.text_field :title, autofocus: true, placeholder: "タイトル", class: "form-control mt-1 shadow bg-body rounded" %></td>
+                    <td><%= f.text_field :title, autofocus: true, placeholder: "タイトル(1~25文字以内)", class: "form-control mt-1 shadow bg-body rounded" %></td>
                   </tr>
                   <tr>
                     <th><%= f.label "タグ", class: "bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center", style: "width: 170px;" %></th>
@@ -22,11 +22,11 @@
                   </tr>
                   <tr>
                     <th><%= f.label "説明", class: "bg-warning rounded-pill p-2 my-5 shadow bg-body-tertiary text-center", style: "width: 170px;" %></th>
-                    <td><%= f.text_area :description, rows: '5', placeholder: "ここに説明文を入力してください", class: "form-control mt-1 shadow bg-body rounded" %></td>
+                    <td><%= f.text_area :description, rows: '5', placeholder: "ここに説明文を入力してください(1~400文字以内)", class: "form-control mt-1 shadow bg-body rounded" %></td>
                   </tr>
                   <tr>
                     <th><%= f.label "レシピ", class: "bg-warning rounded-pill p-2 my-5 shadow bg-body-tertiary text-center", style: "width: 170px;" %></th>
-                    <td><%= f.text_area :recipe, rows: '5', placeholder: "ここにレシピを入力してください", class: "form-control mt-1 shadow bg-body rounded" %></td>
+                    <td><%= f.text_area :recipe, rows: '5', placeholder: "ここにレシピを入力してください(1~800文字以内)", class: "form-control mt-1 shadow bg-body rounded" %></td>
                   </tr>
                 </table>
               </div>

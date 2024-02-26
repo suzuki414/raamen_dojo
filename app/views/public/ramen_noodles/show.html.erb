@@ -122,8 +122,14 @@
               <div class="bg-warning rounded-pill p-2 mb-4 shadow bg-body-tertiary rounded text-center"><strong>コメント</strong></div>
               <%= form_with model: [@ramen_noodle, @ramen_noodle_comment], local: false do |f| %>
                 <div class="form-group d-flex mb-5 mx-4">
-                  <%= f.text_field :comment, rows: '5', placeholder: "コメントをここに入力してください", class: "form-control shadow bg-body rounded", id: "comment_textarea" %>
-                  <%= f.submit "コメント投稿", class: "btn btn-outline-warning shadow bg-body rounded ml-2" %>
+                  <%= f.text_field :comment, rows: '5', placeholder: "コメントをここに入力してください(1~50文字以内)", class: "form-control shadow bg-body rounded", id: "comment_textarea" %>
+                  <% if member_signed_in? %>
+                    <%= f.submit "コメント投稿", class: "btn btn-outline-warning shadow bg-body rounded ml-2" %>
+                  <% else %>
+                    <%= link_to new_member_registration_path do %>
+                      <%= f.submit "コメント投稿", class: "btn btn-outline-warning shadow bg-body rounded ml-2" %>
+                    <% end %>
+                  <% end %>  
                 </div>
               <% end %>
               <div id="comment_index">

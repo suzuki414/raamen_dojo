@@ -8,16 +8,16 @@
             <div class="col-xl-12 mb-3">
               <ul class="nav nav-tabs">
                 <li class="nav-sort">
-                  <a class="nav-link <%= 'active' unless params[:old] || params[:average_rating_count] || params[:favorite_count] %>" aria-current="page" href="<%= ramen_noodles_path %>">新しい順</a>
+                  <a class="nav-link <%= 'active' unless params[:old] || params[:average_rating_count] || params[:favorite_count] %>" aria-current="page" href="<%= ramen_noodles_path(params.permit(@permitted_params)) %>">新しい順</a>
                 </li>
                 <li class="nav-sort">
-                  <a class="nav-link <%= 'active' if params[:old] %>" aria-current="page" href="<%= ramen_noodles_path(old: "true") %>">古い順</a>
+                  <a class="nav-link <%= 'active' if params[:old] %>" aria-current="page" href="<%= ramen_noodles_path(params.permit(@permitted_params).merge(old: "true")) %>">古い順</a>
                 </li>
                 <li class="nav-sort">
-                  <a class="nav-link <%= 'active' if params[:average_rating_count] %>" aria-current="page" href="<%= ramen_noodles_path(average_rating_count: "true") %>">評価の高い順</a>
+                  <a class="nav-link <%= 'active' if params[:average_rating_count] %>" aria-current="page" href="<%= ramen_noodles_path(params.permit(@permitted_params).merge(average_rating_count: "true")) %>">評価の高い順</a>
                 </li>
                 <li class="nav-sort">
-                  <a class="nav-link <%= 'active' if params[:favorite_count] %>" aria-current="page" href="<%= ramen_noodles_path(favorite_count: "true") %>">いいねが多い順</a>
+                  <a class="nav-link <%= 'active' if params[:favorite_count] %>" aria-current="page" href="<%= ramen_noodles_path(params.permit(@permitted_params).merge(favorite_count: "true")) %>">いいねが多い順</a>
                 </li>
               </ul>
             </div>

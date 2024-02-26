@@ -19,8 +19,8 @@
                 <th></th>
                 <td>
                   <% if devise_mapping.rememberable? %>
-                        <%= f.check_box :remember_me %>
-                        <%= f.label "会員情報を保存" %><br>
+                    <%= f.check_box :remember_me %>
+                    <%= f.label "会員情報を保存" %><br>
                   <% end %>
                   <%= f.submit "ログイン", class: 'btn btn-outline-warning btn-lg shadow bg-body rounded', style: "width: 130px;" %>
                 </td>

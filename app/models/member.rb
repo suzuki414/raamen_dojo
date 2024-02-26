@@ -35,8 +35,8 @@ class Member < ApplicationRecord
   has_one_attached :profile_image
 
   validates :name, presence: true
-  validates :nickname, presence: true
-  validates :comment, presence: true
+  validates :nickname, presence: true, length: { in: 1..10 }
+  validates :comment, presence: true, length: { in: 1..20 }
 
   # 指定したユーザーをフォローする
   def follow(member)

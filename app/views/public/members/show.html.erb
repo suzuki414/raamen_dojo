@@ -11,36 +11,32 @@
             <div class="col-xl-8 mt-5">
               <table class="table table-borderless mt-5">
                 <tr>
-                  <th><label class="form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center">サイト表示名</label></th>
+                  <th><label class="form-title bg-warning rounded-pill p-2 ml-3 shadow bg-body-tertiary text-center">サイト表示名</label></th>
                   <td class="text-center pt-4"><b><%= @member.nickname %></b></td>
                 </tr>
                 <tr>
-                  <th><label class="form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center">ひとこと</label></th>
+                  <th><label class="form-title bg-warning rounded-pill p-2 ml-3 shadow bg-body-tertiary text-center">ひとこと</label></th>
                   <td class="text-center pt-4"><b><%= @member.comment %></b></td>
                 </tr>
               </table>
               <div class="row mt-5">
-                <div class="col-xl-4"></div>
-                <div class="col-xl-4">
+                <div class="col-xl-5 text-right">
                   <% if current_member && current_member != @member %>
                     <div id="follow-ajax">
                       <%= render "public/relationships/follow", member: @member %>
                     </div>
                   <% end %>
                 </div>
-                <div class="col-xl-4"></div>
+                <div class="col-xl-5"></div>
+                <div class="col-xl-2"></div>
               </div>
             </div>
           </div>
           <div class="row mb-4 text-center">
-            <div class="col-xl-4">
-              <%= link_to "投稿一覧", ramen_noodles_path(member_ramen_noodle: "true", id: @member.id), class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 200px;" %>
-            </div>
-            <div class="col-xl-4">
-              <%= link_to "いいねした投稿", ramen_noodles_path(member_ramen_noodle_favorite: "true", id: @member.id), class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 200px;" %>
-            </div>
-            <div class="col-xl-4" id="follow">
-              <%= render "public/relationships/btn", member: @member %>
+            <div class="col-xl-12 ml-5">
+              <%= link_to '投稿一覧 (' + @member.ramen_noodles.count.to_s + ')', ramen_noodles_path(member_ramen_noodle: "true", member_id: @member.id), class: "btn btn-outline-warning btn-lg mr-4 shadow bg-body rounded", style: "width: 200px;" %>
+              <%= link_to 'いいねした投稿', ramen_noodles_path(member_ramen_noodle_favorite: "true", member_id: @member.id), class: "btn btn-outline-warning btn-lg mr-4 shadow bg-body rounded", style: "width: 200px;" %>
+              <%= render "public/relationships/btn", member: @member, id: "follow" %>
             </div>
           </div>
         </div>

@@ -8,9 +8,9 @@ class RamenNoodle < ApplicationRecord
   has_one_attached :post_image
 
   validate :post_image_attached
-  validates :title, presence: true
-  validates :description, presence: true
-  validates :recipe, presence: true
+  validates :title, presence: true, length: { in: 1..25 }
+  validates :description, presence: true, length: { in: 1..400}
+  validates :recipe, presence: true, length: { in: 1..800}
   validates :taste_rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
   validates :cook_time_rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
   validates :process_rating, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }

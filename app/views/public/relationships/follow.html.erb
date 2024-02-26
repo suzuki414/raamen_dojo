@@ -24,7 +24,7 @@
                     <div class="card w-100 shadow bg-body rounded">
                       <div class="card-body">
                         <div class="row">
-                          <div class="col-xl-4">
+                          <div class="col-xl-4 pt-2">
                             <%= image_tag(member.get_profile_image(100, 100), class: "img-fluid rounded-circle border border-warning") %>
                           </div>
                           <div class="col-xl-8">
@@ -35,8 +35,8 @@
                             </div>
                             <div class="row">
                               <div class="col-xl-12 text-left">
-                                投稿数&nbsp;&#0058;&nbsp;<%= member.ramen_noodles.count %>&nbsp;
-                                フォロー数&nbsp;&#0058;&nbsp;<%= member.followings.count %>&nbsp;
+                                投稿数&nbsp;&#0058;&nbsp;<%= member.ramen_noodles.count %>&nbsp;<br>
+                                フォロー数&nbsp;&#0058;&nbsp;<%= member.followings.count %>&nbsp;<br>
                                 フォロワー数&nbsp;&#0058;&nbsp;<%= member.followers.count %>&nbsp;
                               </div>
                             </div>

@@ -17,6 +17,7 @@ module Public
         tag_ramen_noodle_ids = RamenNoodleTag.where(tag_id: tag_ids).pluck(:ramen_noodle_id)
         @ramen_noodles = RamenNoodle.where(id: tag_ramen_noodle_ids).order(created_at: :desc).page(params[:page]).per(10)
       end
+      pp @members
     end
   end
 end

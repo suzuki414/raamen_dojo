@@ -1,15 +1,18 @@
-<% if ramen_noodle.favorited_by?(current_member) %>
-  <p>
-    <%= link_to ramen_noodle_favorite_path(ramen_noodle), method: :delete, remote: true do %>
-      <i class="fa-solid fa-thumbs-up fa-2xl" style="color: #ff0000;"></i>
-    <% end %>
-    &nbsp;&#058;&nbsp;<%= ramen_noodle.favorites.count %>
-  </p>
+<p>
+  <% if ramen_noodle.favorited_by?(current_member) %>
+      <%= link_to ramen_noodle_favorite_path(ramen_noodle), method: :delete, remote: true do %>
+        <i class="fa-solid fa-thumbs-up fa-2xl" style="color: #ff0000;"></i>
+      <% end %>
   <% else %>
-  <p>
-    <%= link_to ramen_noodle_favorite_path(ramen_noodle_id: ramen_noodle.id), method: :post, remote: true do %>
-      <i class="fa-regular fa-thumbs-up fa-2xl" style="color: #ff0000;"></i>
-    <% end %>
-    &nbsp;&#058;&nbsp;<%= ramen_noodle.favorites.count %>
-  </p>
-<% end %>
+      <% if member_signed_in? %>
+        <%= link_to ramen_noodle_favorite_path(ramen_noodle_id: ramen_noodle.id), method: :post, remote: true do %>
+          <i class="fa-regular fa-thumbs-up fa-2xl" style="color: #ff0000;"></i>
+        <% end %>
+      <% else %>
+        <%= link_to new_member_registration_path do %>
+          <i class="fa-regular fa-thumbs-up fa-2xl" style="color: #ff0000;"></i>
+        <% end %>
+      <% end %>  
+  <% end %>
+  &nbsp;&#058;&nbsp;<%= ramen_noodle.favorites.count %>
+</p>
