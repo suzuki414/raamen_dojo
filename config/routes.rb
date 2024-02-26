@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     patch "members/withdraw" => "members#withdraw", as: "withdraw"
     get "members/complete" => "members#complete", as: "complete"
     get "/search" => "searches#search", as: "search"
-    resources :members, only: [:index, :show, :edit, :update] do
+    resources :members, only: [:index, :show, :edit] do
       resource :relationships, only: [:create, :destroy]
         get "follow" => "relationships#follow", as: "follow"
     end

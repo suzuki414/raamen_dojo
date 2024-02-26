@@ -1,8 +1,7 @@
 module Public
   class MembersController < ApplicationController
-    before_action :authenticate_member!, only: [:my_page, :edit, :update, :withdraw, :complete, :unsubscribe]
-    before_action :configure_permitted_parameters, if: :devise_controller?
-    before_action :ensure_guest_member, only: [:edit, :update, :withdraw, :complete, :unsubscribe]
+    before_action :authenticate_member!, only: [:my_page, :edit, :withdraw, :complete, :unsubscribe]
+    before_action :ensure_guest_member, only: [:edit, :withdraw, :complete, :unsubscribe]
 
     def index
       if params[:old]
@@ -28,16 +27,6 @@ module Public
       @member = current_member
     end
 
-    def update
-      @member = current_member
-      if @member.update(member_params)
-        flash[:success] = "会員情報を変更しました。"
-        redirect_to my_page_path
-      else
-        render 'edit'
-      end
-    end
-
     def withdraw
       @member = Member.find(current_member.id)
       @member.update(is_active: false)
@@ -47,14 +36,6 @@ module Public
     end
 
     private
-    
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:account_update, keys: [:name, :nickname, :comment])
-    end
-
-    def member_params
-      params.require(:member).permit(:profile_image, :name, :nickname, :comment, :is_active)
-    end
 
     def ensure_guest_member
       @member = Member.find(current_member.id)
