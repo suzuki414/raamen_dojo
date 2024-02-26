@@ -19,33 +19,33 @@
           <div class="row">
             <% if @members.present? %>
               <% @members.each do |member| %>
-                <%= link_to member_path(member) do %>
-                  <div class="card text-center w-100 my-3 mx-3 shadow bg-body rounded">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-xl-4">
-                          <%= image_tag(member.get_profile_image(100, 100), class: "rounded-circle border border-warning") %>
-                        </div>
-                        <div class="col-xl-8">
-                          <div class="row">
-                            <div class="col-xl-12">
-                              <p><%= member.nickname %></p>
-                            </div>
+                <div class="col-4 my-3">
+                  <%= link_to member_path(member) do %>
+                    <div class="card w-100 shadow bg-body rounded">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-xl-4">
+                            <%= image_tag(member.get_profile_image(100, 100), class: "img-fluid rounded-circle border border-warning") %>
                           </div>
-                          <div class="row">
-                            <div class="col-xl-12">
-                              <p>
+                          <div class="col-xl-8">
+                            <div class="row">
+                              <div class="col-xl-12 text-left">
+                                <b><%= member.nickname %></b>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-xl-12 text-left">
                                 投稿数&nbsp;&#0058;&nbsp;<%= member.ramen_noodles.count %>&nbsp;
                                 フォロー数&nbsp;&#0058;&nbsp;<%= member.followings.count %>&nbsp;
                                 フォロワー数&nbsp;&#0058;&nbsp;<%= member.followers.count %>&nbsp;
-                              </p>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                <% end %>
+                  <% end %>
+                </div>  
               <% end %>
             <% else %>
               <div class="col-xl-12 my-5 text-center">

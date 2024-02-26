@@ -1,31 +1,37 @@
-<% members.each do |member| %>
-  <% unless member.guest_member? || member == current_member %>
-    <div class="col-4 my-3">
-      <%= link_to member_path(member) do %>
-        <div class="card w-100 shadow bg-body rounded">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-xl-4 pt-2">
-                <%= image_tag(member.get_profile_image(100, 100), class: "img-fluid rounded-circle border border-warning") %>
-              </div>
-              <div class="col-xl-8">
-                <div class="row">
-                  <div class="col-xl-12 text-left">
-                    <b><%= member.nickname %></b>
-                  </div>
+<% if members.present? %>
+  <% members.each do |member| %>
+    <% unless member.guest_member? || member == current_member %>
+      <div class="col-4 my-3">
+        <%= link_to member_path(member) do %>
+          <div class="card w-100 shadow bg-body rounded">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-xl-4">
+                  <%= image_tag(member.get_profile_image(100, 100), class: "img-fluid rounded-circle border border-warning") %>
                 </div>
-                <div class="row">
-                  <div class="col-xl-12 text-left">
-                    投稿数&nbsp;&#0058;&nbsp;<%= member.ramen_noodles.count %>&nbsp;<br>
-                    フォロー数&nbsp;&#0058;&nbsp;<%= member.followings.count %>&nbsp;<br>
-                    フォロワー数&nbsp;&#0058;&nbsp;<%= member.followers.count %>&nbsp;
+                <div class="col-xl-8">
+                  <div class="row">
+                    <div class="col-xl-12 text-left">
+                      <b><%= member.nickname %></b>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xl-12 text-left">
+                      投稿数&nbsp;&#0058;&nbsp;<%= member.ramen_noodles.count %>&nbsp;
+                      フォロー数&nbsp;&#0058;&nbsp;<%= member.followings.count %>&nbsp;
+                      フォロワー数&nbsp;&#0058;&nbsp;<%= member.followers.count %>&nbsp;
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+<% else %>
+  <div class="col-xl-12 my-5 text-center">
+    <strong>会員がいません</strong>
+  </div>  
+<% end %>  

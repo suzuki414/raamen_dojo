@@ -58,9 +58,12 @@
               <div class="col-xl-2"></div>
             </div>
             <div class="row mb-5">
-              <div class="col-xl-4"></div>
-              <div class="col-xl-4 text-center"><%= link_to '新規会員登録', new_member_registration_path, class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 200px;" %></div>
-              <div class="col-xl-4"></div>
+              <div class="col-xl-2"></div>
+              <div class="col-xl-8 text-center">
+                <%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: "btn btn-outline-warning btn-lg mb-3 shadow bg-body rounded", style: "width: 200px;" %>
+                <p>※新規会員登録をする場合は、ログアウトをしてください</p>
+              </div>
+              <div class="col-xl-2"></div>
             </div>
           <% end %>
         </div>

@@ -1,5 +1,7 @@
 <% if comments.blank? %>
-  <strong>投稿されたコメントはありません</strong>
+  <div class="text-center">
+    <strong>投稿されたコメントはありません</strong>
+  </div>  
 <% else %>
   <% comments.each do |ramen_noodle_comment| %>
     <div class="card w-100 mt-4 shadow bg-body rounded">

@@ -10,7 +10,7 @@
                 <table class="table table-borderless">
                   <tr>
                     <th><%= f.label "投稿画像", class: "bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center w-170px", style: "width: 170px;" %></th>
-                    <td><%= f.file_field :post_image, accept: "image/*", class: "mt-2" %></td>
+                    <td class="text-left"><%= f.file_field :post_image, accept: "image/*", class: "mt-2" %></td>
                   </tr>
                   <tr>
                     <th><%= f.label "タイトル", class: "bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center", style: "width: 170px;" %></th>

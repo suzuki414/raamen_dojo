@@ -81,6 +81,12 @@ module Public
         render :edit
       end
     end
+    
+    def destroy
+      ramen_noodle = RamenNoodle.find(params[:id])
+      ramen_noodle.destroy
+      redirect_to ramen_noodles_path(mypage_ramen_noodle: "true")
+    end
 
     private
 

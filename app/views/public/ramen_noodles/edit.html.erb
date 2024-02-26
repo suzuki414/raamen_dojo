@@ -76,12 +76,13 @@
               </div>
             </div>
             <div class="row mb-4">
-              <div class="col-xl-3"></div>
-              <div class="col-xl-6 text-left ml-2">
-                <%= f.submit "投稿", class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 175px;" %>
+              <div class="col-xl-2"></div>
+              <div class="col-xl-8 text-left ml-2">
+                <%= f.submit "編集内容を保存", class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 175px;" %>
+                <%= link_to "投稿を削除", ramen_noodle_path(@ramen_noodle), class: "btn btn-outline-warning btn-lg ml-4 shadow bg-body rounded", style: "width: 175px;" %>
                 <%= link_to "キャンセル", ramen_noodle_path(@ramen_noodle), class: "btn btn-outline-warning btn-lg ml-4 shadow bg-body rounded", style: "width: 175px;" %>
               </div>
-              <div class="col-xl-3"></div>
+              <div class="col-xl-2"></div>
             </div>
           <% end %>
         </div>
