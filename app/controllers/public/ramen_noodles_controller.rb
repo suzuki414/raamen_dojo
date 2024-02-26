@@ -81,7 +81,7 @@ module Public
         render :edit
       end
     end
-    
+
     def destroy
       ramen_noodle = RamenNoodle.find(params[:id])
       ramen_noodle.destroy

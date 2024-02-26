@@ -39,10 +39,8 @@
             <div class="col-xl-4">
               <%= link_to "いいねした投稿", ramen_noodles_path(member_ramen_noodle_favorite: "true", id: @member.id), class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 200px;" %>
             </div>
-            <div class="col-xl-4">
-              <%= link_to member_follow_path(@member.id, member_followings: "true"), class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 290px;" do %>
-                フォロー&#40;<%= @member.followings.count %>&#41; / フォロワー&#40;<%= @member.followers.count %>&#41;
-              <% end %>
+            <div class="col-xl-4" id="follow">
+              <%= render "public/relationships/btn", member: @member %>
             </div>
           </div>
         </div>
