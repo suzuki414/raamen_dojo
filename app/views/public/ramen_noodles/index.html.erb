@@ -2,10 +2,10 @@
 <div class="container">
   <div class="row">
     <div class="col-xl-12">
-      <div class="card-border card w-100 mt-4 mb-5 shadow bg-body rounded">
-        <div class="card-body">
+      <div class="card-border card w-100 px-2 mt-4 mb-5 shadow bg-body rounded">
+        <div class="card-body mt-2">
           <div class="row">
-            <div class="col-xl-12 mb-3">
+            <div class="col-xl-12 mb-4">
               <ul class="nav nav-tabs">
                 <li class="nav-sort">
                   <a class="nav-link <%= 'active' unless params[:old] || params[:average_rating_count] || params[:favorite_count] %>" aria-current="page" href="<%= ramen_noodles_path(params.permit(@permitted_params)) %>">新しい順</a>
@@ -25,13 +25,13 @@
           <div class="row">
             <%= render "public/ramen_noodles/index", ramen_noodles: @ramen_noodles %>
           </div>
-          <div class="row">
-            <div class="col-xl-4"></div>
-            <div class="col-xl-4">
-              <%= paginate @ramen_noodles %>
+            <div class="row mt-4">
+              <div class="col-xl-5 mr-2"></div>
+              <div class="col-xl-5 ml-5">
+                <%= paginate @ramen_noodles %>
+              </div>
+              <div class="col-xl-2"></div>
             </div>
-            <div class="col-xl-4"></div>
-          </div>
         </div>
       </div>
     </div>

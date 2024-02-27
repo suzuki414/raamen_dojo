@@ -1,6 +1,6 @@
 <% if members.present? %>
   <% members.each do |member| %>
-    <% unless member.guest_member? || member == current_member %>
+    <% unless member.guest_member? || member == current_member || !member.is_active %>
       <div class="col-4 my-3">
         <%= link_to member_path(member) do %>
           <div class="card w-100 shadow bg-body rounded">
