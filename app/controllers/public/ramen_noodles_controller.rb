@@ -49,7 +49,7 @@ module Public
     def create
       @ramen_noodle = RamenNoodle.new(ramen_noodle_params)
       @ramen_noodle.member_id = current_member.id
-      tag_list = params[:ramen_noodle][:name].split(',')
+      tag_list = params[:ramen_noodle][:name].split(',').uniq
       raty_array = [
         (@ramen_noodle.taste_rating)? @ramen_noodle.taste_rating : 1,
         (@ramen_noodle.cook_time_rating)? @ramen_noodle.cook_time_rating : 1,
@@ -73,7 +73,7 @@ module Public
 
     def update
       @ramen_noodle = RamenNoodle.find(params[:id])
-      tag_list = params[:ramen_noodle][:name].split(',')
+      tag_list = params[:ramen_noodle][:name].split(',').uniq
       if @ramen_noodle.update(ramen_noodle_params)
         @ramen_noodle.save_tags(tag_list)
         flash[:notice] = "編集内容を反映させました。"
