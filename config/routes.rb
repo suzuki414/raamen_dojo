@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     patch "members/information" => "members#update", as: "update_information"
     get "members/unsubscribe" => "members#unsubscribe", as: "unsubscribe"
     patch "members/withdraw" => "members#withdraw", as: "withdraw"
+    get "members/account_closed" => "members#account_closed", as: "account_closed"
     get "members/complete" => "members#complete", as: "complete"
     get "/search" => "searches#search", as: "search"
     resources :members, only: [:index, :show, :edit] do
