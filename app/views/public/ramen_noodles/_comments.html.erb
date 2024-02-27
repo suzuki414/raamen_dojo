@@ -13,7 +13,7 @@
           <div class="col-xl-4"></div>
           <div class="col-xl-4 mt-1 text-right">
             <% if ramen_noodle_comment.member == current_member %>
-              <%= link_to "コメント削除", ramen_noodle_ramen_noodle_comment_path(ramen_noodle_comment.ramen_noodle, ramen_noodle_comment), class: "btn btn-outline-warning shadow bg-body rounded", data: { confirm: "本当に削除しますか？" }, method: :delete, remote: true %>
+              <%= link_to "コメント削除", ramen_noodle_ramen_noodle_comment_path(ramen_noodle_comment.ramen_noodle, ramen_noodle_comment), class: "btn btn-outline-danger shadow bg-body rounded", data: { confirm: "本当に削除しますか？" }, method: :delete, remote: true %>
             <% end %>
           </div>
         </div>
