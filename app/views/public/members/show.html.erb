@@ -33,10 +33,15 @@
             </div>
           </div>
           <div class="row mb-4 text-center">
-            <div class="col-xl-12 ml-5">
-              <%= link_to '投稿一覧 (' + @member.ramen_noodles.count.to_s + ')', ramen_noodles_path(member_ramen_noodle: "true", member_id: @member.id), class: "btn btn-outline-warning btn-lg mr-4 shadow bg-body rounded", style: "width: 200px;" %>
-              <%= link_to 'いいねした投稿', ramen_noodles_path(member_ramen_noodle_favorite: "true", member_id: @member.id), class: "btn btn-outline-warning btn-lg mr-4 shadow bg-body rounded", style: "width: 200px;" %>
-              <%= render "public/relationships/btn", member: @member, id: "follow" %>
+            <div class="col-xl-4">
+              <%= link_to '投稿一覧 (' + @member.ramen_noodles.count.to_s + ')', ramen_noodles_path(member_ramen_noodle: "true", member_id: @member.id), class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 200px;" %>
+            </div>
+            <div class="col-xl-4">
+              <%= link_to 'いいねした投稿', ramen_noodles_path(member_ramen_noodle_favorite: "true", member_id: @member.id), class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 200px;" %>
+            </div>
+            <div class="col-xl-4" id="follow">
+              <%= render "public/relationships/btn", member: @member %>
+            </div>
             </div>
           </div>
         </div>

@@ -1,3 +1,3 @@
-<%= link_to member_follow_path(member.id, member_followings: "true"), class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 290px;" do %>
+<%= link_to member_follow_path(member.id, member_followings: "true"), class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 300px;" do %>
   フォロー&nbsp;&#40;<%= member.followings.count %>&#41;&nbsp;/&nbsp;フォロワー&nbsp;&#40;<%= member.followers.count %>&#41;
 <% end %>
