@@ -1,9 +1,19 @@
 module Public
   class RamenNoodlesController < ApplicationController
     before_action :authenticate_member!, only: [:new, :edit, :create, :update]
+    skip_before_action :verify_authenticity_token, only: [:get_tag]
 
     def new
       @ramen_noodle = RamenNoodle.new
+      # tags = Vision.get_image_data(ramen_noodle_params[:image])
+      # tags.each do |tag|
+      #   @list.tags.create(name: tag)
+      # end
+    end
+
+    def get_tag
+      @tags = Vision.get_image_data(params[:uploadfile])
+      render json: { tags: @tags }
     end
 
     def show

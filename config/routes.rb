@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       resource :favorite, only: [:create, :destroy]
       resources :ramen_noodle_comments, only: [:create, :destroy]
     end
+    post "ramen_noodle/tag" => "ramen_noodles#get_tag"
   end
 
   namespace :admin do
