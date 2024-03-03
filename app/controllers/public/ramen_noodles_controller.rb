@@ -5,10 +5,6 @@ module Public
 
     def new
       @ramen_noodle = RamenNoodle.new
-      # tags = Vision.get_image_data(ramen_noodle_params[:image])
-      # tags.each do |tag|
-      #   @list.tags.create(name: tag)
-      # end
     end
 
     def get_tag

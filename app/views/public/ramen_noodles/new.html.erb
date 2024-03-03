@@ -149,7 +149,7 @@
     const file = inputElement.files[0];
     const xhr = new XMLHttpRequest();
     const fd = new FormData();
-		fd.append('uploadfile', file);
+    fd.append('uploadfile', file);
     xhr.open("POST", "/ramen_noodle/tag");
     xhr.send(fd);
     xhr.responseType = "text";
@@ -160,8 +160,10 @@
         let results = JSON.parse(data);
         console.log(results);
         console.log(results.tags);
-        console.log(results.tags[0]);
-        document.querySelector('#ramen_noodle_name').value = results.tags[0];
+        // 最初の3つのタグを取得して反映
+        const tags = results.tags.slice(0, 3);
+        console.log(tags);
+        document.querySelector('#ramen_noodle_name').value = tags.join(', '); // タグをカンマ区切りで表示
       } else {
         console.log(`Error: ${xhr.status}`);
       }

@@ -5,6 +5,7 @@ module Public
     def create
       @ramen_noodle = RamenNoodle.find(params[:ramen_noodle_id])
       @comment = current_member.ramen_noodle_comments.new(ramen_noodle_comment_params)
+      @comment.score = Language.get_data(ramen_noodle_comment_params[:comment])
       @comment.ramen_noodle_id = @ramen_noodle.id
       @comment.save
       flash[:notice] = "コメントを投稿しました。"

@@ -10,7 +10,7 @@
                 <table class="table table-borderless">
                   <tr>
                     <th><%= f.label "投稿画像", class: "bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center w-170px", style: "width: 170px;" %></th>
-                    <td class="text-left"><%= f.file_field :post_image, accept: "image/*", class: "mt-2 text-left" %></td>
+                    <td class="text-left"><%= f.file_field :post_image, accept: "image/*", class: "mt-2 text-left", onchange: 'getTag(this)' %></td>
                   </tr>
                   <tr>
                     <th><%= f.label "タイトル", class: "bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center", style: "width: 170px;" %></th>
@@ -18,7 +18,9 @@
                   </tr>
                   <tr>
                     <th><%= f.label "タグ", class: "bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center", style: "width: 170px;" %></th>
-                    <td><%= f.text_field :name, value: @tag_list, class: 'form-control', placeholder: "タグ(カンマ( , )で区切ると複数のタグが登録できます)", class: "form-control mt-1 shadow bg-body rounded" %></td>
+                    <td id="tag_index">
+                      <%= render 'public/ramen_noodles/tags', tag_list: @tag_list, f: f %>
+                    </td>
                   </tr>
                   <tr>
                     <th><%= f.label "説明", class: "bg-warning rounded-pill p-2 my-5 shadow bg-body-tertiary text-center", style: "width: 170px;" %></th>
@@ -152,4 +154,29 @@
     };
     raty(elem, opt);
   });
+
+  function getTag(inputElement) {
+    const file = inputElement.files[0];
+    const xhr = new XMLHttpRequest();
+    const fd = new FormData();
+    fd.append('uploadfile', file);
+    xhr.open("POST", "/ramen_noodle/tag");
+    xhr.send(fd);
+    xhr.responseType = "text";
+    xhr.onload = () => {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        const data = xhr.response;
+        console.log(data);
+        let results = JSON.parse(data);
+        console.log(results);
+        console.log(results.tags);
+        // 最初の3つのタグを取得して反映
+        const tags = results.tags.slice(0, 3);
+        console.log(tags);
+        document.querySelector('#ramen_noodle_name').value = tags.join(', '); // タグをカンマ区切りで表示
+      } else {
+        console.log(`Error: ${xhr.status}`);
+      }
+    };
+  };
 </script>

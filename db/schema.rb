@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_27_102813) do
+ActiveRecord::Schema.define(version: 2024_03_03_133812) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2024_02_27_102813) do
     t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "score", precision: 5, scale: 3
     t.index ["member_id"], name: "index_ramen_noodle_comments_on_member_id"
     t.index ["ramen_noodle_id"], name: "index_ramen_noodle_comments_on_ramen_noodle_id"
   end
