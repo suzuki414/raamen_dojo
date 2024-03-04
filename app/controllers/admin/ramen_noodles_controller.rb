@@ -47,7 +47,7 @@ class Admin::RamenNoodlesController < ApplicationController
     if @ramen_noodle.update(ramen_noodle_params)
       @ramen_noodle.save_tags(tag_list)
       flash[:notice] = "編集内容を反映させました。"
-      redirect_to ramen_noodle_path(@ramen_noodle)
+      redirect_to admin_ramen_noodle_path(@ramen_noodle)
     else
       render :edit
     end
@@ -56,7 +56,7 @@ class Admin::RamenNoodlesController < ApplicationController
   def destroy
     ramen_noodle = RamenNoodle.find(params[:id])
     ramen_noodle.destroy
-    redirect_to ramen_noodles_path(mypage_ramen_noodle: "true")
+    redirect_to admin_ramen_noodles_path
   end
   
   private

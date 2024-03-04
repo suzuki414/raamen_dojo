@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-xl-4"></div>
+    <div class="title-bg-color col-xl-4 pt-2 text-center">
+      <h2><b><%= @member.nickname %>の会員情報編集</b></h2>
+    </div>
+    <div class="col-xl-4"></div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card-border card w-100 px-5 my-5 shadow bg-body rounded">
+        <div class="card-body mt-4">
+          <%= form_with model: [:admin, @member] do |f| %>
+            <table class="table table-borderless">
+              <tr>
+                <th><%= f.label "プロフィール画像", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %></th>
+                <td><%= f.file_field :profile_image, accept: "image/*", class: "mt-2" %></td>
+              </tr>
+              <tr>
+                <th><%= f.label "名前", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %></th>
+                <td><%= f.text_field :name, autofocus: true, class: "form-control mt-1 shadow bg-body rounded" %></td>
+              </tr>
+              <tr>
+                <th><%= f.label "ニックネーム", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %></th>
+                <td><%= f.text_field :nickname, placeholder: "1~10文字以内", class: "form-control mt-1 shadow bg-body rounded" %></td>
+              </tr>
+              <tr>
+                <th><%= f.label "ひとこと", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %></th>
+                <td><%= f.text_field :comment, placeholder: "1~20文字以内", class: "form-control mt-1 shadow bg-body rounded" %></td>
+              </tr>
+              <tr>
+                <th><%= f.label "メールアドレス", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %></th>
+                <td>
+                  <%= f.email_field :email, autocomplete: "email", class: "form-control mt-1 shadow bg-body rounded" %>
+                  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                    <p>現在、確認待ちのメールアドレス: <b><%= resource.unconfirmed_email %></b></p>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th><%= f.label "会員ステータス", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %></th>
+                <td>
+                  <%= f.radio_button :is_active, :true %>
+                  <%= f.label :is_active, "有効", {value: :true} %>
+                  <%= f.radio_button :is_active, :false %>
+                  <%= f.label :is_active, "退会", {value: :false} %>
+                </td>
+              </tr>
+              <tr>
+                <th></th>
+                <td>
+                  <%= f.submit "編集内容を保存", class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 175px;" %>
+                  <%= link_to "キャンセル", :back, class: "btn btn-outline-warning btn-lg mx-4 shadow bg-body rounded", style: "width: 175px;" %>
+                </td>
+              </tr>
+            </table>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

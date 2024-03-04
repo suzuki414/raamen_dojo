@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-xl-4"></div>
+    <div class="title-bg-color col-xl-4 pt-2 text-center">
+      <h2><b>検索結果</b></h2>
+    </div>
+    <div class="col-xl-4"></div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card-border card w-100 my-5 py-1 shadow bg-body rounded">
+        <div class="card-body">
+          <div class="row">
+            <% if @model == 'member' %>
+              <%= render 'admin/members/index', members: @members %>
+            <% elsif @model == 'ramen_noodle' %>
+              <%= render 'admin/ramen_noodles/index', ramen_noodles: @ramen_noodles %>
+            <% elsif @model == 'tag' %>
+              <%= render 'admin/ramen_noodles/index', ramen_noodles: @ramen_noodles %>
+            <% end %>
+          </div>
+          <div class="row">
+            <div class="col-xl-4"></div>
+            <div class="col-xl-4">
+              <% if @model == "member" %>
+                <%= paginate @members %>
+              <% else %>
+                <%= paginate @ramen_noodles %>
+              <% end %>
+            </div>
+            <div class="col-xl-4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% @ramen_noodles.each do |ramen_noodle| %>
+  <script>
+    $(document).on('turbolinks:load', function() {
+      $('#average_rating_<%= ramen_noodle.id %>').empty();
+      var elem = document.querySelector('#average_rating_<%= ramen_noodle.id %>');
+      if (elem == null) return;
+      var opt = {
+        readOnly: true,
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        scoreName: 'ramen_noodle[difficulty_rating]',
+        score: "<%= ramen_noodle.average_rating %>"
+      };
+      raty(elem, opt);
+    });
+  </script>
+<% end %>

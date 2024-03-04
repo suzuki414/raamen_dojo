@@ -1,7 +1,7 @@
 <% ramen_noodles.each_with_index do |ramen_noodle, index| %>
   <div class="col-md-6 mb-3">
     <div class="card shadow bg-body rounded">
-      <%= link_to ramen_noodle_path(ramen_noodle) do %>
+      <%= link_to admin_ramen_noodle_path(ramen_noodle) do %>
         <div class="row">
           <!--投稿が偶数か判定する-->
           <% if index.even? %>
