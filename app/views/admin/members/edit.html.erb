@@ -2,7 +2,7 @@
   <div class="row mt-5">
     <div class="col-xl-4"></div>
     <div class="title-bg-color col-xl-4 pt-2 text-center">
-      <h2><b><%= @member.nickname %>の会員情報編集</b></h2>
+      <h2><b>&quot;<%= @member.nickname %>&quot;&nbsp;の会員情報編集</b></h2>
     </div>
     <div class="col-xl-4"></div>
   </div>
@@ -32,14 +32,11 @@
                 <th><%= f.label "メールアドレス", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %></th>
                 <td>
                   <%= f.email_field :email, autocomplete: "email", class: "form-control mt-1 shadow bg-body rounded" %>
-                  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                    <p>現在、確認待ちのメールアドレス: <b><%= resource.unconfirmed_email %></b></p>
-                  <% end %>
                 </td>
               </tr>
               <tr>
                 <th><%= f.label "会員ステータス", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %></th>
-                <td>
+                <td class="pt-4">
                   <%= f.radio_button :is_active, :true %>
                   <%= f.label :is_active, "有効", {value: :true} %>
                   <%= f.radio_button :is_active, :false %>
