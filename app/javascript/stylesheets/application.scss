@@ -234,7 +234,7 @@ footer {
   margin:0;/*余計な隙間を除く*/
   padding:0;/*余計な隙間を除く*/
   }
-  
+
 // サイト紹介画面のタイトル
 .about-image .title {
   width: 500px;
@@ -247,8 +247,8 @@ footer {
   transform: translate(-50%,-50%);
   margin:0;/*余計な隙間を除く*/
   padding:0;/*余計な隙間を除く*/
-  }  
-  
+  }
+
 // サイト紹介画面のテキスト
 .about-text {
   font-size: 23px;
@@ -269,4 +269,9 @@ footer {
 // admin側　画面タイトル背景色
 .title-bg-color {
   background-color: #ffc107;
+}
+
+// 暖簾サイズ
+.screen_title {
+  width: 100%;
 }
