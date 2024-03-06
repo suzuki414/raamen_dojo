@@ -4,45 +4,53 @@
     <div class="col-xl-12">
       <div class="card-border card w-100 pr-5 my-5 shadow bg-body rounded">
         <div class="card-body">
-          <div class="row">
-            <div class="col-xl-4">
-              <%= image_tag(@member.get_profile_image(300, 300), class: "rounded-circle border border-warning mt-4 mb-5") %>
-            </div>
-            <div class="col-xl-8 mt-5">
-              <table class="table table-borderless mt-5">
-                <tr>
-                  <th><label class="form-title bg-warning rounded-pill p-2 ml-3 shadow bg-body-tertiary text-center">サイト表示名</label></th>
-                  <td class="show-text text-center pt-4"><b><%= @member.nickname %></b></td>
-                </tr>
-                <tr>
-                  <th><label class="form-title bg-warning rounded-pill p-2 ml-3 shadow bg-body-tertiary text-center">ひとこと</label></th>
-                  <td class="show-text text-center pt-4"><b><%= @member.comment %></b></td>
-                </tr>
-              </table>
-              <div class="row mt-5">
-                <div class="col-xl-5 text-right">
-                  <% if current_member && current_member != @member %>
-                    <div id="follow-ajax">
-                      <%= render "public/relationships/follow", member: @member %>
-                    </div>
-                  <% end %>
+          <% if @member.is_active %>
+            <div class="row ml-5 text-center">
+              <div class="col-xl-4">
+                <%= image_tag(@member.get_profile_image(300, 300), class: "rounded-circle border border-warning mt-4 mb-5") %>
+              </div>
+              <div class="col-xl-8 mt-5">
+                <table class="table table-borderless mt-5">
+                  <tr>
+                    <th><label class="form-title bg-warning rounded-pill p-2 ml-3 shadow bg-body-tertiary text-center">サイト表示名</label></th>
+                    <td class="show-text text-center pt-4"><b><%= @member.nickname %></b></td>
+                  </tr>
+                  <tr>
+                    <th><label class="form-title bg-warning rounded-pill p-2 ml-3 shadow bg-body-tertiary text-center">ひとこと</label></th>
+                    <td class="show-text text-center pt-4"><b><%= @member.comment %></b></td>
+                  </tr>
+                </table>
+                <div class="row mt-5">
+                  <div class="col-xl-5 text-right">
+                    <% if current_member && current_member != @member %>
+                      <div id="follow-ajax">
+                        <%= render "public/relationships/follow", member: @member %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="col-xl-5"></div>
+                  <div class="col-xl-2"></div>
                 </div>
-                <div class="col-xl-5"></div>
-                <div class="col-xl-2"></div>
               </div>
             </div>
-          </div>
-          <div class="row mb-4 text-center">
-            <div class="col-xl-4">
-              <%= link_to '投稿一覧 (' + @member.ramen_noodles.count.to_s + ')', ramen_noodles_path(member_ramen_noodle: "true", member_id: @member.id), class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 200px;" %>
+            <div class="row mb-4 text-center">
+              <div class="col-xl-4">
+                <%= link_to '投稿一覧 (' + @member.ramen_noodles.count.to_s + ')', ramen_noodles_path(member_ramen_noodle: "true", member_id: @member.id), class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 200px;" %>
+              </div>
+              <div class="col-xl-4">
+                <%= link_to 'いいねした投稿', ramen_noodles_path(member_ramen_noodle_favorite: "true", member_id: @member.id), class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 200px;" %>
+              </div>
+              <div class="col-xl-4" id="follow">
+                <%= render "public/relationships/btn", member: @member %>
+              </div>
             </div>
-            <div class="col-xl-4">
-              <%= link_to 'いいねした投稿', ramen_noodles_path(member_ramen_noodle_favorite: "true", member_id: @member.id), class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 200px;" %>
-            </div>
-            <div class="col-xl-4" id="follow">
-              <%= render "public/relationships/btn", member: @member %>
-            </div>
-          </div>
+          <% else %>
+            <div class="row my-5">
+              <div class="col-xl-12 my-5 text-center">
+                <strong>退会済みの会員です</strong>
+              </div>
+            </div>  
+          <% end %>  
         </div>
       </div>
     </div>

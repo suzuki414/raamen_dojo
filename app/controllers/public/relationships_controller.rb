@@ -27,8 +27,5 @@ module Public
       end
       @members = @members.page(params[:page]).per(12)
     end
-
-    private
-
   end
 end

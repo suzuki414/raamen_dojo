@@ -1,0 +1,2 @@
+$('#admin_comment_counter').html("<%= j(render 'admin/ramen_noodle_comments/counter', ramen_noodle: @ramen_noodle) %>");
+$('#admin_comment_index').html("<%= j(render 'admin/ramen_noodle_comments/comments', comments: @ramen_noodle.ramen_noodle_comments.order(created_at: :desc)) %>");

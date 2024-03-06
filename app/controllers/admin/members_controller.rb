@@ -1,5 +1,6 @@
 class Admin::MembersController < ApplicationController
   before_action :authenticate_admin!
+  
   def index
     if params[:old]
       @members = Member.old.page(params[:page]).per(12)
@@ -28,7 +29,7 @@ class Admin::MembersController < ApplicationController
   
   private
   
-  def customer_params
+  def member_params
     params.require(:member).permit(:profile_image, :name, :nickname, :comment, :email, :is_active)
   end
 end

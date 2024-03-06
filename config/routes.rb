@@ -17,8 +17,6 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "home/about" => "homes#about", as: "about"
     get "members/my_page" => "members#my_page", as: "my_page"
-    get "members/information/edit" => "members#edit", as: "edit_information"
-    patch "members/information" => "members#update", as: "update_information"
     get "members/unsubscribe" => "members#unsubscribe", as: "unsubscribe"
     patch "members/withdraw" => "members#withdraw", as: "withdraw"
     get "members/account_closed" => "members#account_closed", as: "account_closed"
@@ -38,8 +36,12 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "ramen_noodles#index"
     get "/search" => "searches#search", as: "search"
-    resources :members, only: [:index, :show, :edit, :update]
-    resources :ramen_noodles, only: [:index, :show, :edit, :update, :destroy]
+    resources :members, only: [:index, :show, :edit, :update] do
+      get "follow" => "relationships#follow", as: "follow"
+    end  
+    resources :ramen_noodles, only: [:index, :show, :destroy] do
+      resources :ramen_noodle_comments, only: [:destroy]
+    end  
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row mt-5">
-    <div class="col-xl-4"></div>
-    <div class="title-bg-color col-xl-4 pt-2 text-center">
+    <div class="col-xl-3"></div>
+    <div class="title-bg-color col-xl-6 pt-2 text-center">
       <h2><b>&quot;<%= @member.nickname %>&quot;&nbsp;の会員情報編集</b></h2>
     </div>
-    <div class="col-xl-4"></div>
+    <div class="col-xl-3"></div>
   </div>
   <div class="row">
     <div class="col-xl-12">
@@ -38,7 +38,7 @@
                 <th><%= f.label "会員ステータス", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %></th>
                 <td class="pt-4">
                   <%= f.radio_button :is_active, :true %>
-                  <%= f.label :is_active, "有効", {value: :true} %>
+                  <%= f.label :is_active, "有効", {value: :true} %>&nbsp;&nbsp;&nbsp;
                   <%= f.radio_button :is_active, :false %>
                   <%= f.label :is_active, "退会", {value: :false} %>
                 </td>

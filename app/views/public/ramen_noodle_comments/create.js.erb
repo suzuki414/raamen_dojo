@@ -1,3 +1,3 @@
 $('#comment_counter').html("<%= j(render 'public/ramen_noodle_comments/counter', ramen_noodle: @ramen_noodle) %>");
-$('#comment_index').html("<%= j(render 'public/ramen_noodles/comments', comments: @ramen_noodle.ramen_noodle_comments.order(created_at: :desc)) %>");
+$('#comment_index').html("<%= j(render 'public/ramen_noodle_comments/comments', comments: @ramen_noodle.ramen_noodle_comments.order(created_at: :desc)) %>");
 $('#comment_textarea').val("");

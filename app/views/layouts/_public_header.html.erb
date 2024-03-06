@@ -54,7 +54,7 @@
         </ul>
       </div>
       <div>
-        <%= form_with url: "/search", method: :get, local: true do |f| %>
+        <%= form_with url: search_path, method: :get, local: true do |f| %>
           <ul class="navbar-nav ml-auto justify-content-end my-3">
             <li>
               <%= f.text_field :content, placeholder: "検索ワードを入力してください", style: "width: 280px; height: 40px", class: "form-control shadow bg-body rounded" %>

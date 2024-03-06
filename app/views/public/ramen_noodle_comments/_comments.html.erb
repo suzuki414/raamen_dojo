@@ -3,16 +3,17 @@
     <strong>投稿されたコメントはありません</strong>
   </div>  
 <% else %>
-  <% comments.each do |ramen_noodle_comment| %>
+  <% comments.order(created_at: :desc).each do |ramen_noodle_comment| %>
     <div class="card w-100 mt-4 shadow bg-body rounded">
       <div class="card-body my-1">
         <div class="row mb-3">
           <div class="col-xl-4">
-            <%= image_tag(ramen_noodle_comment.member.get_profile_image(50, 50), class: "rounded-circle mr-2 img-fluid") %><%= ramen_noodle_comment.member.nickname %>
+            <%= image_tag(ramen_noodle_comment.member.get_profile_image(50, 50), class: "rounded-circle mr-2 img-fluid") %>
+            <%= ramen_noodle_comment.member.nickname %>
           </div>
-          <div class="col-xl-4 sentiment-score"><strong>コメントの感情分析スコア[<%= ramen_noodle_comment.score %>]</strong></div>
+          <div class="col-xl-4"></div>
           <div class="col-xl-4 mt-1 text-right">
-            <% if ramen_noodle_comment.member == current_member %>
+            <% if ramen_noodle_comment.member == current_member || (current_member.present? && current_member.admin?) %>
               <%= link_to "コメント削除", ramen_noodle_ramen_noodle_comment_path(ramen_noodle_comment.ramen_noodle, ramen_noodle_comment), class: "btn btn-outline-danger shadow bg-body rounded", data: { confirm: "本当に削除しますか？" }, method: :delete, remote: true %>
             <% end %>
           </div>
