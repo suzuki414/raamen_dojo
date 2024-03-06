@@ -9,7 +9,8 @@ module Public
 
     def get_tag
       @tags = Vision.get_image_data(params[:uploadfile])
-      render json: { tags: @tags }
+      @tags_ja = Translation.translate_words(@tags)
+      render json: { tags: @tags_ja }
     end
 
     def show
