@@ -1,7 +1,7 @@
 <% if comments.blank? %>
   <div class="text-center">
     <strong>投稿されたコメントはありません</strong>
-  </div>  
+  </div>
 <% else %>
   <% comments.order(created_at: :desc).each do |ramen_noodle_comment| %>
     <div class="card w-100 mt-4 shadow bg-body rounded">
@@ -13,7 +13,7 @@
           </div>
           <div class="col-xl-4"></div>
           <div class="col-xl-4 mt-1 text-right">
-            <% if ramen_noodle_comment.member == current_member || (current_member.present? && current_member.admin?) %>
+            <% if ramen_noodle_comment.member == current_member %>
               <%= link_to "コメント削除", ramen_noodle_ramen_noodle_comment_path(ramen_noodle_comment.ramen_noodle, ramen_noodle_comment), class: "btn btn-outline-danger shadow bg-body rounded", data: { confirm: "本当に削除しますか？" }, method: :delete, remote: true %>
             <% end %>
           </div>
