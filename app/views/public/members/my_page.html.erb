@@ -59,6 +59,16 @@
               </div>
               <div class="col-xl-2"></div>
             </div>
+            <div class="row mb-5 ml-2">
+              <div class="col-xl-12 ml-3">
+                <%= link_to '会員情報編集', edit_member_registration_path, class: "btn btn-outline-warning btn-lg mr-2 shadow bg-body rounded", style: "width: 220px;" %>
+                <%= link_to '投稿一覧 (' + @member.ramen_noodles.count.to_s + ')', ramen_noodles_path(mypage_ramen_noodle: "true"), class: "btn btn-outline-warning btn-lg mr-2 shadow bg-body rounded", style: "width: 220px;" %>
+                <%= link_to 'いいねした投稿', ramen_noodles_path(mypage_ramen_noodle_favorite: "true"), class: "btn btn-outline-warning btn-lg mr-2 shadow bg-body rounded", style: "width: 220px;" %>
+                <%= link_to member_follow_path(@member.id, mypage_followings: "true"), class: "btn btn-outline-warning btn-lg shadow bg-body rounded", style: "width: 300px;" do %>
+                  フォロー&nbsp;&#40;<%= @member.followings.count %>&#41;&nbsp;/&nbsp;フォロワー&nbsp;&#40;<%= @member.followers.count %>&#41;
+                <% end %>
+              </div>
+            </div>
           <% end %>
         </div>
       </div>

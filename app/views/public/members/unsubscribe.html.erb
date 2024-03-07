@@ -23,10 +23,24 @@
           <p class="card-text">
             <h5><strong style="color: red;">※この操作は、取り消せません</strong></h5>
           </p>
-            <%= link_to "退会しない", my_page_path, class: "btn btn-outline-warning btn-lg mr-3 shadow bg-body rounded", style: "width: 150px;" %>
+          <% unless @member.guest_member? %>
+            <%= link_to "退会しない", edit_member_registration_path, class: "btn btn-outline-warning btn-lg mr-3 shadow bg-body rounded", style: "width: 150px;" %>
             <%= link_to "退会する", withdraw_path, method: :patch, class: "btn btn-outline-danger btn-lg ml-3 shadow bg-body rounded", style: "width: 150px;", data: { confirm: "本当に退会しますか?" } %>
+          <% else %>
+            <%= link_to "退会しない", edit_member_registration_path, class: "btn btn-outline-warning btn-lg mr-3 mb-3 shadow bg-body rounded", style: "width: 150px;" %>
+            <%= link_to "退会する", withdraw_path, method: :patch, class: "guest_button btn btn-outline-danger btn-lg ml-3 mb-3 shadow bg-body rounded", style: "width: 150px;", data: { confirm: "本当に退会しますか?" }, id: "unsubscribe_member_button" %><br>
+            <strong>※ゲスト会員でログインの場合、退会することはできません</strong>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+<script>
+  document.getElementById("unsubscribe_member_button").addEventListener("click", function(event){
+    event.preventDefault(); // デフォルトのイベントをキャンセル
+    this.disabled = true; // ボタンを非活性にする
+  });
+</script>
