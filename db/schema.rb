@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_03_03_133812) do
+ActiveRecord::Schema.define(version: 2024_02_27_102813) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -81,9 +81,9 @@ ActiveRecord::Schema.define(version: 2024_03_03_133812) do
     t.integer "member_id", null: false
     t.integer "ramen_noodle_id", null: false
     t.string "comment"
+    t.decimal "score", precision: 5, scale: 3
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.decimal "score", precision: 5, scale: 3
     t.index ["member_id"], name: "index_ramen_noodle_comments_on_member_id"
     t.index ["ramen_noodle_id"], name: "index_ramen_noodle_comments_on_ramen_noodle_id"
   end
@@ -108,7 +108,6 @@ ActiveRecord::Schema.define(version: 2024_03_03_133812) do
     t.float "cook_time_rating", default: 0.0
     t.float "process_rating", default: 0.0
     t.float "difficulty_rating", default: 0.0
-    t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["member_id"], name: "index_ramen_noodles_on_member_id"

@@ -10,7 +10,6 @@ class CreateRamenNoodles < ActiveRecord::Migration[6.1]
       t.float :cook_time_rating, default: 0
       t.float :process_rating, default: 0
       t.float :difficulty_rating, default: 0
-      t.integer :status
 
       t.timestamps
     end
