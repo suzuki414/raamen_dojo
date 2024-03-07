@@ -8,8 +8,10 @@
       <div class="card-body my-1">
         <div class="row mb-3">
           <div class="col-xl-4">
-            <%= image_tag(ramen_noodle_comment.member.get_profile_image(50, 50), class: "rounded-circle mr-2 img-fluid") %>
-            <%= ramen_noodle_comment.member.nickname %>
+            <%= link_to member_path(ramen_noodle_comment.member) do %>
+              <%= image_tag(ramen_noodle_comment.member.get_profile_image(50, 50), class: "rounded-circle mr-2 img-fluid") %>
+              <%= ramen_noodle_comment.member.nickname %>
+            <% end %>  
           </div>
           <div class="col-xl-4"></div>
           <div class="col-xl-4 mt-1 text-right">
