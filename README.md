@@ -23,10 +23,12 @@
 - おうち時間を充実させたい時
 ​
 ## 設計書
-後ほど作成予定
+- テーブル定義書(https://docs.google.com/spreadsheets/d/1iDSs6E5eqv3rx1L-dwlmeaxxadqIPkzN/edit?usp=sharing&ouid=117109912448673269145&rtpof=true&sd=true)
+- ER図(https://drive.google.com/file/d/1yAIMeBmbMT4GNU8IV2NqGCjlAPbRBSr8/view?usp=sharing)
+- ワイヤーフレーム、UI Flows(https://www.figma.com/file/6dzDQBf9JdOjaAUHKQLHWy/%E3%80%80%E3%82%89%E3%81%81%E3%82%81%E3%82%93%E9%81%93%E5%A0%B4(%E3%83%AF%E3%82%A4%E3%83%A4%E3%83%BC%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%80%81UI--Flows)?type=design&node-id=0%3A1&mode=dev&t=EqBWrHYBusIHL3g2-1)
 ​
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Amazon Linux release2(Karoo)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
