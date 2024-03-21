@@ -177,17 +177,6 @@ footer {
 }
 
 // トップページ見出し
-.pic-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  padding: 0 6rem;
-  box-sizing: border-box;
-  background-color: #fefefe;
-}
-
 .top-post {
   padding: 1rem 2rem;
   border-radius: 5px;
@@ -280,4 +269,29 @@ footer {
 .guest_button {
   opacity: 0.4;
   pointer-events: none;
+}
+
+
+
+
+// レスポンシブ対応
+// トップページ見出し
+@media screen and (max-width: 575px) {
+  .top-post {
+    padding: 0rem 0rem;
+    border-radius: 5px;
+    box-shadow: 7px 7px #ffc107, 7px 7px 0 3px #353535;
+    outline: 3px solid #353535;
+    background-color: #fefefe;
+    color: #353535;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+  }
+}  
+
+@media screen and (max-width: 575px) {
+  .top-post::before {
+    display: none;
+  }
 }
