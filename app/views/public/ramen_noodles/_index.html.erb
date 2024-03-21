@@ -1,6 +1,6 @@
 <% if ramen_noodles.present? %>
   <% ramen_noodles.each_with_index do |ramen_noodle, index| %>
-      <div class="col-md-6 mb-3">
+      <div class="col-lg-6 mb-3">
         <div class="card shadow bg-body rounded">
           <%= link_to ramen_noodle_path(ramen_noodle) do %>
             <div class="row">
@@ -8,23 +8,23 @@
               <% if index.even? %>
                 <!--投稿を2で割った余りが0(偶数)か判定する-->
                 <% if (index / 2).even? %>
-                  <div class="col-md-6 order-0 order-md-0">
+                  <div class="col-lg-6 order-0 order-lg-0">
                 <% else %>
-                  <div class="col-md-6 order-0 order-md-1">
+                  <div class="col-lg-6 order-0 order-lg-1">
                 <% end %>
               <% else %>
                 <% if (index / 2).even? %>
-                  <div class="col-md-6 order-0 order-md-1">
+                  <div class="col-lg-6 order-0 order-lg-1">
                 <% else %>
-                  <div class="col-md-6 order-0 order-md-0">
+                  <div class="col-lg-6 order-0 order-lg-0">
                 <% end %>
               <% end %>
                 <%= image_tag(ramen_noodle.post_image, class: 'img-fluid', style: 'width: 100%; height: 100%; object-fit: cover;') %>
                   </div>
-              <div class="col-md-6">
+              <div class="col-lg-6">
                 <div class="card-body">
                   <div class="profile text-center">
-                    <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "rounded-circle border border-warning mr-2") %><%= ramen_noodle.member.nickname %>
+                    <%= image_tag(ramen_noodle.member.get_profile_image(50, 50), class: "img-fluid rounded-circle border border-warning mr-2") %><%= ramen_noodle.member.nickname %>
                   </div>
                   <div class="title my-3">
                     <b>&#149;<%= ramen_noodle.title %></b>
@@ -47,7 +47,7 @@
       </div>
   <% end %>
 <% else %>
-  <div class="col-xl-12 my-5 text-center">
+  <div class="col-12 my-5 text-center">
     <strong>投稿がありません</strong>
   </div>  
 <% end %>  
