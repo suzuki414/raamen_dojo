@@ -315,30 +315,19 @@ footer {
   }
 }
 
-// // ソート機能の選択肢幅
-// .nav-sort {
-//   width: 178px;
-//   text-align: center;
-// }
+// ソート機能の選択肢幅
+@media screen and (max-width: 991px) {
+  .nav-sort {
+    text-align: left;
+  }
+}
 
-// .nav-tabs {
-//   border-bottom: 1px solid #000000;
-// }
-
-// a {
-//   color: #000000;
-// }
-
-// // ホバー時のデザイン
-// .nav-tabs .nav-link:hover {
-//   border-color: transparent;
-//   color: #ff0000;
-// }
-
-// .nav-tabs .nav-link.active {
-//   color: #ff0000;
-//   border-color: #000000 #000000 #fff !important;
-// }
+@media screen and (max-width: 991px) {
+  .nav-tabs .nav-link.active {
+    color: #ff0000;
+    border-color: #fff #fff #fff !important;
+  }
+}  
 
 // // 5段階評価の星サイズ
 // #taste_rating {
