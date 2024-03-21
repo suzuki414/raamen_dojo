@@ -60,13 +60,13 @@
               <%= f.text_field :content, placeholder: "検索ワードを入力してください", style: "width: 280px; height: 40px", class: "form-control shadow bg-body rounded" %>
             </li>
             <li>
-              <%= f.select :model, options_for_select({"会員" => "member", "投稿" => "ramen_noodle", "タグ" => "tag"}), {}, { class: "form-control shadow bg-body rounded ml-1", style: "width: 78px; height: 40px" } %>
+              <%= f.select :model, options_for_select({"会員" => "member", "投稿" => "ramen_noodle", "タグ" => "tag"}), {}, { class: "form-control shadow bg-body rounded ml-xl-1", style: "width: 78px; height: 40px" } %>
             </li>
             <li>
-              <%= f.select :method, options_for_select({"完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}), {}, { class: "form-control shadow bg-body rounded ml-1", style: "width: 110px; height: 40px" } %>
+              <%= f.select :method, options_for_select({"完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}), {}, { class: "form-control shadow bg-body rounded ml-xl-1", style: "width: 110px; height: 40px" } %>
             </li>
             <li>
-              <%= f.submit "検索", class: "btn btn-outline-warning shadow bg-body rounded ml-1" %>
+              <%= f.submit "検索", class: "btn btn-outline-warning shadow bg-body rounded ml-xl-1" %>
             </li>
           </ul>
         <% end %>

@@ -210,6 +210,13 @@ footer {
   border-color: #dc143c;
 }
 
+// サイト紹介画面の背景画像
+.ramen-photo {
+  width: 100%;
+  height: auto;
+  filter: blur(3px);
+}
+
 // サイト紹介画面のロゴ
 .about-image .logo {
   width: 250px;
@@ -242,7 +249,7 @@ footer {
 .about-text {
   font-size: 23px;
   font-weight: 900;
-  margin-top: 179px;
+  margin-top: 13%;
 }
 
 // マイページのテキスト位置
@@ -283,51 +290,30 @@ footer {
   }
 }
 
-// // 検索フォームの枠色
-// .form-control {
-//   border-color: #ffc107;
-//   border-width: 1px;
-// }
+// ヘッダーのボタン
+@media screen and (max-width: 1199px) {
+  .bn47 {
+    display: none;
+  }
+}
 
-// // ヘッダー下部のボーダー色
-// .navbar {
-//   border-bottom: 6px solid #dc143c;
-// }
+@media screen and (max-width: 1199px) {
+  .bn47:before {
+    display: none;
+  }
+}
 
-// // ヘッダーのボタン
-// .bn47 {
-//   position: relative;
-//   padding: 1rem 1rem 0.5rem 2.5rem;
-//   color: #ffffff;
-//   border: 3px solid #dc143c;
-//   -webkit-transition: padding 0.3s ease-in-out;
-//   transition: padding 0.3s ease-in-out;
-// }
+@media screen and (max-width: 1199px) {
+  .bn47:hover {
+    display: none;
+  }
+}
 
-// .bn47:before {
-//   content: "";
-//   position: absolute;
-//   top: 0.5rem;
-//   left: 0.5rem;
-//   z-index: -1;
-//   height: 100%;
-//   width: 100%;
-//   background-color: #6c757d;
-//   border-right: 3px solid #6c757d;
-//   border-bottom: 3px solid #6c757d;
-//   -webkit-transition: all 0.3s ease-in-out;
-//   transition: all 0.3s ease-in-out;
-// }
-
-// .bn47:hover {
-//   padding: 0.75rem 2.25rem;
-//   color: #ffffff;
-// }
-
-// .bn47:hover:before {
-//   top: 0;
-//   left: 0;
-// }
+@media screen and (max-width: 1199px) {
+  .bn47:hover:before {
+    display: none;
+  }
+}
 
 // // ソート機能の選択肢幅
 // .nav-sort {
@@ -454,7 +440,7 @@ footer {
 // }
 
 // トップページ見出し
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 991px) {
   .top-post {
     padding: 0rem 0rem;
     border-radius: 5px;
@@ -468,7 +454,7 @@ footer {
   }
 }  
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 991px) {
   .top-post::before {
     display: none;
   }
