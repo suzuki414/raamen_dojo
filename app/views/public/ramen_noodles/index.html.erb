@@ -1,11 +1,11 @@
 <%= image_tag("投稿一覧暖簾.svg", alt: "暖簾画像", class: "screen_title img-fluid") %>
 <div class="container">
   <div class="row">
-    <div class="col-xl-12">
-      <div class="card-border card w-100 px-2 mt-4 mb-5 shadow bg-body rounded">
+    <div class="col-12">
+      <div class="card-border card w-100 px-2 my-3 my-md-5 shadow bg-body rounded">
         <div class="card-body mt-2">
           <div class="row">
-            <div class="col-xl-12 mb-4">
+            <div class="col-12 mb-4">
               <ul class="nav nav-tabs">
                 <li class="nav-sort">
                   <a class="nav-link <%= 'active' unless params[:old] || params[:average_rating_count] || params[:favorite_count] %>" aria-current="page" href="<%= ramen_noodles_path(params.permit(@permitted_params)) %>">新しい順</a>
@@ -26,11 +26,11 @@
             <%= render "public/ramen_noodles/index", ramen_noodles: @ramen_noodles %>
           </div>
             <div class="row mt-4">
-              <div class="col-xl-5 mr-2"></div>
-              <div class="col-xl-5 ml-5">
+              <div class="col-1 col-lg-5 mr-2"></div>
+              <div class="col-10 col-lg-5 ml-5">
                 <%= paginate @ramen_noodles %>
               </div>
-              <div class="col-xl-2"></div>
+              <div class="col-1 col-lg-2"></div>
             </div>
         </div>
       </div>

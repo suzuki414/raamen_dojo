@@ -26,10 +26,10 @@ module Public
     def edit
       @member = current_member
     end
-    
+
     def unsubscribe
       @member = current_member
-    end  
+    end
 
     def withdraw
       @member = Member.find(current_member.id)
