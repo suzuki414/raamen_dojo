@@ -9,23 +9,23 @@
             <table class="table table-borderless">
               <tr>
                 <th><%= f.label "プロフィール画像", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %></th>
-                <td><%= f.file_field :profile_image, accept: "image/*" %></td>
+                <td><%= f.file_field :profile_image, accept: "image/*", class: "mt-2" %></td>
               </tr>
               <tr>
                 <th><%= f.label "名前", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %></th>
-                <td><%= f.text_field :name, autofocus: true, class: "form-control shadow bg-body rounded" %></td>
+                <td><%= f.text_field :name, autofocus: true, class: "form-control mt-1 shadow bg-body rounded" %></td>
               </tr>
               <tr>
                 <th><%= f.label "ニックネーム", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %></th>
-                <td><%= f.text_field :nickname, placeholder: "1~10文字以内", class: "form-control shadow bg-body rounded" %></td>
+                <td><%= f.text_field :nickname, placeholder: "1~10文字以内", class: "form-control mt-1 shadow bg-body rounded" %></td>
               </tr>
               <tr>
                 <th><%= f.label "ひとこと", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %></th>
-                <td><%= f.text_field :comment, placeholder: "1~20文字以内", class: "form-control shadow bg-body rounded" %></td>
+                <td><%= f.text_field :comment, placeholder: "1~20文字以内", class: "form-control mt-1 shadow bg-body rounded" %></td>
               </tr>
               <tr>
                 <th><%= f.label "メールアドレス", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %></th>
-                <td><%= f.email_field :email, autocomplete: "email", class: "form-control shadow bg-body rounded" %></td>
+                <td><%= f.email_field :email, autocomplete: "email", class: "form-control mt-1 shadow bg-body rounded" %></td>
               </tr>
               <tr>
                 <th>
@@ -33,13 +33,13 @@
                     <%= f.label "パスワード(#{@minimum_password_length} 文字以上)", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %>
                   <% end %>
                 </th>
-                <td><%= f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上", class: "form-control shadow bg-body rounded" %></td>
+                <td><%= f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上", class: "form-control mt-1 shadow bg-body rounded" %></td>
               </tr>
               <tr>
                 <th>
                   <%= f.label "パスワード(確認用)", class: "form-title bg-warning rounded-pill p-2 shadow bg-body-tertiary text-center" %>
                 </th>
-                <td><%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "確認用", class: "form-control shadow bg-body rounded" %></td>
+                <td><%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "確認用", class: "form-control mt-1 shadow bg-body rounded" %></td>
               </tr>
               <tr>
                 <th></th>
