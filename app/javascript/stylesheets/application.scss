@@ -279,6 +279,10 @@ footer {
 }
 
 
+// ヘッダーのボタン
+.responsive {
+  display: none;
+}
 
 
 // レスポンシブ対応
@@ -292,26 +296,11 @@ footer {
 
 // ヘッダーのボタン
 @media screen and (max-width: 1199px) {
-  .bn47 {
+  .usually {
     display: none;
   }
-}
-
-@media screen and (max-width: 1199px) {
-  .bn47:before {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 1199px) {
-  .bn47:hover {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 1199px) {
-  .bn47:hover:before {
-    display: none;
+  .responsive {
+    display: block;
   }
 }
 
