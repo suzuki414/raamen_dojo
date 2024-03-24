@@ -229,7 +229,7 @@ footer {
   transform: translate(-50%,-50%);
   margin:0;/*余計な隙間を除く*/
   padding:0;/*余計な隙間を除く*/
-  }
+}
 
 // サイト紹介画面のタイトル
 .about-image .title {
@@ -243,7 +243,7 @@ footer {
   transform: translate(-50%,-50%);
   margin:0;/*余計な隙間を除く*/
   padding:0;/*余計な隙間を除く*/
-  }
+}
 
 // サイト紹介画面のテキスト
 .about-text {
@@ -316,32 +316,7 @@ footer {
     color: #ff0000;
     border-color: #fff #fff #fff !important;
   }
-}  
-
-// // 5段階評価の星サイズ
-// #taste_rating {
-//   img {
-//     width: 38px;
-//   }
-// }
-
-// #cook_time_rating {
-//   img {
-//     width: 38px;
-//   }
-// }
-
-// #process_rating {
-//   img {
-//     width: 38px;
-//   }
-// }
-
-// #difficulty_rating {
-//   img {
-//     width: 38px;
-//   }
-// }
+}
 
 // // (投稿詳細画面)5段階評価の星サイズ
 // #taste_rating_show {
@@ -368,55 +343,6 @@ footer {
 //   }
 // }
 
-// // (トップ画面)新規5投稿の5段階評価の星サイズ
-// #average_rating_top {
-//   img {
-//     width: 40px;
-//   }
-// }
-
-// // (トップ画面)TOP5の5段階評価の星サイズ
-// #average_rating_ranking {
-//   img {
-//     width: 40px;
-//   }
-// }
-
-// // ページネーションのデザイン
-// .pagination>li>a {
-//   border: none !important;
-//   color: #000 !important;
-// }
-
-// // 表示しているページ番号のデザイン
-// .pagination>.active>a {
-//   color: #fff !important;
-//   background: #dc3545 !important;
-//   border-radius: 15px !important;   //角を丸くする
-// }
-
-// // ホバー時のデザイン
-// .pagination>li>a:hover {
-//   border-radius: 15px !important;   //角を丸くする
-// }
-
-// // フッターの位置
-// .wrapper {
-//   display: flex;
-//   flex-direction: column;
-//   min-height: 100vh;
-// }
-
-// footer {
-//   margin-top: auto;
-// }
-
-// // トップページswiperナビゲーションカラー
-// :root {
-//   --swiper-navigation-color: #ffffff;
-//   --swiper-pagination-color: #dc143c;
-// }
-
 // トップページ見出し
 @media screen and (max-width: 991px) {
   .top-post {
@@ -430,23 +356,13 @@ footer {
     font-weight: bold;
     text-align: center;
   }
-}  
+}
 
 @media screen and (max-width: 991px) {
   .top-post::before {
     display: none;
   }
 }
-
-// // 入力フォームタイトル幅
-// .form-title {
-//   width: 250px;
-// }
-
-// // カードの枠線色
-// .card-border {
-//   border-color: #dc143c;
-// }
 
 // // サイト紹介画面のロゴ
 // .about-image .logo {
@@ -496,15 +412,4 @@ footer {
 // // admin側　画面タイトル背景色
 // .title-bg-color {
 //   background-color: #ffc107;
-// }
-
-// // 暖簾サイズ
-// .screen_title {
-//   width: 100%;
-// }
-
-// // ゲスト会員のボタン(会員情報の編集内容保存ボタン、退会実行ボタン)不透明度、無効化
-// .guest_button {
-//   opacity: 0.4;
-//   pointer-events: none;
 // }

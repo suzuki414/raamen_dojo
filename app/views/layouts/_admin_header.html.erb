@@ -15,20 +15,20 @@
         <ul class="navbar-nav ml-auto justify-content-end my-3">
           <% if admin_signed_in? %>
             <li class="nav-item mx-2 my-2">
-              <%= link_to 'トップページ', admin_root_path, class: 'bn47' %>
+              <%= link_to 'トップページ', admin_root_path, class: 'btn btn-secondary', style: 'width: 120px; height: auto;' %>
             </li>
             <li class="nav-item mx-2 my-2">
-              <%= link_to '会員一覧', admin_members_path, class: 'bn47' %>
+              <%= link_to '会員一覧', admin_members_path, class: 'btn btn-secondary', style: 'width: 120px; height: auto;' %>
             </li>
             <li class="nav-item mx-2 my-2">
-              <%= link_to '投稿一覧', admin_ramen_noodles_path, class: 'bn47' %>
+              <%= link_to '投稿一覧', admin_ramen_noodles_path, class: 'btn btn-secondary', style: 'width: 120px; height: auto;' %>
             </li>
             <li class="nav-item mx-2 my-2">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'bn47' %>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-secondary', style: 'width: 120px; height: auto;' %>
             </li>
           <% else %>
             <li class="nav-item mx-2 my-2">
-              <%= link_to '会員側トップページ', root_path, class: 'bn47' %>
+              <%= link_to '会員側トップページ', root_path, class: 'btn btn-secondary', style: 'width: 180px; height: auto;' %>
             </li>
           <% end %>
         </ul>
