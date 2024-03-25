@@ -75,6 +75,11 @@ module Public
 
     def edit
       @ramen_noodle = RamenNoodle.find(params[:id])
+      unless current_member == @ramen_noodle.member
+        flash[:alert] = "他会員の投稿は編集出来ません。"
+        redirect_back(fallback_location: ramen_noodles_path)
+        return
+      end
       @tag_list = @ramen_noodle.tags.pluck(:name).join(',')
     end
 
