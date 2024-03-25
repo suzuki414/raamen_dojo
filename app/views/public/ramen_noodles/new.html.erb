@@ -4,6 +4,14 @@
     <div class="col-xl-12">
       <div class="card-border card text-center w-100 my-5 shadow bg-body rounded">
         <div class="card-body my-3">
+          <% if @ramen_noodle.errors.any? %>
+            <font size="10px"><%= @ramen_noodle.errors.count %>件のエラーが発生しました</font>
+            <ul>
+              <% @ramen_noodle.errors.full_messages.each do |message| %>
+                <li class="text-left"><%= message %></li>
+              <% end %>
+            </ul>
+          <% end %>
           <%= form_with model: @ramen_noodle, url: ramen_noodles_path, method: :post do |f| %>
             <div class="row">
               <div class="col-xl-8 my-5">

@@ -28,6 +28,15 @@ ja:
         name: 名前
         nickname: ニックネーム
         comment: ひとこと
+      ramen_noodle:
+        post_image: 投稿
+        title: タイトル
+        description: 説明
+        recipe: レシピ
+        taste_rating: 味の評価
+        cook_time_rating: 調理時間の評価
+        process_rating: 工程数の評価
+        difficulty_rating: 難易度の評価  
     models:
       member: 会員
   devise:
