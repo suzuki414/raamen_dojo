@@ -19,11 +19,11 @@ Rails.application.routes.draw do
     get "/search" => "searches#search", as: "search"
     resources :members, only: [:index, :show, :edit] do
       collection do
-        get "members/my_page" => "members#my_page", as: "my_page"
-        get "members/unsubscribe" => "members#unsubscribe", as: "unsubscribe"
-        patch "members/withdraw" => "members#withdraw", as: "withdraw"
-        get "members/account_closed" => "members#account_closed", as: "account_closed"
-        get "members/complete" => "members#complete", as: "complete"
+        get "my_page"
+        get "unsubscribe"
+        patch "withdraw"
+        get "account_closed"
+        get "complete"
       end  
       resource :relationships, only: [:create, :destroy]
       get "follow" => "relationships#follow", as: "follow"

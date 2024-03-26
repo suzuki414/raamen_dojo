@@ -286,65 +286,34 @@ footer {
 
 
 // レスポンシブ対応
-// ヘッダーのロゴサイズ
 @media screen and (max-width: 575px) {
+  // ヘッダーのロゴサイズ
   .logo {
     width: 100px;
     height: auto;
   }
-}
-
-// ヘッダーのボタン
-@media screen and (max-width: 1199px) {
-  .usually {
-    display: none;
-  }
-  .responsive {
-    display: block;
+  
+  // (投稿詳細画面)5段階評価の星サイズ
+  #taste_rating_show img,
+  #cook_time_rating_show img,
+  #process_rating_show img,
+  #difficulty_rating_show img {
+    width: 40px;
   }
 }
 
-// ソート機能の選択肢幅
 @media screen and (max-width: 991px) {
+  // ソート機能の選択肢幅
   .nav-sort {
     text-align: left;
   }
-}
-
-@media screen and (max-width: 991px) {
+  
   .nav-tabs .nav-link.active {
     color: #ff0000;
     border-color: #fff #fff #fff !important;
   }
-}
-
-// // (投稿詳細画面)5段階評価の星サイズ
-// #taste_rating_show {
-//   img {
-//     width: 50px;
-//   }
-// }
-
-// #cook_time_rating_show {
-//   img {
-//     width: 50px;
-//   }
-// }
-
-// #process_rating_show {
-//   img {
-//     width: 50px;
-//   }
-// }
-
-// #difficulty_rating_show {
-//   img {
-//     width: 50px;
-//   }
-// }
-
-// トップページ見出し
-@media screen and (max-width: 991px) {
+  
+  // トップページ見出し
   .top-post {
     padding: 0rem 0rem;
     border-radius: 5px;
@@ -356,60 +325,18 @@ footer {
     font-weight: bold;
     text-align: center;
   }
-}
-
-@media screen and (max-width: 991px) {
+  
   .top-post::before {
     display: none;
   }
 }
 
-// // サイト紹介画面のロゴ
-// .about-image .logo {
-//   width: 250px;
-//   height: auto;
-//   position: absolute;
-//   top: 50%;
-//   left: 85%;
-//   -ms-transform: translate(-50%,-50%);
-//   -webkit-transform: translate(-50%,-50%);
-//   transform: translate(-50%,-50%);
-//   margin:0;/*余計な隙間を除く*/
-//   padding:0;/*余計な隙間を除く*/
-//   }
-
-// // サイト紹介画面のタイトル
-// .about-image .title {
-//   width: 500px;
-//   height: auto;
-//   position: absolute;
-//   top: 20%;
-//   left: 19%;
-//   -ms-transform: translate(-50%,-50%);
-//   -webkit-transform: translate(-50%,-50%);
-//   transform: translate(-50%,-50%);
-//   margin:0;/*余計な隙間を除く*/
-//   padding:0;/*余計な隙間を除く*/
-//   }
-
-// // サイト紹介画面のテキスト
-// .about-text {
-//   font-size: 23px;
-//   font-weight: 900;
-//   margin-top: 179px;
-// }
-
-// // マイページのテキスト位置
-// .mypage-text {
-//   padding-right: 70px !important;
-// }
-
-// // 会員詳細画面のテキスト位置
-// .show-text {
-//   padding-right: 100px !important;
-// }
-
-// // admin側　画面タイトル背景色
-// .title-bg-color {
-//   background-color: #ffc107;
-// }
+@media screen and (max-width: 1199px) {
+  // ヘッダーのボタン
+  .usually {
+    display: none;
+  }
+  .responsive {
+    display: block;
+  }
+}
