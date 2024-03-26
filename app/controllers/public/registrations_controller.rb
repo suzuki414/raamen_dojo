@@ -63,7 +63,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   
   # The path used after update.
   def after_update_path_for(resource)
-    my_page_path
+    my_page_members_path
   end
 
   # The path used after sign up for inactive accounts.

@@ -16,15 +16,17 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "home/about" => "homes#about", as: "about"
-    get "members/my_page" => "members#my_page", as: "my_page"
-    get "members/unsubscribe" => "members#unsubscribe", as: "unsubscribe"
-    patch "members/withdraw" => "members#withdraw", as: "withdraw"
-    get "members/account_closed" => "members#account_closed", as: "account_closed"
-    get "members/complete" => "members#complete", as: "complete"
     get "/search" => "searches#search", as: "search"
     resources :members, only: [:index, :show, :edit] do
+      collection do
+        get "members/my_page" => "members#my_page", as: "my_page"
+        get "members/unsubscribe" => "members#unsubscribe", as: "unsubscribe"
+        patch "members/withdraw" => "members#withdraw", as: "withdraw"
+        get "members/account_closed" => "members#account_closed", as: "account_closed"
+        get "members/complete" => "members#complete", as: "complete"
+      end  
       resource :relationships, only: [:create, :destroy]
-        get "follow" => "relationships#follow", as: "follow"
+      get "follow" => "relationships#follow", as: "follow"
     end
     resources :ramen_noodles, only: [:new, :index, :show, :edit, :create, :update, :destroy] do
       resource :favorite, only: [:create, :destroy]
