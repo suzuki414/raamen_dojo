@@ -77,25 +77,10 @@ a {
   border-color: #000000 #000000 #fff !important;
 }
 
-// 5段階評価の星サイズ
-#taste_rating {
-  img {
-    width: 38px;
-  }
-}
-
-#cook_time_rating {
-  img {
-    width: 38px;
-  }
-}
-
-#process_rating {
-  img {
-    width: 38px;
-  }
-}
-
+// (新規投稿画面、投稿編集画面)5段階評価の星サイズ
+#taste_rating,
+#cook_time_rating,
+#process_rating,
 #difficulty_rating {
   img {
     width: 38px;
@@ -103,24 +88,9 @@ a {
 }
 
 // (投稿詳細画面)5段階評価の星サイズ
-#taste_rating_show {
-  img {
-    width: 50px;
-  }
-}
-
-#cook_time_rating_show {
-  img {
-    width: 50px;
-  }
-}
-
-#process_rating_show {
-  img {
-    width: 50px;
-  }
-}
-
+#taste_rating_show,
+#cook_time_rating_show,
+#process_rating_show,
 #difficulty_rating_show {
   img {
     width: 50px;
@@ -128,12 +98,7 @@ a {
 }
 
 // (トップ画面)新規5投稿の5段階評価の星サイズ
-#average_rating_top {
-  img {
-    width: 40px;
-  }
-}
-
+#average_rating_top,
 // (トップ画面)TOP5の5段階評価の星サイズ
 #average_rating_ranking {
   img {
@@ -277,7 +242,6 @@ footer {
   opacity: 0.4;
   pointer-events: none;
 }
-
 
 // ヘッダーのボタン
 .responsive {
