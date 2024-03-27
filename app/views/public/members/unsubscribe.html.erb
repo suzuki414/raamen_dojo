@@ -25,10 +25,10 @@
           </p>
           <% unless @member.guest_member? %>
             <%= link_to "退会しない", edit_member_registration_path, class: "btn btn-outline-warning btn-lg mr-3 shadow bg-body rounded", style: "width: 150px;" %>
-            <%= link_to "退会する", withdraw_path, method: :patch, class: "btn btn-outline-danger btn-lg ml-3 shadow bg-body rounded", style: "width: 150px;", data: { confirm: "本当に退会しますか?" } %>
+            <%= link_to "退会する", withdraw_members_path, method: :patch, class: "btn btn-outline-danger btn-lg ml-3 shadow bg-body rounded", style: "width: 150px;", data: { confirm: "本当に退会しますか?" } %>
           <% else %>
             <%= link_to "退会しない", edit_member_registration_path, class: "btn btn-outline-warning btn-lg mr-3 mb-3 shadow bg-body rounded", style: "width: 150px;" %>
-            <%= link_to "退会する", withdraw_path, method: :patch, class: "guest_button btn btn-outline-danger btn-lg ml-3 mb-3 shadow bg-body rounded", style: "width: 150px;", data: { confirm: "本当に退会しますか?" } %><br>
+            <%= link_to "退会する", withdraw_members_path, method: :patch, class: "guest_button btn btn-outline-danger btn-lg ml-3 mb-3 shadow bg-body rounded", style: "width: 150px;", data: { confirm: "本当に退会しますか?" } %><br>
             <strong>※ゲスト会員でログインの場合、退会することはできません</strong>
           <% end %>
         </div>

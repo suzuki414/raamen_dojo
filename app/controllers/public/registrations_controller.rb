@@ -58,9 +58,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    complete_path
+    complete_members_path
   end
-  
+
   # The path used after update.
   def after_update_path_for(resource)
     my_page_members_path
@@ -70,5 +70,5 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  
+
 end

@@ -19,16 +19,16 @@ Rails.application.routes.draw do
     get "/search" => "searches#search", as: "search"
     resources :members, only: [:index, :show, :edit] do
       collection do
-        get "my_page"
-        get "unsubscribe"
-        patch "withdraw"
-        get "account_closed"
-        get "complete"
+        get "my_page", as: "my_page"
+        get "unsubscribe", as: "unsubscribe"
+        patch "withdraw", as: "withdraw"
+        get "account_closed", as: "account_closed"
+        get "complete", as: "complete"
       end  
       resource :relationships, only: [:create, :destroy]
       get "follow" => "relationships#follow", as: "follow"
     end
-    resources :ramen_noodles, only: [:new, :index, :show, :edit, :create, :update, :destroy] do
+    resources :ramen_noodles do
       resource :favorite, only: [:create, :destroy]
       resources :ramen_noodle_comments, only: [:create, :destroy]
     end
